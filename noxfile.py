@@ -37,7 +37,6 @@ def pytest_argv():
         "pytest",
         "--cov-report=term-missing",
         "--cov=elasticsearch",
-        "--cov-config=setup.cfg",
         f"--junitxml={junit_xml}",
         "--log-level=DEBUG",
         "--cache-clear",
@@ -67,9 +66,13 @@ def test_otel(session):
 
 @nox.session()
 def format(session):
-    session.install("black~=24.0", "isort", "flynt", "unasync>=0.6.0")
+    session.install(
+        "black~=24.0", "isort", "flynt", "unasync>=0.6.0", "jinja2", "elastic-transport"
+    )
 
     session.run("python", "utils/run-unasync.py")
+    session.run("python", "utils/run-unasync-dsl.py")
+    session.run("python", "utils/dsl-generator.py", env={"PYTHONPATH": "./"})
     session.run("isort", "--profile=black", *SOURCE_FILES)
     session.run("flynt", *SOURCE_FILES)
     session.run("black", *SOURCE_FILES)
@@ -86,11 +89,18 @@ def lint(session):
     session.run("python", "-c", "from elasticsearch._otel import OpenTelemetry")
 
     session.install(
-        "flake8", "black~=24.0", "mypy", "isort", "types-requests", "unasync>=0.6.0"
+        "flake8",
+        "black~=24.0",
+        "mypy",
+        "isort",
+        "types-requests",
+        "types-python-dateutil",
+        "unasync>=0.6.0",
     )
     session.run("isort", "--check", "--profile=black", *SOURCE_FILES)
     session.run("black", "--check", *SOURCE_FILES)
     session.run("python", "utils/run-unasync.py", "--check")
+    session.run("python", "utils/run-unasync-dsl.py", "--check")
     session.run("flake8", *SOURCE_FILES)
     session.run("python", "utils/license-headers.py", "check", *SOURCE_FILES)
 
@@ -98,7 +108,14 @@ def lint(session):
 
     # Run mypy on the package and then the type examples separately for
     # the two different mypy use-cases, ourselves and our users.
-    session.run("mypy", "--strict", "--show-error-codes", "elasticsearch/")
+    session.run(
+        "mypy",
+        "--strict",
+        "--implicit-reexport",
+        "--explicit-package-bases",
+        "--show-error-codes",
+        "elasticsearch/",
+    )
     session.run(
         "mypy",
         "--strict",
@@ -111,11 +128,26 @@ def lint(session):
         "--show-error-codes",
         "test_elasticsearch/test_types/async_types.py",
     )
+    session.run(
+        "mypy",
+        "--strict",
+        "--implicit-reexport",
+        "--explicit-package-bases",
+        "--show-error-codes",
+        "examples/dsl/",
+    )
 
     # Make sure we don't require aiohttp to be installed for users to
     # receive type hint information from mypy.
     session.run("python", "-m", "pip", "uninstall", "--yes", "aiohttp")
-    session.run("mypy", "--strict", "--show-error-codes", "elasticsearch/")
+    session.run(
+        "mypy",
+        "--strict",
+        "--implicit-reexport",
+        "--explicit-package-bases",
+        "--show-error-codes",
+        "elasticsearch/",
+    )
     session.run(
         "mypy",
         "--strict",

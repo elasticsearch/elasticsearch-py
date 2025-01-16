@@ -43,6 +43,8 @@ keywords = [
 dynamic = ["version"]
 dependencies = [
     "elastic-transport>=8.15.1,<9",
+    "python-dateutil",
+    "typing-extensions",
 ]
 
 [project.optional-dependencies]
@@ -57,6 +59,7 @@ dev = [
     "aiohttp",
     "pytest",
     "pytest-cov",
+    "pytest-mock",
     "pytest-asyncio",
     "coverage",
     "jinja2",
@@ -74,6 +77,14 @@ dev = [
     "pyarrow",
     "pandas",
     "mapbox-vector-tile",
+    "jinja2",
+    "nltk",
+    "sentence_transformers",
+    "tqdm",
+    "mypy",
+    "pyright",
+    "types-python-dateutil",
+    "types-tqdm",
 ]
 docs = [
     "sphinx",
@@ -109,7 +120,15 @@ packages = ["elasticsearch"]
 [tool.pytest.ini_options]
 junit_family = "legacy"
 xfail_strict = true
-markers = "otel"
+markers = [
+    "otel",
+    "sync: mark a test as performing I/O without asyncio.",
+]
+filterwarnings = [
+    "ignore:Legacy index templates are deprecated in favor of composable templates.:elasticsearch.exceptions.ElasticsearchWarning",
+    "ignore:datetime.datetime.utcfromtimestamp() is deprecated and scheduled for removal in a future version..*:DeprecationWarning",
+    "default:enable_cleanup_closed ignored.*:DeprecationWarning",
+]
 
 [tool.isort]
 profile = "black"

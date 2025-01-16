@@ -485,7 +485,7 @@ class TestVectorStore:
             )
             store.add_texts(texts)
 
-            ## without fetch_k parameter
+            # without fetch_k parameter
             output = store.search(
                 query="foo",
                 k=3,
@@ -551,7 +551,7 @@ class TestVectorStore:
         )
         store.add_texts(texts)
 
-        ## with fetch_k parameter
+        # with fetch_k parameter
         output = store.search(
             query="foo",
             k=3,
