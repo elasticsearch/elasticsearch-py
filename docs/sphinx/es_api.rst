@@ -1,7 +1,7 @@
 .. _api:
 
-Elasticsearch API Reference
-===========================
+Elasticsearch API
+=================
 
 All the API calls map the raw REST API as closely as possible, including the
 distinction between required and optional arguments to the calls. Keyword
