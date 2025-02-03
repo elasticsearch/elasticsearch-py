@@ -42,7 +42,10 @@ class MonitoringClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Used by the monitoring features to send monitoring data.
+        .. raw:: html
+
+          <p>Used by the monitoring features to send monitoring data.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/monitor-elasticsearch-cluster.html>`_
 

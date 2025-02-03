@@ -44,8 +44,10 @@ class SnapshotClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Triggers the review of a snapshot repository’s contents and deletes any stale
-        data not referenced by existing snapshots.
+        .. raw:: html
+
+          <p>Triggers the review of a snapshot repository’s contents and deletes any stale data not referenced by existing snapshots.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/clean-up-snapshot-repo-api.html>`_
 
@@ -99,7 +101,10 @@ class SnapshotClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clones indices from one snapshot into another snapshot in the same repository.
+        .. raw:: html
+
+          <p>Clones indices from one snapshot into another snapshot in the same repository.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -182,7 +187,10 @@ class SnapshotClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates a snapshot in a repository.
+        .. raw:: html
+
+          <p>Creates a snapshot in a repository.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -286,7 +294,10 @@ class SnapshotClient(NamespacedClient):
         verify: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates a repository.
+        .. raw:: html
+
+          <p>Creates a repository.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -346,7 +357,10 @@ class SnapshotClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes one or more snapshots.
+        .. raw:: html
+
+          <p>Deletes one or more snapshots.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -397,7 +411,10 @@ class SnapshotClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes a repository.
+        .. raw:: html
+
+          <p>Deletes a repository.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -471,7 +488,10 @@ class SnapshotClient(NamespacedClient):
         verbose: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns information about a snapshot.
+        .. raw:: html
+
+          <p>Returns information about a snapshot.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -583,7 +603,10 @@ class SnapshotClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns information about a repository.
+        .. raw:: html
+
+          <p>Returns information about a repository.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -642,7 +665,10 @@ class SnapshotClient(NamespacedClient):
         verify_blob_contents: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Verifies the integrity of the contents of a snapshot repository
+        .. raw:: html
+
+          <p>Verifies the integrity of the contents of a snapshot repository</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -739,7 +765,10 @@ class SnapshotClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Restores a snapshot.
+        .. raw:: html
+
+          <p>Restores a snapshot.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -832,7 +861,10 @@ class SnapshotClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns information about the status of a snapshot.
+        .. raw:: html
+
+          <p>Returns information about the status of a snapshot.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 
@@ -891,7 +923,10 @@ class SnapshotClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Verifies a repository.
+        .. raw:: html
+
+          <p>Verifies a repository.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
 

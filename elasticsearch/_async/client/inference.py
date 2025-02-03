@@ -44,7 +44,10 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete an inference endpoint
+        .. raw:: html
+
+          <p>Delete an inference endpoint</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-inference-api.html>`_
 
@@ -109,7 +112,10 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get an inference endpoint
+        .. raw:: html
+
+          <p>Get an inference endpoint</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-inference-api.html>`_
 
@@ -172,7 +178,10 @@ class InferenceClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Perform inference on the service
+        .. raw:: html
+
+          <p>Perform inference on the service</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/post-inference-api.html>`_
 
@@ -255,7 +264,10 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create an inference endpoint
+        .. raw:: html
+
+          <p>Create an inference endpoint</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-inference-api.html>`_
 

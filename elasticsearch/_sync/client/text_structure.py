@@ -50,8 +50,10 @@ class TextStructureClient(NamespacedClient):
         timestamp_format: t.Optional[str] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Finds the structure of a text file. The text file must contain data that is suitable
-        to be ingested into Elasticsearch.
+        .. raw:: html
+
+          <p>Finds the structure of a text file. The text file must contain data that is suitable to be ingested into Elasticsearch.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/find-structure.html>`_
 
@@ -191,7 +193,10 @@ class TextStructureClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Tests a Grok pattern on some text.
+        .. raw:: html
+
+          <p>Tests a Grok pattern on some text.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/test-grok-pattern.html>`_
 

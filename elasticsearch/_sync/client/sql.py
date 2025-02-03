@@ -39,7 +39,10 @@ class SqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clear an SQL search cursor.
+        .. raw:: html
+
+          <p>Clear an SQL search cursor.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/clear-sql-cursor-api.html>`_
 
@@ -84,8 +87,12 @@ class SqlClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete an async SQL search. Delete an async SQL search or a stored synchronous
-        SQL search. If the search is still running, the API cancels it.
+        .. raw:: html
+
+          <p>Delete an async SQL search.
+          Delete an async SQL search or a stored synchronous SQL search.
+          If the search is still running, the API cancels it.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-async-sql-search-api.html>`_
 
@@ -131,8 +138,11 @@ class SqlClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get async SQL search results. Get the current status and available results for
-        an async SQL search or stored synchronous SQL search.
+        .. raw:: html
+
+          <p>Get async SQL search results.
+          Get the current status and available results for an async SQL search or stored synchronous SQL search.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-async-sql-search-api.html>`_
 
@@ -189,8 +199,11 @@ class SqlClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the async SQL search status. Get the current status of an async SQL search
-        or a stored synchronous SQL search.
+        .. raw:: html
+
+          <p>Get the async SQL search status.
+          Get the current status of an async SQL search or a stored synchronous SQL search.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-async-sql-search-status-api.html>`_
 
@@ -273,7 +286,11 @@ class SqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get SQL search results. Run an SQL request.
+        .. raw:: html
+
+          <p>Get SQL search results.
+          Run an SQL request.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/sql-search-api.html>`_
 
@@ -383,8 +400,11 @@ class SqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Translate SQL into Elasticsearch queries. Translate an SQL search into a search
-        API request containing Query DSL.
+        .. raw:: html
+
+          <p>Translate SQL into Elasticsearch queries.
+          Translate an SQL search into a search API request containing Query DSL.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/sql-translate-api.html>`_
 

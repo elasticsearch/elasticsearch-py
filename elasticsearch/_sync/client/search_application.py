@@ -43,8 +43,11 @@ class SearchApplicationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a search application. Remove a search application and its associated alias.
-        Indices attached to the search application are not removed.
+        .. raw:: html
+
+          <p>Delete a search application.
+          Remove a search application and its associated alias. Indices attached to the search application are not removed.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-search-application.html>`_
 
@@ -85,8 +88,11 @@ class SearchApplicationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a behavioral analytics collection. The associated data stream is also
-        deleted.
+        .. raw:: html
+
+          <p>Delete a behavioral analytics collection.
+          The associated data stream is also deleted.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-analytics-collection.html>`_
 
@@ -127,7 +133,10 @@ class SearchApplicationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get search application details.
+        .. raw:: html
+
+          <p>Get search application details.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-search-application.html>`_
 
@@ -168,7 +177,10 @@ class SearchApplicationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get behavioral analytics collections.
+        .. raw:: html
+
+          <p>Get behavioral analytics collections.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/list-analytics-collection.html>`_
 
@@ -216,7 +228,10 @@ class SearchApplicationClient(NamespacedClient):
         size: t.Optional[int] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns the existing search applications.
+        .. raw:: html
+
+          <p>Returns the existing search applications.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/list-search-applications.html>`_
 
@@ -268,7 +283,10 @@ class SearchApplicationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update a search application.
+        .. raw:: html
+
+          <p>Create or update a search application.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-search-application.html>`_
 
@@ -322,7 +340,10 @@ class SearchApplicationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create a behavioral analytics collection.
+        .. raw:: html
+
+          <p>Create a behavioral analytics collection.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-analytics-collection.html>`_
 
@@ -369,10 +390,12 @@ class SearchApplicationClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run a search application search. Generate and run an Elasticsearch query that
-        uses the specified query parameteter and the search template associated with
-        the search application or default template. Unspecified template parameters are
-        assigned their default values if applicable.
+        .. raw:: html
+
+          <p>Run a search application search.
+          Generate and run an Elasticsearch query that uses the specified query parameteter and the search template associated with the search application or default template.
+          Unspecified template parameters are assigned their default values if applicable.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-application-search.html>`_
 

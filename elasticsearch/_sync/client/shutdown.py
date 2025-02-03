@@ -42,8 +42,10 @@ class ShutdownClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Removes a node from the shutdown list. Designed for indirect use by ECE/ESS and
-        ECK. Direct use is not supported.
+        .. raw:: html
+
+          <p>Removes a node from the shutdown list. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/current>`_
 
@@ -98,8 +100,10 @@ class ShutdownClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieve status of a node or nodes that are currently marked as shutting down.
-        Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.
+        .. raw:: html
+
+          <p>Retrieve status of a node or nodes that are currently marked as shutting down. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/current>`_
 
@@ -166,8 +170,10 @@ class ShutdownClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Adds a node to be shut down. Designed for indirect use by ECE/ESS and ECK. Direct
-        use is not supported.
+        .. raw:: html
+
+          <p>Adds a node to be shut down. Designed for indirect use by ECE/ESS and ECK. Direct use is not supported.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/current>`_
 

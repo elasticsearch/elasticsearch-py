@@ -44,7 +44,10 @@ class SearchableSnapshotsClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieve node-level cache statistics about searchable snapshots.
+        .. raw:: html
+
+          <p>Retrieve node-level cache statistics about searchable snapshots.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/searchable-snapshots-apis.html>`_
 
@@ -103,7 +106,10 @@ class SearchableSnapshotsClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clear the cache of searchable snapshots.
+        .. raw:: html
+
+          <p>Clear the cache of searchable snapshots.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/searchable-snapshots-apis.html>`_
 
@@ -175,7 +181,10 @@ class SearchableSnapshotsClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Mount a snapshot as a searchable index.
+        .. raw:: html
+
+          <p>Mount a snapshot as a searchable index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/searchable-snapshots-api-mount-snapshot.html>`_
 
@@ -255,7 +264,10 @@ class SearchableSnapshotsClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieve shard-level statistics about searchable snapshots.
+        .. raw:: html
+
+          <p>Retrieve shard-level statistics about searchable snapshots.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/searchable-snapshots-apis.html>`_
 

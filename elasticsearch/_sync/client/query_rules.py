@@ -37,7 +37,11 @@ class QueryRulesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a query rule. Delete a query rule within a query ruleset.
+        .. raw:: html
+
+          <p>Delete a query rule.
+          Delete a query rule within a query ruleset.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-query-rule.html>`_
 
@@ -85,7 +89,10 @@ class QueryRulesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a query ruleset.
+        .. raw:: html
+
+          <p>Delete a query ruleset.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-query-ruleset.html>`_
 
@@ -126,7 +133,11 @@ class QueryRulesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get a query rule. Get details about a query rule within a query ruleset.
+        .. raw:: html
+
+          <p>Get a query rule.
+          Get details about a query rule within a query ruleset.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-query-rule.html>`_
 
@@ -174,7 +185,11 @@ class QueryRulesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get a query ruleset. Get details about a query ruleset.
+        .. raw:: html
+
+          <p>Get a query ruleset.
+          Get details about a query ruleset.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-query-ruleset.html>`_
 
@@ -217,7 +232,11 @@ class QueryRulesClient(NamespacedClient):
         size: t.Optional[int] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get all query rulesets. Get summarized information about the query rulesets.
+        .. raw:: html
+
+          <p>Get all query rulesets.
+          Get summarized information about the query rulesets.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/list-query-rulesets.html>`_
 
@@ -270,7 +289,11 @@ class QueryRulesClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update a query rule. Create or update a query rule within a query ruleset.
+        .. raw:: html
+
+          <p>Create or update a query rule.
+          Create or update a query rule within a query ruleset.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-query-rule.html>`_
 
@@ -345,7 +368,10 @@ class QueryRulesClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update a query ruleset.
+        .. raw:: html
+
+          <p>Create or update a query ruleset.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-query-ruleset.html>`_
 
@@ -398,8 +424,11 @@ class QueryRulesClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Test a query ruleset. Evaluate match criteria against a query ruleset to identify
-        the rules that would match that criteria.
+        .. raw:: html
+
+          <p>Test a query ruleset.
+          Evaluate match criteria against a query ruleset to identify the rules that would match that criteria.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/test-query-ruleset.html>`_
 

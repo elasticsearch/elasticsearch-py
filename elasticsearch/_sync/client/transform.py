@@ -39,7 +39,11 @@ class TransformClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a transform. Deletes a transform.
+        .. raw:: html
+
+          <p>Delete a transform.
+          Deletes a transform.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-transform.html>`_
 
@@ -99,7 +103,11 @@ class TransformClient(NamespacedClient):
         size: t.Optional[int] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get transforms. Retrieves configuration information for transforms.
+        .. raw:: html
+
+          <p>Get transforms.
+          Retrieves configuration information for transforms.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-transform.html>`_
 
@@ -168,7 +176,11 @@ class TransformClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get transform stats. Retrieves usage information for transforms.
+        .. raw:: html
+
+          <p>Get transform stats.
+          Retrieves usage information for transforms.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-transform-stats.html>`_
 
@@ -249,12 +261,14 @@ class TransformClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Preview a transform. Generates a preview of the results that you will get when
-        you create a transform with the same configuration. It returns a maximum of 100
-        results. The calculations are based on all the current data in the source index.
-        It also generates a list of mappings and settings for the destination index.
-        These values are determined based on the field types of the source index and
-        the transform aggregations.
+        .. raw:: html
+
+          <p>Preview a transform.
+          Generates a preview of the results that you will get when you create a transform with the same configuration.</p>
+          <p>It returns a maximum of 100 results. The calculations are based on all the current data in the source index. It also
+          generates a list of mappings and settings for the destination index. These values are determined based on the field
+          types of the source index and the transform aggregations.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/preview-transform.html>`_
 
@@ -371,27 +385,27 @@ class TransformClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create a transform. Creates a transform. A transform copies data from source
-        indices, transforms it, and persists it into an entity-centric destination index.
-        You can also think of the destination index as a two-dimensional tabular data
-        structure (known as a data frame). The ID for each document in the data frame
-        is generated from a hash of the entity, so there is a unique row per entity.
-        You must choose either the latest or pivot method for your transform; you cannot
-        use both in a single transform. If you choose to use the pivot method for your
-        transform, the entities are defined by the set of `group_by` fields in the pivot
-        object. If you choose to use the latest method, the entities are defined by the
-        `unique_key` field values in the latest object. You must have `create_index`,
-        `index`, and `read` privileges on the destination index and `read` and `view_index_metadata`
-        privileges on the source indices. When Elasticsearch security features are enabled,
-        the transform remembers which roles the user that created it had at the time
-        of creation and uses those same roles. If those roles do not have the required
-        privileges on the source and destination indices, the transform fails when it
-        attempts unauthorized operations. NOTE: You must use Kibana or this API to create
-        a transform. Do not add a transform directly into any `.transform-internal*`
-        indices using the Elasticsearch index API. If Elasticsearch security features
-        are enabled, do not give users any privileges on `.transform-internal*` indices.
-        If you used transforms prior to 7.5, also do not give users any privileges on
-        `.data-frame-internal*` indices.
+        .. raw:: html
+
+          <p>Create a transform.
+          Creates a transform.</p>
+          <p>A transform copies data from source indices, transforms it, and persists it into an entity-centric destination index. You can also think of the destination index as a two-dimensional tabular data structure (known as
+          a data frame). The ID for each document in the data frame is generated from a hash of the entity, so there is a
+          unique row per entity.</p>
+          <p>You must choose either the latest or pivot method for your transform; you cannot use both in a single transform. If
+          you choose to use the pivot method for your transform, the entities are defined by the set of <code>group_by</code> fields in
+          the pivot object. If you choose to use the latest method, the entities are defined by the <code>unique_key</code> field values
+          in the latest object.</p>
+          <p>You must have <code>create_index</code>, <code>index</code>, and <code>read</code> privileges on the destination index and <code>read</code> and
+          <code>view_index_metadata</code> privileges on the source indices. When Elasticsearch security features are enabled, the
+          transform remembers which roles the user that created it had at the time of creation and uses those same roles. If
+          those roles do not have the required privileges on the source and destination indices, the transform fails when it
+          attempts unauthorized operations.</p>
+          <p>NOTE: You must use Kibana or this API to create a transform. Do not add a transform directly into any
+          <code>.transform-internal*</code> indices using the Elasticsearch index API. If Elasticsearch security features are enabled, do
+          not give users any privileges on <code>.transform-internal*</code> indices. If you used transforms prior to 7.5, also do not
+          give users any privileges on <code>.data-frame-internal*</code> indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-transform.html>`_
 
@@ -491,9 +505,13 @@ class TransformClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Reset a transform. Resets a transform. Before you can reset it, you must stop
-        it; alternatively, use the `force` query parameter. If the destination index
-        was created by the transform, it is deleted.
+        .. raw:: html
+
+          <p>Reset a transform.
+          Resets a transform.
+          Before you can reset it, you must stop it; alternatively, use the <code>force</code> query parameter.
+          If the destination index was created by the transform, it is deleted.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/reset-transform.html>`_
 
@@ -541,11 +559,15 @@ class TransformClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Schedule a transform to start now. Instantly runs a transform to process data.
-        If you _schedule_now a transform, it will process the new data instantly, without
-        waiting for the configured frequency interval. After _schedule_now API is called,
-        the transform will be processed again at now + frequency unless _schedule_now
-        API is called again in the meantime.
+        .. raw:: html
+
+          <p>Schedule a transform to start now.
+          Instantly runs a transform to process data.</p>
+          <p>If you _schedule_now a transform, it will process the new data instantly,
+          without waiting for the configured frequency interval. After _schedule_now API is called,
+          the transform will be processed again at now + frequency unless _schedule_now API
+          is called again in the meantime.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/schedule-now-transform.html>`_
 
@@ -592,24 +614,24 @@ class TransformClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Start a transform. Starts a transform. When you start a transform, it creates
-        the destination index if it does not already exist. The `number_of_shards` is
-        set to `1` and the `auto_expand_replicas` is set to `0-1`. If it is a pivot transform,
-        it deduces the mapping definitions for the destination index from the source
-        indices and the transform aggregations. If fields in the destination index are
-        derived from scripts (as in the case of `scripted_metric` or `bucket_script`
-        aggregations), the transform uses dynamic mappings unless an index template exists.
-        If it is a latest transform, it does not deduce mapping definitions; it uses
-        dynamic mappings. To use explicit mappings, create the destination index before
-        you start the transform. Alternatively, you can create an index template, though
-        it does not affect the deduced mappings in a pivot transform. When the transform
-        starts, a series of validations occur to ensure its success. If you deferred
-        validation when you created the transform, they occur when you start the transform—​with
-        the exception of privilege checks. When Elasticsearch security features are enabled,
-        the transform remembers which roles the user that created it had at the time
-        of creation and uses those same roles. If those roles do not have the required
-        privileges on the source and destination indices, the transform fails when it
-        attempts unauthorized operations.
+        .. raw:: html
+
+          <p>Start a transform.
+          Starts a transform.</p>
+          <p>When you start a transform, it creates the destination index if it does not already exist. The <code>number_of_shards</code> is
+          set to <code>1</code> and the <code>auto_expand_replicas</code> is set to <code>0-1</code>. If it is a pivot transform, it deduces the mapping
+          definitions for the destination index from the source indices and the transform aggregations. If fields in the
+          destination index are derived from scripts (as in the case of <code>scripted_metric</code> or <code>bucket_script</code> aggregations),
+          the transform uses dynamic mappings unless an index template exists. If it is a latest transform, it does not deduce
+          mapping definitions; it uses dynamic mappings. To use explicit mappings, create the destination index before you
+          start the transform. Alternatively, you can create an index template, though it does not affect the deduced mappings
+          in a pivot transform.</p>
+          <p>When the transform starts, a series of validations occur to ensure its success. If you deferred validation when you
+          created the transform, they occur when you start the transform—​with the exception of privilege checks. When
+          Elasticsearch security features are enabled, the transform remembers which roles the user that created it had at the
+          time of creation and uses those same roles. If those roles do not have the required privileges on the source and
+          destination indices, the transform fails when it attempts unauthorized operations.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/start-transform.html>`_
 
@@ -663,7 +685,11 @@ class TransformClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Stop transforms. Stops one or more transforms.
+        .. raw:: html
+
+          <p>Stop transforms.
+          Stops one or more transforms.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/stop-transform.html>`_
 
@@ -756,14 +782,16 @@ class TransformClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Update a transform. Updates certain properties of a transform. All updated properties
-        except `description` do not take effect until after the transform starts the
-        next checkpoint, thus there is data consistency in each checkpoint. To use this
-        API, you must have `read` and `view_index_metadata` privileges for the source
-        indices. You must also have `index` and `read` privileges for the destination
-        index. When Elasticsearch security features are enabled, the transform remembers
-        which roles the user who updated it had at the time of update and runs with those
-        privileges.
+        .. raw:: html
+
+          <p>Update a transform.
+          Updates certain properties of a transform.</p>
+          <p>All updated properties except <code>description</code> do not take effect until after the transform starts the next checkpoint,
+          thus there is data consistency in each checkpoint. To use this API, you must have <code>read</code> and <code>view_index_metadata</code>
+          privileges for the source indices. You must also have <code>index</code> and <code>read</code> privileges for the destination index. When
+          Elasticsearch security features are enabled, the transform remembers which roles the user who updated it had at the
+          time of update and runs with those privileges.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/update-transform.html>`_
 
@@ -844,13 +872,15 @@ class TransformClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Upgrades all transforms. This API identifies transforms that have a legacy configuration
-        format and upgrades them to the latest version. It also cleans up the internal
-        data structures that store the transform state and checkpoints. The upgrade does
-        not affect the source and destination indices. The upgrade also does not affect
-        the roles that transforms use when Elasticsearch security features are enabled;
-        the role used to read source data and write to the destination index remains
-        unchanged.
+        .. raw:: html
+
+          <p>Upgrades all transforms.
+          This API identifies transforms that have a legacy configuration format and upgrades them to the latest version. It
+          also cleans up the internal data structures that store the transform state and checkpoints. The upgrade does not
+          affect the source and destination indices. The upgrade also does not affect the roles that transforms use when
+          Elasticsearch security features are enabled; the role used to read source data and write to the destination index
+          remains unchanged.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/upgrade-transforms.html>`_
 

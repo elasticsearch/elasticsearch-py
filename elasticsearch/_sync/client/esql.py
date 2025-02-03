@@ -68,8 +68,11 @@ class EsqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run an ES|QL query. Get search results for an ES|QL (Elasticsearch query language)
-        query.
+        .. raw:: html
+
+          <p>Run an ES|QL query.
+          Get search results for an ES|QL (Elasticsearch query language) query.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/esql-rest.html>`_
 

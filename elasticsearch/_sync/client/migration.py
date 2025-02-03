@@ -36,9 +36,10 @@ class MigrationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves information about different cluster, node, and index level settings
-        that use deprecated features that will be removed or changed in the next major
-        version.
+        .. raw:: html
+
+          <p>Retrieves information about different cluster, node, and index level settings that use deprecated features that will be removed or changed in the next major version.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/migration-api-deprecation.html>`_
 
@@ -81,7 +82,10 @@ class MigrationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Find out whether system features need to be upgraded or not
+        .. raw:: html
+
+          <p>Find out whether system features need to be upgraded or not</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/migration-api-feature-upgrade.html>`_
         """
@@ -116,7 +120,10 @@ class MigrationClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Begin upgrades for system features
+        .. raw:: html
+
+          <p>Begin upgrades for system features</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/migration-api-feature-upgrade.html>`_
         """

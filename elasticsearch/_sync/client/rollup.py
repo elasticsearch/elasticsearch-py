@@ -43,7 +43,10 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes an existing rollup job.
+        .. raw:: html
+
+          <p>Deletes an existing rollup job.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-delete-job.html>`_
 
@@ -84,7 +87,10 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves the configuration, stats, and status of rollup jobs.
+        .. raw:: html
+
+          <p>Retrieves the configuration, stats, and status of rollup jobs.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-get-job.html>`_
 
@@ -129,8 +135,10 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns the capabilities of any rollup jobs that have been configured for a specific
-        index or index pattern.
+        .. raw:: html
+
+          <p>Returns the capabilities of any rollup jobs that have been configured for a specific index or index pattern.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-get-rollup-caps.html>`_
 
@@ -175,8 +183,10 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns the rollup capabilities of all jobs inside of a rollup index (for example,
-        the index where rollup data is stored).
+        .. raw:: html
+
+          <p>Returns the rollup capabilities of all jobs inside of a rollup index (for example, the index where rollup data is stored).</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-get-rollup-index-caps.html>`_
 
@@ -239,7 +249,10 @@ class RollupClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates a rollup job.
+        .. raw:: html
+
+          <p>Creates a rollup job.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-put-job.html>`_
 
@@ -356,7 +369,10 @@ class RollupClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Enables searching rolled-up data using the standard Query DSL.
+        .. raw:: html
+
+          <p>Enables searching rolled-up data using the standard Query DSL.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-search.html>`_
 
@@ -420,7 +436,10 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Starts an existing, stopped rollup job.
+        .. raw:: html
+
+          <p>Starts an existing, stopped rollup job.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-start-job.html>`_
 
@@ -463,7 +482,10 @@ class RollupClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Stops an existing, started rollup job.
+        .. raw:: html
+
+          <p>Stops an existing, started rollup job.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/rollup-stop-job.html>`_
 

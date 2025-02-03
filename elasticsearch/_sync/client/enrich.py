@@ -36,7 +36,11 @@ class EnrichClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete an enrich policy. Deletes an existing enrich policy and its enrich index.
+        .. raw:: html
+
+          <p>Delete an enrich policy.
+          Deletes an existing enrich policy and its enrich index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-enrich-policy-api.html>`_
 
@@ -77,7 +81,11 @@ class EnrichClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run an enrich policy. Create the enrich index for an existing enrich policy.
+        .. raw:: html
+
+          <p>Run an enrich policy.
+          Create the enrich index for an existing enrich policy.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/execute-enrich-policy-api.html>`_
 
@@ -121,7 +129,11 @@ class EnrichClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get an enrich policy. Returns information about an enrich policy.
+        .. raw:: html
+
+          <p>Get an enrich policy.
+          Returns information about an enrich policy.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-enrich-policy-api.html>`_
 
@@ -171,7 +183,11 @@ class EnrichClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create an enrich policy. Creates an enrich policy.
+        .. raw:: html
+
+          <p>Create an enrich policy.
+          Creates an enrich policy.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/put-enrich-policy-api.html>`_
 
@@ -224,8 +240,11 @@ class EnrichClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get enrich stats. Returns enrich coordinator statistics and information about
-        enrich policies that are currently executing.
+        .. raw:: html
+
+          <p>Get enrich stats.
+          Returns enrich coordinator statistics and information about enrich policies that are currently executing.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/enrich-stats-api.html>`_
         """

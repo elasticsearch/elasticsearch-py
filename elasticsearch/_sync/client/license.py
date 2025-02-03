@@ -35,7 +35,10 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes licensing information for the cluster
+        .. raw:: html
+
+          <p>Deletes licensing information for the cluster</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/delete-license.html>`_
         """
@@ -72,9 +75,12 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get license information. Returns information about your Elastic license, including
-        its type, its status, when it was issued, and when it expires. For more information
-        about the different types of licenses, refer to [Elastic Stack subscriptions](https://www.elastic.co/subscriptions).
+        .. raw:: html
+
+          <p>Get license information.
+          Returns information about your Elastic license, including its type, its status, when it was issued, and when it expires.
+          For more information about the different types of licenses, refer to <a href="https://www.elastic.co/subscriptions">Elastic Stack subscriptions</a>.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-license.html>`_
 
@@ -120,7 +126,10 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves information about the status of the basic license.
+        .. raw:: html
+
+          <p>Retrieves information about the status of the basic license.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-basic-status.html>`_
         """
@@ -155,7 +164,10 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves information about the status of the trial license.
+        .. raw:: html
+
+          <p>Retrieves information about the status of the trial license.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-trial-status.html>`_
         """
@@ -196,7 +208,10 @@ class LicenseClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Updates the license for the cluster.
+        .. raw:: html
+
+          <p>Updates the license for the cluster.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/update-license.html>`_
 
@@ -250,12 +265,11 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        The start basic API enables you to initiate an indefinite basic license, which
-        gives access to all the basic features. If the basic license does not support
-        all of the features that are available with your current license, however, you
-        are notified in the response. You must then re-submit the API request with the
-        acknowledge parameter set to true. To check the status of your basic license,
-        use the following API: [Get basic status](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-basic-status.html).
+        .. raw:: html
+
+          <p>The start basic API enables you to initiate an indefinite basic license, which gives access to all the basic features. If the basic license does not support all of the features that are available with your current license, however, you are notified in the response. You must then re-submit the API request with the acknowledge parameter set to true.
+          To check the status of your basic license, use the following API: <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/get-basic-status.html">Get basic status</a>.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/start-basic.html>`_
 
@@ -297,8 +311,10 @@ class LicenseClient(NamespacedClient):
         type_query_string: t.Optional[str] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        The start trial API enables you to start a 30-day trial, which gives access to
-        all subscription features.
+        .. raw:: html
+
+          <p>The start trial API enables you to start a 30-day trial, which gives access to all subscription features.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/start-trial.html>`_
 
