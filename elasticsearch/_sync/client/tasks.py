@@ -47,7 +47,10 @@ class TasksClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Cancels a task, if it can be cancelled through an API.
+        .. raw:: html
+
+          <p>Cancels a task, if it can be cancelled through an API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/tasks.html>`_
 
@@ -107,8 +110,11 @@ class TasksClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get task information. Returns information about the tasks currently executing
-        in the cluster.
+        .. raw:: html
+
+          <p>Get task information.
+          Returns information about the tasks currently executing in the cluster.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/tasks.html>`_
 
@@ -166,8 +172,10 @@ class TasksClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        The task management API returns information about tasks currently executing on
-        one or more nodes in the cluster.
+        .. raw:: html
+
+          <p>The task management API returns information about tasks currently executing on one or more nodes in the cluster.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/tasks.html>`_
 

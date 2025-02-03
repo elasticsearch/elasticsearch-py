@@ -36,7 +36,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes an existing snapshot lifecycle policy.
+        .. raw:: html
+
+          <p>Deletes an existing snapshot lifecycle policy.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-delete-policy.html>`_
 
@@ -76,8 +79,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Immediately creates a snapshot according to the lifecycle policy, without waiting
-        for the scheduled time.
+        .. raw:: html
+
+          <p>Immediately creates a snapshot according to the lifecycle policy, without waiting for the scheduled time.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-execute-lifecycle.html>`_
 
@@ -116,7 +121,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes any snapshots that are expired according to the policy's retention rules.
+        .. raw:: html
+
+          <p>Deletes any snapshots that are expired according to the policy's retention rules.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-execute-retention.html>`_
         """
@@ -152,8 +160,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves one or more snapshot lifecycle policy definitions and information about
-        the latest snapshot attempts.
+        .. raw:: html
+
+          <p>Retrieves one or more snapshot lifecycle policy definitions and information about the latest snapshot attempts.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-get-policy.html>`_
 
@@ -195,8 +205,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Returns global and policy-level statistics about actions taken by snapshot lifecycle
-        management.
+        .. raw:: html
+
+          <p>Returns global and policy-level statistics about actions taken by snapshot lifecycle management.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-get-stats.html>`_
         """
@@ -231,7 +243,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves the status of snapshot lifecycle management (SLM).
+        .. raw:: html
+
+          <p>Retrieves the status of snapshot lifecycle management (SLM).</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-get-status.html>`_
         """
@@ -277,7 +292,10 @@ class SlmClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates or updates a snapshot lifecycle policy.
+        .. raw:: html
+
+          <p>Creates or updates a snapshot lifecycle policy.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-put-policy.html>`_
 
@@ -354,7 +372,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Turns on snapshot lifecycle management (SLM).
+        .. raw:: html
+
+          <p>Turns on snapshot lifecycle management (SLM).</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-start.html>`_
         """
@@ -389,7 +410,10 @@ class SlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Turns off snapshot lifecycle management (SLM).
+        .. raw:: html
+
+          <p>Turns off snapshot lifecycle management (SLM).</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/slm-api-stop.html>`_
         """

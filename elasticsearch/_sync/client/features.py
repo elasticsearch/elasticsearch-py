@@ -35,8 +35,10 @@ class FeaturesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Gets a list of features which can be included in snapshots using the feature_states
-        field when creating a snapshot
+        .. raw:: html
+
+          <p>Gets a list of features which can be included in snapshots using the feature_states field when creating a snapshot</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/get-features-api.html>`_
         """
@@ -72,7 +74,10 @@ class FeaturesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Resets the internal state of features, usually by deleting system indices
+        .. raw:: html
+
+          <p>Resets the internal state of features, usually by deleting system indices</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-snapshots.html>`_
         """

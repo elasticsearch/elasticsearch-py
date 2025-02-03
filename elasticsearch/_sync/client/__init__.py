@@ -642,9 +642,12 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Bulk index or delete documents. Performs multiple indexing or delete operations
-        in a single API call. This reduces overhead and can greatly increase indexing
-        speed.
+        .. raw:: html
+
+          <p>Bulk index or delete documents.
+          Performs multiple indexing or delete operations in a single API call.
+          This reduces overhead and can greatly increase indexing speed.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-bulk.html>`_
 
@@ -751,8 +754,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clear a scrolling search. Clear the search context and results for a scrolling
-        search.
+        .. raw:: html
+
+          <p>Clear a scrolling search.</p>
+          <p>Clear the search context and results for a scrolling search.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/clear-scroll-api.html>`_
 
@@ -802,11 +808,14 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Close a point in time. A point in time must be opened explicitly before being
-        used in search requests. The `keep_alive` parameter tells Elasticsearch how long
-        it should persist. A point in time is automatically closed when the `keep_alive`
-        period has elapsed. However, keeping points in time has a cost; close them as
-        soon as they are no longer required for search requests.
+        .. raw:: html
+
+          <p>Close a point in time.</p>
+          <p>A point in time must be opened explicitly before being used in search requests.
+          The <code>keep_alive</code> parameter tells Elasticsearch how long it should persist.
+          A point in time is automatically closed when the <code>keep_alive</code> period has elapsed.
+          However, keeping points in time has a cost; close them as soon as they are no longer required for search requests.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/point-in-time-api.html>`_
 
@@ -880,7 +889,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Count search results. Get the number of documents matching a query.
+        .. raw:: html
+
+          <p>Count search results.
+          Get the number of documents matching a query.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-count.html>`_
 
@@ -1013,9 +1026,12 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Index a document. Adds a JSON document to the specified data stream or index
-        and makes it searchable. If the target is an index and the document already exists,
-        the request updates the document and increments its version.
+        .. raw:: html
+
+          <p>Index a document.
+          Adds a JSON document to the specified data stream or index and makes it searchable.
+          If the target is an index and the document already exists, the request updates the document and increments its version.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-index_.html>`_
 
@@ -1119,7 +1135,11 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a document. Removes a JSON document from the specified index.
+        .. raw:: html
+
+          <p>Delete a document.
+          Removes a JSON document from the specified index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-delete.html>`_
 
@@ -1241,7 +1261,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete documents. Deletes documents that match the specified query.
+        .. raw:: html
+
+          <p>Delete documents.
+          Deletes documents that match the specified query.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-delete-by-query.html>`_
 
@@ -1419,10 +1443,12 @@ class Elasticsearch(BaseClient):
         requests_per_second: t.Optional[float] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Throttle a delete by query operation. Change the number of requests per second
-        for a particular delete by query operation. Rethrottling that speeds up the query
-        takes effect immediately but rethrotting that slows down the query takes effect
-        after completing the current batch to prevent scroll timeouts.
+        .. raw:: html
+
+          <p>Throttle a delete by query operation.</p>
+          <p>Change the number of requests per second for a particular delete by query operation.
+          Rethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-delete-by-query.html>`_
 
@@ -1468,7 +1494,11 @@ class Elasticsearch(BaseClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a script or search template. Deletes a stored script or search template.
+        .. raw:: html
+
+          <p>Delete a script or search template.
+          Deletes a stored script or search template.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-scripting.html>`_
 
@@ -1536,7 +1566,11 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> HeadApiResponse:
         """
-        Check a document. Checks if a specified document exists.
+        .. raw:: html
+
+          <p>Check a document.
+          Checks if a specified document exists.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-get.html>`_
 
@@ -1637,7 +1671,11 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> HeadApiResponse:
         """
-        Check for a document source. Checks if a document's `_source` is stored.
+        .. raw:: html
+
+          <p>Check for a document source.
+          Checks if a document's <code>_source</code> is stored.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-get.html>`_
 
@@ -1737,8 +1775,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Explain a document match result. Returns information about why a specific document
-        matches, or doesn’t match, a query.
+        .. raw:: html
+
+          <p>Explain a document match result.
+          Returns information about why a specific document matches, or doesn’t match, a query.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-explain.html>`_
 
@@ -1857,11 +1898,14 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the field capabilities. Get information about the capabilities of fields
-        among multiple indices. For data streams, the API returns field capabilities
-        among the stream’s backing indices. It returns runtime fields like any other
-        field. For example, a runtime field with a type of keyword is returned the same
-        as any other field that belongs to the `keyword` family.
+        .. raw:: html
+
+          <p>Get the field capabilities.</p>
+          <p>Get information about the capabilities of fields among multiple indices.</p>
+          <p>For data streams, the API returns field capabilities among the stream’s backing indices.
+          It returns runtime fields like any other field.
+          For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the <code>keyword</code> family.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-field-caps.html>`_
 
@@ -1977,8 +2021,11 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get a document by its ID. Retrieves the document with the specified ID from an
-        index.
+        .. raw:: html
+
+          <p>Get a document by its ID.
+          Retrieves the document with the specified ID from an index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-get.html>`_
 
@@ -2067,7 +2114,11 @@ class Elasticsearch(BaseClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get a script or search template. Retrieves a stored script or search template.
+        .. raw:: html
+
+          <p>Get a script or search template.
+          Retrieves a stored script or search template.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-scripting.html>`_
 
@@ -2109,7 +2160,11 @@ class Elasticsearch(BaseClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get script contexts. Get a list of supported script contexts and their methods.
+        .. raw:: html
+
+          <p>Get script contexts.</p>
+          <p>Get a list of supported script contexts and their methods.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/painless/8.16/painless-contexts.html>`_
         """
@@ -2144,7 +2199,11 @@ class Elasticsearch(BaseClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get script languages. Get a list of available script types, languages, and contexts.
+        .. raw:: html
+
+          <p>Get script languages.</p>
+          <p>Get a list of available script types, languages, and contexts.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-scripting.html>`_
         """
@@ -2199,7 +2258,11 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get a document's source. Returns the source of a document.
+        .. raw:: html
+
+          <p>Get a document's source.
+          Returns the source of a document.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-get.html>`_
 
@@ -2282,26 +2345,22 @@ class Elasticsearch(BaseClient):
         verbose: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the cluster health. Get a report with the health status of an Elasticsearch
-        cluster. The report contains a list of indicators that compose Elasticsearch
-        functionality. Each indicator has a health status of: green, unknown, yellow
-        or red. The indicator will provide an explanation and metadata describing the
-        reason for its current health status. The cluster’s status is controlled by the
-        worst indicator status. In the event that an indicator’s status is non-green,
-        a list of impacts may be present in the indicator result which detail the functionalities
-        that are negatively affected by the health issue. Each impact carries with it
-        a severity level, an area of the system that is affected, and a simple description
-        of the impact on the system. Some health indicators can determine the root cause
-        of a health problem and prescribe a set of steps that can be performed in order
-        to improve the health of the system. The root cause and remediation steps are
-        encapsulated in a diagnosis. A diagnosis contains a cause detailing a root cause
-        analysis, an action containing a brief description of the steps to take to fix
-        the problem, the list of affected resources (if applicable), and a detailed step-by-step
-        troubleshooting guide to fix the diagnosed problem. NOTE: The health indicators
-        perform root cause analysis of non-green health statuses. This can be computationally
-        expensive when called frequently. When setting up automated polling of the API
-        for health status, set verbose to false to disable the more expensive analysis
-        logic.
+        .. raw:: html
+
+          <p>Get the cluster health.
+          Get a report with the health status of an Elasticsearch cluster.
+          The report contains a list of indicators that compose Elasticsearch functionality.</p>
+          <p>Each indicator has a health status of: green, unknown, yellow or red.
+          The indicator will provide an explanation and metadata describing the reason for its current health status.</p>
+          <p>The cluster’s status is controlled by the worst indicator status.</p>
+          <p>In the event that an indicator’s status is non-green, a list of impacts may be present in the indicator result which detail the functionalities that are negatively affected by the health issue.
+          Each impact carries with it a severity level, an area of the system that is affected, and a simple description of the impact on the system.</p>
+          <p>Some health indicators can determine the root cause of a health problem and prescribe a set of steps that can be performed in order to improve the health of the system.
+          The root cause and remediation steps are encapsulated in a diagnosis.
+          A diagnosis contains a cause detailing a root cause analysis, an action containing a brief description of the steps to take to fix the problem, the list of affected resources (if applicable), and a detailed step-by-step troubleshooting guide to fix the diagnosed problem.</p>
+          <p>NOTE: The health indicators perform root cause analysis of non-green health statuses. This can be computationally expensive when called frequently.
+          When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/health-api.html>`_
 
@@ -2376,9 +2435,12 @@ class Elasticsearch(BaseClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Index a document. Adds a JSON document to the specified data stream or index
-        and makes it searchable. If the target is an index and the document already exists,
-        the request updates the document and increments its version.
+        .. raw:: html
+
+          <p>Index a document.
+          Adds a JSON document to the specified data stream or index and makes it searchable.
+          If the target is an index and the document already exists, the request updates the document and increments its version.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-index_.html>`_
 
@@ -2487,7 +2549,11 @@ class Elasticsearch(BaseClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get cluster info. Returns basic information about the cluster.
+        .. raw:: html
+
+          <p>Get cluster info.
+          Returns basic information about the cluster.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/index.html>`_
         """
@@ -2544,15 +2610,18 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run a knn search. NOTE: The kNN search API has been replaced by the `knn` option
-        in the search API. Perform a k-nearest neighbor (kNN) search on a dense_vector
-        field and return the matching documents. Given a query vector, the API finds
-        the k closest vectors and returns those documents as search hits. Elasticsearch
-        uses the HNSW algorithm to support efficient kNN search. Like most kNN algorithms,
-        HNSW is an approximate method that sacrifices result accuracy for improved search
-        speed. This means the results returned are not always the true k closest neighbors.
-        The kNN search API supports restricting the search using a filter. The search
-        will return the top k documents that also match the filter query.
+        .. raw:: html
+
+          <p>Run a knn search.</p>
+          <p>NOTE: The kNN search API has been replaced by the <code>knn</code> option in the search API.</p>
+          <p>Perform a k-nearest neighbor (kNN) search on a dense_vector field and return the matching documents.
+          Given a query vector, the API finds the k closest vectors and returns those documents as search hits.</p>
+          <p>Elasticsearch uses the HNSW algorithm to support efficient kNN search.
+          Like most kNN algorithms, HNSW is an approximate method that sacrifices result accuracy for improved search speed.
+          This means the results returned are not always the true k closest neighbors.</p>
+          <p>The kNN search API supports restricting the search using a filter.
+          The search will return the top k documents that also match the filter query.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-search.html>`_
 
@@ -2653,10 +2722,13 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get multiple documents. Get multiple JSON documents by ID from one or more indices.
-        If you specify an index in the request URI, you only need to specify the document
-        IDs in the request body. To ensure fast responses, this multi get (mget) API
-        responds with partial results if one or more shards fail.
+        .. raw:: html
+
+          <p>Get multiple documents.</p>
+          <p>Get multiple JSON documents by ID from one or more indices.
+          If you specify an index in the request URI, you only need to specify the document IDs in the request body.
+          To ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-multi-get.html>`_
 
@@ -2777,13 +2849,21 @@ class Elasticsearch(BaseClient):
         typed_keys: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run multiple searches. The format of the request is similar to the bulk API format
-        and makes use of the newline delimited JSON (NDJSON) format. The structure is
-        as follows: ``` header\\n body\\n header\\n body\\n ``` This structure is specifically
-        optimized to reduce parsing if a specific search ends up redirected to another
-        node. IMPORTANT: The final line of data must end with a newline character `\\n`.
-        Each newline character may be preceded by a carriage return `\\r`. When sending
-        requests to this endpoint the `Content-Type` header should be set to `application/x-ndjson`.
+        .. raw:: html
+
+          <p>Run multiple searches.</p>
+          <p>The format of the request is similar to the bulk API format and makes use of the newline delimited JSON (NDJSON) format.
+          The structure is as follows:</p>
+          <pre><code>header\\n
+          body\\n
+          header\\n
+          body\\n
+          </code></pre>
+          <p>This structure is specifically optimized to reduce parsing if a specific search ends up redirected to another node.</p>
+          <p>IMPORTANT: The final line of data must end with a newline character <code>\\n</code>.
+          Each newline character may be preceded by a carriage return <code>\\r</code>.
+          When sending requests to this endpoint the <code>Content-Type</code> header should be set to <code>application/x-ndjson</code>.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-multi-search.html>`_
 
@@ -2915,7 +2995,10 @@ class Elasticsearch(BaseClient):
         typed_keys: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run multiple templated searches.
+        .. raw:: html
+
+          <p>Run multiple templated searches.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-multi-search.html>`_
 
@@ -3010,11 +3093,14 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get multiple term vectors. You can specify existing documents by index and ID
-        or provide artificial documents in the body of the request. You can specify the
-        index in the request body or request URI. The response contains a `docs` array
-        with all the fetched termvectors. Each element has the structure provided by
-        the termvectors API.
+        .. raw:: html
+
+          <p>Get multiple term vectors.</p>
+          <p>You can specify existing documents by index and ID or provide artificial documents in the body of the request.
+          You can specify the index in the request body or request URI.
+          The response contains a <code>docs</code> array with all the fetched termvectors.
+          Each element has the structure provided by the termvectors API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-multi-termvectors.html>`_
 
@@ -3126,15 +3212,18 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Open a point in time. A search request by default runs against the most recent
-        visible data of the target indices, which is called point in time. Elasticsearch
-        pit (point in time) is a lightweight view into the state of the data as it existed
-        when initiated. In some cases, it’s preferred to perform multiple search requests
-        using the same point in time. For example, if refreshes happen between `search_after`
-        requests, then the results of those requests might not be consistent as changes
-        happening between searches are only visible to the more recent point in time.
-        A point in time must be opened explicitly before being used in search requests.
-        The `keep_alive` parameter tells Elasticsearch how long it should persist.
+        .. raw:: html
+
+          <p>Open a point in time.</p>
+          <p>A search request by default runs against the most recent visible data of the target indices,
+          which is called point in time. Elasticsearch pit (point in time) is a lightweight view into the
+          state of the data as it existed when initiated. In some cases, it’s preferred to perform multiple
+          search requests using the same point in time. For example, if refreshes happen between
+          <code>search_after</code> requests, then the results of those requests might not be consistent as changes happening
+          between searches are only visible to the more recent point in time.</p>
+          <p>A point in time must be opened explicitly before being used in search requests.
+          The <code>keep_alive</code> parameter tells Elasticsearch how long it should persist.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/point-in-time-api.html>`_
 
@@ -3221,8 +3310,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update a script or search template. Creates or updates a stored script
-        or search template.
+        .. raw:: html
+
+          <p>Create or update a script or search template.
+          Creates or updates a stored script or search template.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/modules-scripting.html>`_
 
@@ -3307,8 +3399,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Evaluate ranked search results. Evaluate the quality of ranked search results
-        over a set of typical search queries.
+        .. raw:: html
+
+          <p>Evaluate ranked search results.</p>
+          <p>Evaluate the quality of ranked search results over a set of typical search queries.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-rank-eval.html>`_
 
@@ -3402,9 +3497,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Reindex documents. Copies documents from a source to a destination. The source
-        can be any existing index, alias, or data stream. The destination must differ
-        from the source. For example, you cannot reindex a data stream into itself.
+        .. raw:: html
+
+          <p>Reindex documents.
+          Copies documents from a source to a destination. The source can be any existing index, alias, or data stream. The destination must differ from the source. For example, you cannot reindex a data stream into itself.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-reindex.html>`_
 
@@ -3500,8 +3597,11 @@ class Elasticsearch(BaseClient):
         requests_per_second: t.Optional[float] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Throttle a reindex operation. Change the number of requests per second for a
-        particular reindex operation.
+        .. raw:: html
+
+          <p>Throttle a reindex operation.</p>
+          <p>Change the number of requests per second for a particular reindex operation.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-reindex.html>`_
 
@@ -3552,7 +3652,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Render a search template. Render a search template as a search request body.
+        .. raw:: html
+
+          <p>Render a search template.</p>
+          <p>Render a search template as a search request body.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/render-search-template-api.html>`_
 
@@ -3621,7 +3725,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run a script. Runs a script and returns a result.
+        .. raw:: html
+
+          <p>Run a script.
+          Runs a script and returns a result.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/painless/8.16/painless-execute-api.html>`_
 
@@ -3679,22 +3787,19 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run a scrolling search. IMPORTANT: The scroll API is no longer recommend for
-        deep pagination. If you need to preserve the index state while paging through
-        more than 10,000 hits, use the `search_after` parameter with a point in time
-        (PIT). The scroll API gets large sets of results from a single scrolling search
-        request. To get the necessary scroll ID, submit a search API request that includes
-        an argument for the `scroll` query parameter. The `scroll` parameter indicates
-        how long Elasticsearch should retain the search context for the request. The
-        search response returns a scroll ID in the `_scroll_id` response body parameter.
-        You can then use the scroll ID with the scroll API to retrieve the next batch
-        of results for the request. If the Elasticsearch security features are enabled,
-        the access to the results of a specific scroll ID is restricted to the user or
-        API key that submitted the search. You can also use the scroll API to specify
-        a new scroll parameter that extends or shortens the retention period for the
-        search context. IMPORTANT: Results from a scrolling search reflect the state
-        of the index at the time of the initial search request. Subsequent indexing or
-        document changes only affect later search and scroll requests.
+        .. raw:: html
+
+          <p>Run a scrolling search.</p>
+          <p>IMPORTANT: The scroll API is no longer recommend for deep pagination. If you need to preserve the index state while paging through more than 10,000 hits, use the <code>search_after</code> parameter with a point in time (PIT).</p>
+          <p>The scroll API gets large sets of results from a single scrolling search request.
+          To get the necessary scroll ID, submit a search API request that includes an argument for the <code>scroll</code> query parameter.
+          The <code>scroll</code> parameter indicates how long Elasticsearch should retain the search context for the request.
+          The search response returns a scroll ID in the <code>_scroll_id</code> response body parameter.
+          You can then use the scroll ID with the scroll API to retrieve the next batch of results for the request.
+          If the Elasticsearch security features are enabled, the access to the results of a specific scroll ID is restricted to the user or API key that submitted the search.</p>
+          <p>You can also use the scroll API to specify a new scroll parameter that extends or shortens the retention period for the search context.</p>
+          <p>IMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-request-body.html#request-body-search-scroll>`_
 
@@ -3884,9 +3989,13 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run a search. Get search hits that match the query defined in the request. You
-        can provide search queries using the `q` query string parameter or the request
-        body. If both are specified, only the query parameter is used.
+        .. raw:: html
+
+          <p>Run a search.</p>
+          <p>Get search hits that match the query defined in the request.
+          You can provide search queries using the <code>q</code> query string parameter or the request body.
+          If both are specified, only the query parameter is used.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-search.html>`_
 
@@ -4316,7 +4425,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> BinaryApiResponse:
         """
-        Search a vector tile. Search a vector tile for geospatial values.
+        .. raw:: html
+
+          <p>Search a vector tile.</p>
+          <p>Search a vector tile for geospatial values.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-vector-tile-api.html>`_
 
@@ -4470,10 +4583,13 @@ class Elasticsearch(BaseClient):
         routing: t.Optional[str] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the search shards. Get the indices and shards that a search request would
-        be run against. This information can be useful for working out issues or planning
-        optimizations with routing and shard preferences. When filtered aliases are used,
-        the filter is returned as part of the indices section.
+        .. raw:: html
+
+          <p>Get the search shards.</p>
+          <p>Get the indices and shards that a search request would be run against.
+          This information can be useful for working out issues or planning optimizations with routing and shard preferences.
+          When filtered aliases are used, the filter is returned as part of the indices section.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-shards.html>`_
 
@@ -4574,7 +4690,10 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Run a search with a search template.
+        .. raw:: html
+
+          <p>Run a search with a search template.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-template.html>`_
 
@@ -4706,15 +4825,15 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get terms in an index. Discover terms that match a partial string in an index.
-        This "terms enum" API is designed for low-latency look-ups used in auto-complete
-        scenarios. If the `complete` property in the response is false, the returned
-        terms set may be incomplete and should be treated as approximate. This can occur
-        due to a few reasons, such as a request timeout or a node error. NOTE: The terms
-        enum API may return terms from deleted documents. Deleted documents are initially
-        only marked as deleted. It is not until their segments are merged that documents
-        are actually deleted. Until that happens, the terms enum API will return terms
-        from these documents.
+        .. raw:: html
+
+          <p>Get terms in an index.</p>
+          <p>Discover terms that match a partial string in an index.
+          This &quot;terms enum&quot; API is designed for low-latency look-ups used in auto-complete scenarios.</p>
+          <p>If the <code>complete</code> property in the response is false, the returned terms set may be incomplete and should be treated as approximate.
+          This can occur due to a few reasons, such as a request timeout or a node error.</p>
+          <p>NOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/search-terms-enum.html>`_
 
@@ -4812,8 +4931,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get term vector information. Get information and statistics about terms in the
-        fields of a particular document.
+        .. raw:: html
+
+          <p>Get term vector information.</p>
+          <p>Get information and statistics about terms in the fields of a particular document.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-termvectors.html>`_
 
@@ -4955,8 +5077,11 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Update a document. Updates a document by running a script or passing a partial
-        document.
+        .. raw:: html
+
+          <p>Update a document.
+          Updates a document by running a script or passing a partial document.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-update.html>`_
 
@@ -5120,9 +5245,12 @@ class Elasticsearch(BaseClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Update documents. Updates documents that match the specified query. If no query
-        is specified, performs an update on every document in the data stream or index
-        without modifying the source, which is useful for picking up mapping changes.
+        .. raw:: html
+
+          <p>Update documents.
+          Updates documents that match the specified query.
+          If no query is specified, performs an update on every document in the data stream or index without modifying the source, which is useful for picking up mapping changes.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-update-by-query.html>`_
 
@@ -5318,10 +5446,12 @@ class Elasticsearch(BaseClient):
         requests_per_second: t.Optional[float] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Throttle an update by query operation. Change the number of requests per second
-        for a particular update by query operation. Rethrottling that speeds up the query
-        takes effect immediately but rethrotting that slows down the query takes effect
-        after completing the current batch to prevent scroll timeouts.
+        .. raw:: html
+
+          <p>Throttle an update by query operation.</p>
+          <p>Change the number of requests per second for a particular update by query operation.
+          Rethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/docs-update-by-query.html>`_
 

@@ -37,7 +37,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Acknowledges a watch, manually throttling the execution of the watch's actions.
+        .. raw:: html
+
+          <p>Acknowledges a watch, manually throttling the execution of the watch's actions.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-ack-watch.html>`_
 
@@ -88,7 +91,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Activates a currently inactive watch.
+        .. raw:: html
+
+          <p>Activates a currently inactive watch.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-activate-watch.html>`_
 
@@ -128,7 +134,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deactivates a currently active watch.
+        .. raw:: html
+
+          <p>Deactivates a currently active watch.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-deactivate-watch.html>`_
 
@@ -168,7 +177,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Removes a watch from Watcher.
+        .. raw:: html
+
+          <p>Removes a watch from Watcher.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-delete-watch.html>`_
 
@@ -237,13 +249,11 @@ class WatcherClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        This API can be used to force execution of the watch outside of its triggering
-        logic or to simulate the watch execution for debugging purposes. For testing
-        and debugging purposes, you also have fine-grained control on how the watch runs.
-        You can execute the watch without executing all of its actions or alternatively
-        by simulating them. You can also force execution by ignoring the watch condition
-        and control whether a watch record would be written to the watch history after
-        execution.
+        .. raw:: html
+
+          <p>This API can be used to force execution of the watch outside of its triggering logic or to simulate the watch execution for debugging purposes.
+          For testing and debugging purposes, you also have fine-grained control on how the watch runs. You can execute the watch without executing all of its actions or alternatively by simulating them. You can also force execution by ignoring the watch condition and control whether a watch record would be written to the watch history after execution.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-execute-watch.html>`_
 
@@ -326,7 +336,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves a watch by its ID.
+        .. raw:: html
+
+          <p>Retrieves a watch by its ID.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-get-watch.html>`_
 
@@ -388,7 +401,10 @@ class WatcherClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates a new watch, or updates an existing one.
+        .. raw:: html
+
+          <p>Creates a new watch, or updates an existing one.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-put-watch.html>`_
 
@@ -485,7 +501,10 @@ class WatcherClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves stored watches.
+        .. raw:: html
+
+          <p>Retrieves stored watches.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-query-watches.html>`_
 
@@ -555,7 +574,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Starts Watcher if it is not already running.
+        .. raw:: html
+
+          <p>Starts Watcher if it is not already running.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-start.html>`_
         """
@@ -612,7 +634,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves the current Watcher metrics.
+        .. raw:: html
+
+          <p>Retrieves the current Watcher metrics.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-stats.html>`_
 
@@ -658,7 +683,10 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Stops Watcher if it is running.
+        .. raw:: html
+
+          <p>Stops Watcher if it is running.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/watcher-api-stop.html>`_
         """

@@ -36,7 +36,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes auto-follow patterns.
+        .. raw:: html
+
+          <p>Deletes auto-follow patterns.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-delete-auto-follow-pattern.html>`_
 
@@ -107,7 +110,10 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates a new follower index configured to follow the referenced leader index.
+        .. raw:: html
+
+          <p>Creates a new follower index configured to follow the referenced leader index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-put-follow.html>`_
 
@@ -198,8 +204,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves information about all follower indices, including parameters and status
-        for each follower index
+        .. raw:: html
+
+          <p>Retrieves information about all follower indices, including parameters and status for each follower index</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-get-follow-info.html>`_
 
@@ -240,8 +248,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves follower stats. return shard-level stats about the following tasks
-        associated with each shard for the specified indices.
+        .. raw:: html
+
+          <p>Retrieves follower stats. return shard-level stats about the following tasks associated with each shard for the specified indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-get-follow-stats.html>`_
 
@@ -294,7 +304,10 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Removes the follower retention leases from the leader.
+        .. raw:: html
+
+          <p>Removes the follower retention leases from the leader.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-post-forget-follower.html>`_
 
@@ -350,8 +363,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Gets configured auto-follow patterns. Returns the specified auto-follow pattern
-        collection.
+        .. raw:: html
+
+          <p>Gets configured auto-follow patterns. Returns the specified auto-follow pattern collection.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-get-auto-follow-pattern.html>`_
 
@@ -395,7 +410,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Pauses an auto-follow pattern
+        .. raw:: html
+
+          <p>Pauses an auto-follow pattern</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-pause-auto-follow-pattern.html>`_
 
@@ -436,8 +454,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Pauses a follower index. The follower index will not fetch any additional operations
-        from the leader index.
+        .. raw:: html
+
+          <p>Pauses a follower index. The follower index will not fetch any additional operations from the leader index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-post-pause-follow.html>`_
 
@@ -512,9 +532,10 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates a new named collection of auto-follow patterns against a specified remote
-        cluster. Newly created indices on the remote cluster matching any of the specified
-        patterns will be automatically configured as follower indices.
+        .. raw:: html
+
+          <p>Creates a new named collection of auto-follow patterns against a specified remote cluster. Newly created indices on the remote cluster matching any of the specified patterns will be automatically configured as follower indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-put-auto-follow-pattern.html>`_
 
@@ -638,7 +659,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Resumes an auto-follow pattern that has been paused
+        .. raw:: html
+
+          <p>Resumes an auto-follow pattern that has been paused</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-resume-auto-follow-pattern.html>`_
 
@@ -703,7 +727,10 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Resumes a follower index that has been paused
+        .. raw:: html
+
+          <p>Resumes a follower index that has been paused</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-post-resume-follow.html>`_
 
@@ -785,7 +812,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Gets all stats related to cross-cluster replication.
+        .. raw:: html
+
+          <p>Gets all stats related to cross-cluster replication.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-get-stats.html>`_
         """
@@ -821,8 +851,10 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Stops the following task associated with a follower index and removes index metadata
-        and settings associated with cross-cluster replication.
+        .. raw:: html
+
+          <p>Stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/ccr-post-unfollow.html>`_
 

@@ -36,7 +36,10 @@ class LogstashClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Deletes a pipeline used for Logstash Central Management.
+        .. raw:: html
+
+          <p>Deletes a pipeline used for Logstash Central Management.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/logstash-api-delete-pipeline.html>`_
 
@@ -76,7 +79,10 @@ class LogstashClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retrieves pipelines used for Logstash Central Management.
+        .. raw:: html
+
+          <p>Retrieves pipelines used for Logstash Central Management.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/logstash-api-get-pipeline.html>`_
 
@@ -123,7 +129,10 @@ class LogstashClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Creates or updates a pipeline used for Logstash Central Management.
+        .. raw:: html
+
+          <p>Creates or updates a pipeline used for Logstash Central Management.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.16/logstash-api-put-pipeline.html>`_
 
