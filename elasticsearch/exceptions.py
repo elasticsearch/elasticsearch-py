@@ -36,6 +36,7 @@ __all__ = [
     "NotFoundError",
     "ConflictError",
     "BadRequestError",
+    "ApiUnavailableException",
 ]
 
 
@@ -109,6 +110,10 @@ class AuthorizationException(ApiError):
     """Exception representing a 403 status code."""
 
 
+class ApiUnavailableException(ApiError):
+    """Exception representing a 410 status code."""
+
+
 class ElasticsearchWarning(TransportWarning):
     """Warning that is raised when a deprecated option
     or incorrect usage is flagged via the 'Warning' HTTP header.
@@ -130,4 +135,5 @@ HTTP_EXCEPTIONS: Dict[int, Type[ApiError]] = {
     403: AuthorizationException,
     404: NotFoundError,
     409: ConflictError,
+    410: ApiUnavailableException,
 }

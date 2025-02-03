@@ -18,6 +18,7 @@ These errors are triggered from an HTTP response that isn't 2XX:
 .. autoclass:: RequestError
 .. autoclass:: AuthenticationException
 .. autoclass:: AuthorizationException
+.. autoclass:: ApiUnavailableException
 .. autoclass:: UnsupportedProductError
 
 Transport and Connection Errors

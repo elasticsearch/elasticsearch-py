@@ -47,6 +47,7 @@ from ._sync.client import Elasticsearch as Elasticsearch
 from .exceptions import ElasticsearchDeprecationWarning  # noqa: F401
 from .exceptions import (
     ApiError,
+    ApiUnavailableException,
     AuthenticationException,
     AuthorizationException,
     BadRequestError,
@@ -74,6 +75,7 @@ warnings.simplefilter("default", category=ElasticsearchWarning, append=True)
 
 __all__ = [
     "ApiError",
+    "ApiUnavailableException",
     "AsyncElasticsearch",
     "BadRequestError",
     "Elasticsearch",
