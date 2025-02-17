@@ -40,18 +40,18 @@ class IngestClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete GeoIP database configurations.
-          Delete one or more IP geolocation database configurations.</p>
+          <p>Delete GeoIP database configurations.</p>
+          <p>Delete one or more IP geolocation database configurations.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-geoip-database-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-ingest-delete-geoip-database>`_
 
         :param id: A comma-separated list of geoip database configurations to delete
-        :param master_timeout: Period to wait for a connection to the master node. If
-            no response is received before the timeout expires, the request fails and
-            returns an error.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If no response is received before the timeout expires, the request fails
+            and returns an error.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         if id in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'id'")
@@ -244,15 +244,15 @@ class IngestClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get GeoIP database configurations.
-          Get information about one or more IP geolocation database configurations.</p>
+          <p>Get GeoIP database configurations.</p>
+          <p>Get information about one or more IP geolocation database configurations.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-geoip-database-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-ingest-get-geoip-database>`_
 
-        :param id: Comma-separated list of database configuration IDs to retrieve. Wildcard
-            (`*`) expressions are supported. To get all database configurations, omit
-            this parameter or use `*`.
+        :param id: A comma-separated list of database configuration IDs to retrieve.
+            Wildcard (`*`) expressions are supported. To get all database configurations,
+            omit this parameter or use `*`.
         """
         __path_parts: t.Dict[str, str]
         if id not in SKIP_IN_PATH:
@@ -350,8 +350,8 @@ class IngestClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get pipelines.
-          Get information about one or more ingest pipelines.
+          <p>Get pipelines.</p>
+          <p>Get information about one or more ingest pipelines.
           This API returns a local reference of the pipeline.</p>
 
 
@@ -455,11 +455,11 @@ class IngestClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Create or update a GeoIP database configuration.
-          Refer to the create or update IP geolocation database configuration API.</p>
+          <p>Create or update a GeoIP database configuration.</p>
+          <p>Refer to the create or update IP geolocation database configuration API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/put-geoip-database-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-ingest-put-geoip-database>`_
 
         :param id: ID of the database configuration to create or update.
         :param maxmind: The configuration necessary to identify which IP geolocation
@@ -712,17 +712,17 @@ class IngestClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Simulate a pipeline.
-          Run an ingest pipeline against a set of provided documents.
+          <p>Simulate a pipeline.</p>
+          <p>Run an ingest pipeline against a set of provided documents.
           You can either specify an existing pipeline to use with the provided documents or supply a pipeline definition in the body of the request.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/simulate-pipeline-api.html>`_
 
         :param docs: Sample documents to test in the pipeline.
-        :param id: Pipeline to test. If you don’t specify a `pipeline` in the request
+        :param id: The pipeline to test. If you don't specify a `pipeline` in the request
             body, this parameter is required.
-        :param pipeline: Pipeline to test. If you don’t specify the `pipeline` request
+        :param pipeline: The pipeline to test. If you don't specify the `pipeline` request
             path parameter, this parameter is required. If you specify both this and
             the request path parameter, the API only uses the request path parameter.
         :param verbose: If `true`, the response includes output data for each processor

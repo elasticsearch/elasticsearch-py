@@ -39,16 +39,16 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete the license.
-          When the license expires, your subscription level reverts to Basic.</p>
+          <p>Delete the license.</p>
+          <p>When the license expires, your subscription level reverts to Basic.</p>
           <p>If the operator privileges feature is enabled, only operator users can use this API.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-license.html>`_
 
-        :param master_timeout: Period to wait for a connection to the master node.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param master_timeout: The period to wait for a connection to the master node.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_license"
@@ -89,10 +89,13 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get license information.
-          Get information about your Elastic license including its type, its status, when it was issued, and when it expires.</p>
-          <p>NOTE: If the master node is generating a new cluster state, the get license API may return a <code>404 Not Found</code> response.
+          <p>Get license information.</p>
+          <p>Get information about your Elastic license including its type, its status, when it was issued, and when it expires.</p>
+          <blockquote>
+          <p>info
+          If the master node is generating a new cluster state, the get license API may return a <code>404 Not Found</code> response.
           If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.</p>
+          </blockquote>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-license.html>`_
@@ -225,8 +228,8 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Update the license.
-          You can update your license at runtime without shutting down your nodes.
+          <p>Update the license.</p>
+          <p>You can update your license at runtime without shutting down your nodes.
           License updates take effect immediately.
           If the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.
           You must then re-submit the API request with the acknowledge parameter set to true.</p>
@@ -240,9 +243,9 @@ class LicenseClient(NamespacedClient):
         :param license:
         :param licenses: A sequence of one or more JSON documents containing the license
             information.
-        :param master_timeout: Period to wait for a connection to the master node.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param master_timeout: The period to wait for a connection to the master node.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_license"
@@ -297,8 +300,8 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Start a basic license.
-          Start an indefinite basic license, which gives access to all the basic features.</p>
+          <p>Start a basic license.</p>
+          <p>Start an indefinite basic license, which gives access to all the basic features.</p>
           <p>NOTE: In order to start a basic license, you must not currently have a basic license.</p>
           <p>If the basic license does not support all of the features that are available with your current license, however, you are notified in the response.
           You must then re-submit the API request with the <code>acknowledge</code> parameter set to <code>true</code>.</p>

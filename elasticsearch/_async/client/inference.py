@@ -51,12 +51,12 @@ class InferenceClient(NamespacedClient):
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-inference-api.html>`_
 
-        :param inference_id: The inference Id
+        :param inference_id: The inference identifier.
         :param task_type: The task type
-        :param dry_run: When true, the endpoint is not deleted, and a list of ingest
-            processors which reference this endpoint is returned
+        :param dry_run: When true, the endpoint is not deleted and a list of ingest processors
+            which reference this endpoint is returned.
         :param force: When true, the inference endpoint is forcefully deleted even if
-            it is still being used by ingest processors or semantic text fields
+            it is still being used by ingest processors or semantic text fields.
         """
         if inference_id in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'inference_id'")
@@ -180,18 +180,29 @@ class InferenceClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Perform inference on the service</p>
+          <p>Perform inference on the service.</p>
+          <p>This API enables you to use machine learning models to perform specific tasks on data that you provide as an input.
+          It returns a response with the results of the tasks.
+          The inference endpoint you use can perform one specific task that has been defined when the endpoint was created with the create inference API.</p>
+          <blockquote>
+          <p>info
+          The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models. However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.</p>
+          </blockquote>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/post-inference-api.html>`_
 
-        :param inference_id: The inference Id
-        :param input: Inference input. Either a string or an array of strings.
-        :param task_type: The task type
-        :param query: Query input, required for rerank task. Not required for other tasks.
-        :param task_settings: Optional task settings
-        :param timeout: Specifies the amount of time to wait for the inference request
-            to complete.
+        :param inference_id: The unique identifier for the inference endpoint.
+        :param input: The text on which you want to perform the inference task. It can
+            be a single string or an array. > info > Inference endpoints for the `completion`
+            task type currently only support a single string as input.
+        :param task_type: The type of inference task that the model performs.
+        :param query: The query input, which is required only for the `rerank` task.
+            It is not required for other tasks.
+        :param task_settings: Task settings for the individual inference request. These
+            settings are specific to the task type you specified and override the task
+            settings specified when initializing the service.
+        :param timeout: The amount of time to wait for the inference request to complete.
         """
         if inference_id in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'inference_id'")

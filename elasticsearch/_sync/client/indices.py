@@ -57,23 +57,40 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Add an index block.
-          Limits the operations allowed on an index by blocking specific operation types.</p>
+          <p>Add an index block.</p>
+          <p>Add an index block to an index.
+          Index blocks limit the operations allowed on an index by blocking specific operation types.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/index-modules-blocks.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/index-modules-blocks.html#add-index-block>`_
 
-        :param index: A comma separated list of indices to add a block to
-        :param block: The block to add (one of read, write, read_only or metadata)
-        :param allow_no_indices: Whether to ignore if a wildcard indices expression resolves
-            into no concrete indices. (This includes `_all` string or when no indices
-            have been specified)
-        :param expand_wildcards: Whether to expand wildcard expression to concrete indices
-            that are open, closed or both.
-        :param ignore_unavailable: Whether specified concrete indices should be ignored
-            when unavailable (missing or closed)
-        :param master_timeout: Specify timeout for connection to master
-        :param timeout: Explicit operation timeout
+        :param index: A comma-separated list or wildcard expression of index names used
+            to limit the request. By default, you must explicitly name the indices you
+            are adding blocks to. To allow the adding of blocks to indices with `_all`,
+            `*`, or other wildcard expressions, change the `action.destructive_requires_name`
+            setting to `false`. You can update this setting in the `elasticsearch.yml`
+            file or by using the cluster update settings API.
+        :param block: The block type to add to the index.
+        :param allow_no_indices: If `false`, the request returns an error if any wildcard
+            expression, index alias, or `_all` value targets only missing or closed indices.
+            This behavior applies even if the request targets other open indices. For
+            example, a request targeting `foo*,bar*` returns an error if an index starts
+            with `foo` but no index starts with `bar`.
+        :param expand_wildcards: The type of index that wildcard patterns can match.
+            If the request can target data streams, this argument determines whether
+            wildcard expressions match hidden data streams. It supports comma-separated
+            values, such as `open,hidden`.
+        :param ignore_unavailable: If `false`, the request returns an error if it targets
+            a missing or closed index.
+        :param master_timeout: The period to wait for the master node. If the master
+            node is not available before the timeout expires, the request fails and returns
+            an error. It can also be set to `-1` to indicate that the request should
+            never timeout.
+        :param timeout: The period to wait for a response from all relevant nodes in
+            the cluster after updating the cluster metadata. If no response is received
+            before the timeout expires, the cluster metadata update still applies but
+            the response will indicate that it was not completely acknowledged. It can
+            also be set to `-1` to indicate that the request should never timeout.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -710,12 +727,11 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Create a data stream.
-          Creates a data stream.
-          You must have a matching index template with data stream enabled.</p>
+          <p>Create a data stream.</p>
+          <p>You must have a matching index template with data stream enabled.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/data-streams.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/indices-create-data-stream.html>`_
 
         :param name: Name of the data stream, which must meet the following criteria:
             Lowercase only; Cannot include `\\`, `/`, `*`, `?`, `"`, `<`, `>`, `|`, `,`,
@@ -841,11 +857,11 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get data stream stats.
-          Retrieves statistics for one or more data streams.</p>
+          <p>Get data stream stats.</p>
+          <p>Get statistics for one or more data streams.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/data-streams.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/data-stream-stats-api.html>`_
 
         :param name: Comma-separated list of data streams used to limit the request.
             Wildcard expressions (`*`) are supported. To target all data streams in a
@@ -1120,7 +1136,7 @@ class IndicesClient(NamespacedClient):
           Deletes one or more data streams and their backing indices.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/data-streams.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/indices-delete-data-stream.html>`_
 
         :param name: Comma-separated list of data streams to delete. Wildcard (`*`) expressions
             are supported.
@@ -1538,11 +1554,11 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Check aliases.
-          Checks if one or more data stream or index aliases exist.</p>
+          <p>Check aliases.</p>
+          <p>Check if one or more data stream or index aliases exist.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/indices-aliases.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-exists-alias>`_
 
         :param name: Comma-separated list of aliases to check. Supports wildcards (`*`).
         :param index: Comma-separated list of data streams or indices used to limit the
@@ -1612,11 +1628,11 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Check index templates.
-          Check whether index templates exist.</p>
+          <p>Check index templates.</p>
+          <p>Check whether index templates exist.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/index-templates.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/v8/operation/operation-indices-exists-index-template>`_
 
         :param name: Comma-separated list of index template names used to limit the request.
             Wildcard (*) expressions are supported.
@@ -2287,8 +2303,8 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get data stream lifecycles.
-          Retrieves the data stream lifecycle configuration of one or more data streams.</p>
+          <p>Get data stream lifecycles.</p>
+          <p>Get the data stream lifecycle configuration of one or more data streams.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/data-streams-get-lifecycle.html>`_
@@ -2396,11 +2412,11 @@ class IndicesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get data streams.
-          Retrieves information about one or more data streams.</p>
+          <p>Get data streams.</p>
+          <p>Get information about one or more data streams.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/data-streams.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/indices-get-data-stream.html>`_
 
         :param name: Comma-separated list of data stream names used to limit the request.
             Wildcard (`*`) expressions are supported. If omitted, all data streams are
@@ -4255,7 +4271,7 @@ class IndicesClient(NamespacedClient):
     def resolve_cluster(
         self,
         *,
-        name: t.Union[str, t.Sequence[str]],
+        name: t.Optional[t.Union[str, t.Sequence[str]]] = None,
         allow_no_indices: t.Optional[bool] = None,
         error_trace: t.Optional[bool] = None,
         expand_wildcards: t.Optional[
@@ -4271,19 +4287,20 @@ class IndicesClient(NamespacedClient):
         ignore_throttled: t.Optional[bool] = None,
         ignore_unavailable: t.Optional[bool] = None,
         pretty: t.Optional[bool] = None,
+        timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
         .. raw:: html
 
-          <p>Resolve the cluster.
-          Resolve the specified index expressions to return information about each cluster, including the local cluster, if included.
-          Multiple patterns and remote clusters are supported.</p>
+          <p>Resolve the cluster.</p>
+          <p>Resolve the specified index expressions to return information about each cluster, including the local &quot;querying&quot; cluster, if included.
+          If no index expression is provided, the API will return information about all the remote clusters that are configured on the querying cluster.</p>
           <p>This endpoint is useful before doing a cross-cluster search in order to determine which remote clusters should be included in a search.</p>
           <p>You use the same index expression with this endpoint as you would for cross-cluster search.
           Index and cluster exclusions are also supported with this endpoint.</p>
           <p>For each cluster in the index expression, information is returned about:</p>
           <ul>
-          <li>Whether the querying (&quot;local&quot;) cluster is currently connected to each remote cluster in the index expression scope.</li>
+          <li>Whether the querying (&quot;local&quot;) cluster is currently connected to each remote cluster specified in the index expression. Note that this endpoint actively attempts to contact the remote clusters, unlike the <code>remote/info</code> endpoint.</li>
           <li>Whether each remote cluster is configured with <code>skip_unavailable</code> as <code>true</code> or <code>false</code>.</li>
           <li>Whether there are any indices, aliases, or data streams on that cluster that match the index expression.</li>
           <li>Whether the search is likely to have errors returned when you do the cross-cluster search (including any authorization errors if you do not have permission to query the index).</li>
@@ -4291,7 +4308,13 @@ class IndicesClient(NamespacedClient):
           </ul>
           <p>For example, <code>GET /_resolve/cluster/my-index-*,cluster*:my-index-*</code> returns information about the local cluster and all remotely configured clusters that start with the alias <code>cluster*</code>.
           Each cluster returns information about whether it has any indices, aliases or data streams that match <code>my-index-*</code>.</p>
-          <p><strong>Advantages of using this endpoint before a cross-cluster search</strong></p>
+          <h2>Note on backwards compatibility</h2>
+          <p>The ability to query without an index expression was added in version 8.18, so when
+          querying remote clusters older than that, the local cluster will send the index
+          expression <code>dummy*</code> to those remote clusters. Thus, if an errors occur, you may see a reference
+          to that index expression even though you didn't request it. If it causes a problem, you can
+          instead include an index expression like <code>*:*</code> to bypass the issue.</p>
+          <h2>Advantages of using this endpoint before a cross-cluster search</h2>
           <p>You may want to exclude a cluster or index from a search when:</p>
           <ul>
           <li>A remote cluster is not currently connected and is configured with <code>skip_unavailable=false</code>. Running a cross-cluster search under those conditions will cause the entire search to fail.</li>
@@ -4299,31 +4322,60 @@ class IndicesClient(NamespacedClient):
           <li>The index expression (combined with any query parameters you specify) will likely cause an exception to be thrown when you do the search. In these cases, the &quot;error&quot; field in the <code>_resolve/cluster</code> response will be present. (This is also where security/permission errors will be shown.)</li>
           <li>A remote cluster is an older version that does not support the feature you want to use in your search.</li>
           </ul>
+          <h2>Test availability of remote clusters</h2>
+          <p>The <code>remote/info</code> endpoint is commonly used to test whether the &quot;local&quot; cluster (the cluster being queried) is connected to its remote clusters, but it does not necessarily reflect whether the remote cluster is available or not.
+          The remote cluster may be available, while the local cluster is not currently connected to it.</p>
+          <p>You can use the <code>_resolve/cluster</code> API to attempt to reconnect to remote clusters.
+          For example with <code>GET _resolve/cluster</code> or <code>GET _resolve/cluster/*:*</code>.
+          The <code>connected</code> field in the response will indicate whether it was successful.
+          If a connection was (re-)established, this will also cause the <code>remote/info</code> endpoint to now indicate a connected status.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/indices-resolve-cluster-api.html>`_
 
-        :param name: Comma-separated name(s) or index pattern(s) of the indices, aliases,
-            and data streams to resolve. Resources on remote clusters can be specified
-            using the `<cluster>`:`<name>` syntax.
+        :param name: A comma-separated list of names or index patterns for the indices,
+            aliases, and data streams to resolve. Resources on remote clusters can be
+            specified using the `<cluster>`:`<name>` syntax. Index and cluster exclusions
+            (e.g., `-cluster1:*`) are also supported. If no index expression is specified,
+            information about all remote clusters configured on the local cluster is
+            returned without doing any index matching
         :param allow_no_indices: If false, the request returns an error if any wildcard
-            expression, index alias, or _all value targets only missing or closed indices.
+            expression, index alias, or `_all` value targets only missing or closed indices.
             This behavior applies even if the request targets other open indices. For
-            example, a request targeting foo*,bar* returns an error if an index starts
-            with foo but no index starts with bar.
+            example, a request targeting `foo*,bar*` returns an error if an index starts
+            with `foo` but no index starts with `bar`. NOTE: This option is only supported
+            when specifying an index expression. You will get an error if you specify
+            index options to the `_resolve/cluster` API endpoint that takes no index
+            expression.
         :param expand_wildcards: Type of index that wildcard patterns can match. If the
             request can target data streams, this argument determines whether wildcard
             expressions match hidden data streams. Supports comma-separated values, such
             as `open,hidden`. Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
-        :param ignore_throttled: If true, concrete, expanded or aliased indices are ignored
-            when frozen. Defaults to false.
+            NOTE: This option is only supported when specifying an index expression.
+            You will get an error if you specify index options to the `_resolve/cluster`
+            API endpoint that takes no index expression.
+        :param ignore_throttled: If true, concrete, expanded, or aliased indices are
+            ignored when frozen. NOTE: This option is only supported when specifying
+            an index expression. You will get an error if you specify index options to
+            the `_resolve/cluster` API endpoint that takes no index expression.
         :param ignore_unavailable: If false, the request returns an error if it targets
-            a missing or closed index. Defaults to false.
+            a missing or closed index. NOTE: This option is only supported when specifying
+            an index expression. You will get an error if you specify index options to
+            the `_resolve/cluster` API endpoint that takes no index expression.
+        :param timeout: The maximum time to wait for remote clusters to respond. If a
+            remote cluster does not respond within this timeout period, the API response
+            will show the cluster as not connected and include an error message that
+            the request timed out. The default timeout is unset and the query can take
+            as long as the networking layer is configured to wait for remote clusters
+            that are not responding (typically 30 seconds).
         """
-        if name in SKIP_IN_PATH:
-            raise ValueError("Empty value passed for parameter 'name'")
-        __path_parts: t.Dict[str, str] = {"name": _quote(name)}
-        __path = f'/_resolve/cluster/{__path_parts["name"]}'
+        __path_parts: t.Dict[str, str]
+        if name not in SKIP_IN_PATH:
+            __path_parts = {"name": _quote(name)}
+            __path = f'/_resolve/cluster/{__path_parts["name"]}'
+        else:
+            __path_parts = {}
+            __path = "/_resolve/cluster"
         __query: t.Dict[str, t.Any] = {}
         if allow_no_indices is not None:
             __query["allow_no_indices"] = allow_no_indices
@@ -4341,6 +4393,8 @@ class IndicesClient(NamespacedClient):
             __query["ignore_unavailable"] = ignore_unavailable
         if pretty is not None:
             __query["pretty"] = pretty
+        if timeout is not None:
+            __query["timeout"] = timeout
         __headers = {"accept": "application/json"}
         return self.perform_request(  # type: ignore[return-value]
             "GET",

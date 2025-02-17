@@ -2494,7 +2494,7 @@ class CatClient(NamespacedClient):
           IMPORTANT: cat APIs are only intended for human consumption using the command line or Kibana console. They are not intended for use by applications. For application consumption, use the task management API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/tasks.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cat-tasks.html>`_
 
         :param actions: The task action names, which are used to limit the response.
         :param detailed: If `true`, the response includes detailed information about

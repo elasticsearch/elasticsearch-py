@@ -97,8 +97,8 @@ class AsyncSearchClient(NamespacedClient):
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/async-search.html>`_
 
         :param id: A unique identifier for the async search.
-        :param keep_alive: Specifies how long the async search should be available in
-            the cluster. When not specified, the `keep_alive` set with the corresponding
+        :param keep_alive: The length of time that the async search should be available
+            in the cluster. When not specified, the `keep_alive` set with the corresponding
             submit async request will be used. Otherwise, it is possible to override
             the value and extend the validity of the request. When this period expires,
             the search, if still running, is cancelled. If the search is completed, its
@@ -157,13 +157,17 @@ class AsyncSearchClient(NamespacedClient):
 
           <p>Get the async search status.</p>
           <p>Get the status of a previously submitted async search request given its identifier, without retrieving search results.
-          If the Elasticsearch security features are enabled, use of this API is restricted to the <code>monitoring_user</code> role.</p>
+          If the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:</p>
+          <ul>
+          <li>The user or API key that submitted the original async search request.</li>
+          <li>Users that have the <code>monitor</code> cluster privilege or greater privileges.</li>
+          </ul>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/async-search.html>`_
 
         :param id: A unique identifier for the async search.
-        :param keep_alive: Specifies how long the async search needs to be available.
+        :param keep_alive: The length of time that the async search needs to be available.
             Ongoing async searches and any saved search results are deleted after this
             period.
         """

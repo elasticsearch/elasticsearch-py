@@ -214,8 +214,8 @@ class IlmClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get the ILM status.
-          Get the current index lifecycle management status.</p>
+          <p>Get the ILM status.</p>
+          <p>Get the current index lifecycle management status.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-get-status.html>`_

@@ -48,7 +48,9 @@ class FleetClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Returns the current global checkpoints for an index. This API is design for internal use by the fleet server project.</p>
+          <p>Get global checkpoints.</p>
+          <p>Get the current global checkpoints for an index.
+          This API is designed for internal use by the Fleet server project.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-global-checkpoints.html>`_
@@ -140,6 +142,8 @@ class FleetClient(NamespacedClient):
           The API follows the same structure as the <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html">multi search</a> API. However, similar to the fleet search API, it
           supports the wait_for_checkpoints parameter.</p>
 
+
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/fleet-multi-search.html>`_
 
         :param searches:
         :param index: A single target to search. If the target is an index alias, it
@@ -387,6 +391,8 @@ class FleetClient(NamespacedClient):
           <p>The purpose of the fleet search api is to provide a search api where the search will only be executed
           after provided checkpoint has been processed and is visible for searches inside of Elasticsearch.</p>
 
+
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/fleet-search.html>`_
 
         :param index: A single target to search. If the target is an index alias, it
             must resolve to a single index.
