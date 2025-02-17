@@ -45,13 +45,13 @@ class SearchApplicationClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a search application.
-          Remove a search application and its associated alias. Indices attached to the search application are not removed.</p>
+          <p>Delete a search application.</p>
+          <p>Remove a search application and its associated alias. Indices attached to the search application are not removed.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-search-application.html>`_
 
-        :param name: The name of the search application to delete
+        :param name: The name of the search application to delete.
         """
         if name in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'name'")
@@ -234,7 +234,7 @@ class SearchApplicationClient(NamespacedClient):
           Get information about search applications.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/list-search-applications.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/list-analytics-collection.html>`_
 
         :param from_: Starting offset.
         :param q: Query in the Lucene query string syntax.

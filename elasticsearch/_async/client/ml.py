@@ -38,8 +38,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Clear trained model deployment cache.
-          Cache will be cleared on all nodes where the trained model is assigned.
+          <p>Clear trained model deployment cache.</p>
+          <p>Cache will be cleared on all nodes where the trained model is assigned.
           A trained model deployment may have an inference cache enabled.
           As requests are handled by each allocated node, their responses may be cached on that individual node.
           Calling this API clears the caches without restarting the deployment.</p>
@@ -93,8 +93,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Close anomaly detection jobs.
-          A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.
+          <p>Close anomaly detection jobs.</p>
+          <p>A job can be opened and closed multiple times throughout its lifecycle. A closed job cannot receive data or perform analysis operations, but you can still explore and navigate results.
           When you close a job, it runs housekeeping tasks such as pruning the model history, flushing buffers, calculating final results and persisting the model snapshots. Depending upon the size of the job, it could take several minutes to close and the equivalent time to re-open. After it is closed, the job has a minimal overhead on the cluster except for maintaining its meta data. Therefore it is a best practice to close jobs that are no longer required to process data.
           If you close an anomaly detection job whose datafeed is running, the request first tries to stop the datafeed. This behavior is equivalent to calling stop datafeed API with the same timeout and force parameters as the close job request.
           When a datafeed that has a specified end date stops, it automatically closes its associated job.</p>
@@ -161,8 +161,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a calendar.
-          Removes all scheduled events from a calendar, then deletes it.</p>
+          <p>Delete a calendar.</p>
+          <p>Remove all scheduled events from a calendar, then delete it.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ml-delete-calendar.html>`_
@@ -415,15 +415,15 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete expired ML data.
-          Deletes all job results, model snapshots and forecast data that have exceeded
+          <p>Delete expired ML data.</p>
+          <p>Delete all job results, model snapshots and forecast data that have exceeded
           their retention days period. Machine learning state documents that are not
           associated with any job are also deleted.
           You can limit the request to a single or set of anomaly detection jobs by
           using a job identifier, a group name, a comma-separated list of jobs, or a
           wildcard expression. You can delete expired data for all anomaly detection
-          jobs by using _all, by specifying * as the &lt;job_id&gt;, or by omitting the
-          &lt;job_id&gt;.</p>
+          jobs by using <code>_all</code>, by specifying <code>*</code> as the <code>&lt;job_id&gt;</code>, or by omitting the
+          <code>&lt;job_id&gt;</code>.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ml-delete-expired-data.html>`_
@@ -485,8 +485,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a filter.
-          If an anomaly detection job references the filter, you cannot delete the
+          <p>Delete a filter.</p>
+          <p>If an anomaly detection job references the filter, you cannot delete the
           filter. You must update or delete the job before you can delete the filter.</p>
 
 
@@ -533,8 +533,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete forecasts from a job.
-          By default, forecasts are retained for 14 days. You can specify a
+          <p>Delete forecasts from a job.</p>
+          <p>By default, forecasts are retained for 14 days. You can specify a
           different retention period with the <code>expires_in</code> parameter in the forecast
           jobs API. The delete forecast API enables you to delete one or more
           forecasts before they expire.</p>
@@ -607,8 +607,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete an anomaly detection job.
-          All job configuration, model state and results are deleted.
+          <p>Delete an anomaly detection job.</p>
+          <p>All job configuration, model state and results are deleted.
           It is not currently possible to delete multiple jobs using wildcards or a
           comma separated list. If you delete a job that has a datafeed, the request
           first tries to delete the datafeed. This behavior is equivalent to calling
@@ -670,8 +670,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a model snapshot.
-          You cannot delete the active model snapshot. To delete that snapshot, first
+          <p>Delete a model snapshot.</p>
+          <p>You cannot delete the active model snapshot. To delete that snapshot, first
           revert to a different one. To identify the active model snapshot, refer to
           the <code>model_snapshot_id</code> in the results from the get jobs API.</p>
 
@@ -724,8 +724,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete an unreferenced trained model.
-          The request deletes a trained inference model that is not referenced by an ingest pipeline.</p>
+          <p>Delete an unreferenced trained model.</p>
+          <p>The request deletes a trained inference model that is not referenced by an ingest pipeline.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-trained-models.html>`_
@@ -777,8 +777,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a trained model alias.
-          This API deletes an existing model alias that refers to a trained model. If
+          <p>Delete a trained model alias.</p>
+          <p>This API deletes an existing model alias that refers to a trained model. If
           the model alias is missing or refers to a model other than the one identified
           by the <code>model_id</code>, this API returns an error.</p>
 
@@ -838,13 +838,13 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Estimate job model memory usage.
-          Makes an estimation of the memory usage for an anomaly detection job model.
-          It is based on analysis configuration details for the job and cardinality
+          <p>Estimate job model memory usage.</p>
+          <p>Make an estimation of the memory usage for an anomaly detection job model.
+          The estimate is based on analysis configuration details for the job and cardinality
           estimates for the fields it references.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ml-apis.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ml-estimate-model-memory.html>`_
 
         :param analysis_config: For a list of the properties that you can specify in
             the `analysis_config` component of the body of this API.
@@ -909,8 +909,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Evaluate data frame analytics.
-          The API packages together commonly used evaluation metrics for various types
+          <p>Evaluate data frame analytics.</p>
+          <p>The API packages together commonly used evaluation metrics for various types
           of machine learning features. This has been designed for use on indexes
           created by data frame analytics. Evaluation requires both a ground truth
           field and an analytics result field to be present.</p>
@@ -990,8 +990,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Explain data frame analytics config.
-          This API provides explanations for a data frame analytics config that either
+          <p>Explain data frame analytics config.</p>
+          <p>This API provides explanations for a data frame analytics config that either
           exists already or one that has not been created yet. The following
           explanations are provided:</p>
           <ul>
@@ -2891,8 +2891,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Open anomaly detection jobs.
-          An anomaly detection job must be opened to be ready to receive and analyze
+          <p>Open anomaly detection jobs.</p>
+          <p>An anomaly detection job must be opened to be ready to receive and analyze
           data. It can be opened and closed multiple times throughout its lifecycle.
           When you open a new job, it starts with an empty model.
           When you open an existing job, the most recent model state is automatically
@@ -3082,7 +3082,7 @@ class MlClient(NamespacedClient):
         .. raw:: html
 
           <p>Preview features used by data frame analytics.
-          Previews the extracted features used by a data frame analytics config.</p>
+          Preview the extracted features used by a data frame analytics config.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/preview-dfanalytics.html>`_
@@ -3821,8 +3821,8 @@ class MlClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Create an anomaly detection job.
-          If you include a <code>datafeed_config</code>, you must have read index privileges on the source index.
+          <p>Create an anomaly detection job.</p>
+          <p>If you include a <code>datafeed_config</code>, you must have read index privileges on the source index.
           If you include a <code>datafeed_config</code> but do not provide a query, the datafeed uses <code>{&quot;match_all&quot;: {&quot;boost&quot;: 1}}</code>.</p>
 
 
@@ -5619,7 +5619,7 @@ class MlClient(NamespacedClient):
         .. raw:: html
 
           <p>Upgrade a snapshot.
-          Upgrades an anomaly detection model snapshot to the latest major version.
+          Upgrade an anomaly detection model snapshot to the latest major version.
           Over time, older snapshot formats are deprecated and removed. Anomaly
           detection jobs support only snapshots that are from the current or previous
           major version.
@@ -5782,7 +5782,7 @@ class MlClient(NamespacedClient):
           <p>Validate an anomaly detection job.</p>
 
 
-        `<https://www.elastic.co/guide/en/machine-learning/8.17/ml-jobs.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/v8>`_
 
         :param detector:
         """

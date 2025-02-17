@@ -231,8 +231,8 @@ class NodesClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get node information.
-          By default, the API returns all attributes and core settings for cluster nodes.</p>
+          <p>Get node information.</p>
+          <p>By default, the API returns all attributes and core settings for cluster nodes.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cluster-nodes-info.html>`_
@@ -308,7 +308,7 @@ class NodesClient(NamespacedClient):
           Alternatively, you can reload the secure settings on each node by locally accessing the API and passing the node-specific Elasticsearch keystore password.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/secure-settings.html#reloadable-secure-settings>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cluster-nodes-reload-secure-settings.html>`_
 
         :param node_id: The names of particular nodes in the cluster to target.
         :param secure_settings_password: The password for the Elasticsearch keystore.

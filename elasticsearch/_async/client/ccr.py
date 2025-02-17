@@ -39,14 +39,17 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete auto-follow patterns.
-          Delete a collection of cross-cluster replication auto-follow patterns.</p>
+          <p>Delete auto-follow patterns.</p>
+          <p>Delete a collection of cross-cluster replication auto-follow patterns.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-delete-auto-follow-pattern.html>`_
 
-        :param name: The name of the auto follow pattern.
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param name: The auto-follow pattern collection to delete.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         if name in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'name'")
@@ -251,16 +254,18 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get follower information.
-          Get information about all cross-cluster replication follower indices.
+          <p>Get follower information.</p>
+          <p>Get information about all cross-cluster replication follower indices.
           For example, the results include follower index names, leader index names, replication options, and whether the follower indices are active or paused.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-follow-info.html>`_
 
-        :param index: A comma-separated list of index patterns; use `_all` to perform
-            the operation on all indices
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param index: A comma-delimited list of follower index patterns.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -301,17 +306,16 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get follower stats.
-          Get cross-cluster replication follower stats.
+          <p>Get follower stats.</p>
+          <p>Get cross-cluster replication follower stats.
           The API returns shard-level stats about the &quot;following tasks&quot; associated with each shard for the specified indices.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-follow-stats.html>`_
 
-        :param index: A comma-separated list of index patterns; use `_all` to perform
-            the operation on all indices
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param index: A comma-delimited list of index patterns.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -437,15 +441,18 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get auto-follow patterns.
-          Get cross-cluster replication auto-follow patterns.</p>
+          <p>Get auto-follow patterns.</p>
+          <p>Get cross-cluster replication auto-follow patterns.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-auto-follow-pattern.html>`_
 
-        :param name: Specifies the auto-follow pattern collection that you want to retrieve.
-            If you do not specify a name, the API returns information for all collections.
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param name: The auto-follow pattern collection that you want to retrieve. If
+            you do not specify a name, the API returns information for all collections.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         __path_parts: t.Dict[str, str]
         if name not in SKIP_IN_PATH:
@@ -489,8 +496,8 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Pause an auto-follow pattern.
-          Pause a cross-cluster replication auto-follow pattern.
+          <p>Pause an auto-follow pattern.</p>
+          <p>Pause a cross-cluster replication auto-follow pattern.
           When the API returns, the auto-follow pattern is inactive.
           New indices that are created on the remote cluster and match the auto-follow patterns are ignored.</p>
           <p>You can resume auto-following with the resume auto-follow pattern API.
@@ -500,9 +507,11 @@ class CcrClient(NamespacedClient):
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-pause-auto-follow-pattern.html>`_
 
-        :param name: The name of the auto follow pattern that should pause discovering
-            new indices to follow.
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param name: The name of the auto-follow pattern to pause.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         if name in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'name'")
@@ -543,8 +552,8 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Pause a follower.
-          Pause a cross-cluster replication follower index.
+          <p>Pause a follower.</p>
+          <p>Pause a cross-cluster replication follower index.
           The follower index will not fetch any additional operations from the leader index.
           You can resume following with the resume follower API.
           You can pause and resume a follower index to change the configuration of the following task.</p>
@@ -552,9 +561,11 @@ class CcrClient(NamespacedClient):
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-post-pause-follow.html>`_
 
-        :param index: The name of the follower index that should pause following its
-            leader index.
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param index: The name of the follower index.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -765,17 +776,19 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Resume an auto-follow pattern.
-          Resume a cross-cluster replication auto-follow pattern that was paused.
+          <p>Resume an auto-follow pattern.</p>
+          <p>Resume a cross-cluster replication auto-follow pattern that was paused.
           The auto-follow pattern will resume configuring following indices for newly created indices that match its patterns on the remote cluster.
           Remote indices created while the pattern was paused will also be followed unless they have been deleted or closed in the interim.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-resume-auto-follow-pattern.html>`_
 
-        :param name: The name of the auto follow pattern to resume discovering new indices
-            to follow.
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param name: The name of the auto-follow pattern to resume.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         if name in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'name'")
@@ -934,15 +947,18 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get cross-cluster replication stats.
-          This API returns stats about auto-following and the same shard-level stats as the get follower stats API.</p>
+          <p>Get cross-cluster replication stats.</p>
+          <p>This API returns stats about auto-following and the same shard-level stats as the get follower stats API.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-stats.html>`_
 
-        :param master_timeout: Period to wait for a connection to the master node.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_ccr/stats"
@@ -983,18 +999,23 @@ class CcrClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Unfollow an index.
-          Convert a cross-cluster replication follower index to a regular index.
+          <p>Unfollow an index.</p>
+          <p>Convert a cross-cluster replication follower index to a regular index.
           The API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.
           The follower index must be paused and closed before you call the unfollow API.</p>
-          <p>NOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.</p>
+          <blockquote>
+          <p>info
+          Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.</p>
+          </blockquote>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-post-unfollow.html>`_
 
-        :param index: The name of the follower index that should be turned into a regular
-            index.
-        :param master_timeout: Period to wait for a connection to the master node.
+        :param index: The name of the follower index.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. It can also be set to `-1` to indicate that the
+            request should never timeout.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")

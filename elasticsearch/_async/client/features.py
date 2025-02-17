@@ -102,7 +102,7 @@ class FeaturesClient(NamespacedClient):
           <p>IMPORTANT: The features installed on the node you submit this request to are the features that will be reset. Run on the master node if you have any doubts about which plugins are installed on individual nodes.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/modules-snapshots.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/reset-features-api.html>`_
 
         :param master_timeout: Period to wait for a connection to the master node.
         """

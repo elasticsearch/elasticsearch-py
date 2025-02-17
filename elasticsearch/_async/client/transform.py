@@ -41,8 +41,7 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a transform.
-          Deletes a transform.</p>
+          <p>Delete a transform.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-transform.html>`_
@@ -106,7 +105,7 @@ class TransformClient(NamespacedClient):
         .. raw:: html
 
           <p>Get transforms.
-          Retrieves configuration information for transforms.</p>
+          Get configuration information for transforms.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-transform.html>`_
@@ -178,8 +177,8 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get transform stats.
-          Retrieves usage information for transforms.</p>
+          <p>Get transform stats.</p>
+          <p>Get usage information for transforms.</p>
 
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-transform-stats.html>`_
@@ -508,9 +507,8 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Reset a transform.
-          Resets a transform.
-          Before you can reset it, you must stop it; alternatively, use the <code>force</code> query parameter.
+          <p>Reset a transform.</p>
+          <p>Before you can reset it, you must stop it; alternatively, use the <code>force</code> query parameter.
           If the destination index was created by the transform, it is deleted.</p>
 
 
@@ -566,11 +564,11 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Schedule a transform to start now.
-          Instantly runs a transform to process data.</p>
-          <p>If you _schedule_now a transform, it will process the new data instantly,
-          without waiting for the configured frequency interval. After _schedule_now API is called,
-          the transform will be processed again at now + frequency unless _schedule_now API
+          <p>Schedule a transform to start now.</p>
+          <p>Instantly run a transform to process data.
+          If you run this API, the transform will process the new data instantly,
+          without waiting for the configured frequency interval. After the API is called,
+          the transform will be processed again at <code>now + frequency</code> unless the API
           is called again in the meantime.</p>
 
 
@@ -621,8 +619,7 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Start a transform.
-          Starts a transform.</p>
+          <p>Start a transform.</p>
           <p>When you start a transform, it creates the destination index if it does not already exist. The <code>number_of_shards</code> is
           set to <code>1</code> and the <code>auto_expand_replicas</code> is set to <code>0-1</code>. If it is a pivot transform, it deduces the mapping
           definitions for the destination index from the source indices and the transform aggregations. If fields in the
@@ -879,8 +876,8 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Upgrade all transforms.
-          Transforms are compatible across minor versions and between supported major versions.
+          <p>Upgrade all transforms.</p>
+          <p>Transforms are compatible across minor versions and between supported major versions.
           However, over time, the format of transform configuration information may change.
           This API identifies transforms that have a legacy configuration format and upgrades them to the latest version.
           It also cleans up the internal data structures that store the transform state and checkpoints.
