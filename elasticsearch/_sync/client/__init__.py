@@ -626,6 +626,7 @@ class Elasticsearch(BaseClient):
         error_trace: t.Optional[bool] = None,
         filter_path: t.Optional[t.Union[str, t.Sequence[str]]] = None,
         human: t.Optional[bool] = None,
+        include_source_on_error: t.Optional[bool] = None,
         list_executed_pipelines: t.Optional[bool] = None,
         pipeline: t.Optional[str] = None,
         pretty: t.Optional[bool] = None,
@@ -728,11 +729,13 @@ class Elasticsearch(BaseClient):
           The other two shards that make up the index do not participate in the <code>_bulk</code> request at all.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-bulk.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-bulk>`_
 
         :param operations:
         :param index: The name of the data stream, index, or index alias to perform bulk
             actions on.
+        :param include_source_on_error: True or false if to include the document source
+            in the error message in case of parsing errors.
         :param list_executed_pipelines: If `true`, the response will include the ingest
             pipelines that were run for each index or create.
         :param pipeline: The pipeline identifier to use to preprocess incoming documents.
@@ -790,6 +793,8 @@ class Elasticsearch(BaseClient):
             __query["filter_path"] = filter_path
         if human is not None:
             __query["human"] = human
+        if include_source_on_error is not None:
+            __query["include_source_on_error"] = include_source_on_error
         if list_executed_pipelines is not None:
             __query["list_executed_pipelines"] = list_executed_pipelines
         if pipeline is not None:
@@ -849,7 +854,7 @@ class Elasticsearch(BaseClient):
           Clear the search context and results for a scrolling search.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/clear-scroll-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-clear-scroll>`_
 
         :param scroll_id: The scroll IDs to clear. To clear all scroll IDs, use `_all`.
         """
@@ -906,7 +911,7 @@ class Elasticsearch(BaseClient):
           However, keeping points in time has a cost; close them as soon as they are no longer required for search requests.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time>`_
 
         :param id: The ID of the point-in-time.
         """
@@ -982,15 +987,15 @@ class Elasticsearch(BaseClient):
 
           <p>Count search results.
           Get the number of documents matching a query.</p>
-          <p>The query can either be provided using a simple query string as a parameter or using the Query DSL defined within the request body.
-          The latter must be nested in a <code>query</code> key, which is the same as the search API.</p>
+          <p>The query can be provided either by using a simple query string as a parameter, or by defining Query DSL within the request body.
+          The query is optional. When no query is provided, the API uses <code>match_all</code> to count all the documents.</p>
           <p>The count API supports multi-target syntax. You can run a single count API search across multiple data streams and indices.</p>
           <p>The operation is broadcast across all shards.
           For each shard ID group, a replica is chosen and the search is run against it.
           This means that replicas increase the scalability of the count.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-count.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-count>`_
 
         :param index: A comma-separated list of data streams, indices, and aliases to
             search. It supports wildcards (`*`). To search all data streams and indices,
@@ -1025,10 +1030,10 @@ class Elasticsearch(BaseClient):
             in the result.
         :param preference: The node or shard the operation should be performed on. By
             default, it is random.
-        :param q: The query in Lucene query string syntax.
-        :param query: Defines the search definition using the Query DSL. The query is
-            optional, and when not provided, it will use `match_all` to count all the
-            docs.
+        :param q: The query in Lucene query string syntax. This parameter cannot be used
+            with a request body.
+        :param query: Defines the search query using Query DSL. A request body query
+            cannot be used with the `q` query string parameter.
         :param routing: A custom value used to route operations to a specific shard.
         :param terminate_after: The maximum number of documents to collect for each shard.
             If a query reaches this limit, Elasticsearch terminates the query early.
@@ -1114,6 +1119,7 @@ class Elasticsearch(BaseClient):
         error_trace: t.Optional[bool] = None,
         filter_path: t.Optional[t.Union[str, t.Sequence[str]]] = None,
         human: t.Optional[bool] = None,
+        include_source_on_error: t.Optional[bool] = None,
         pipeline: t.Optional[str] = None,
         pretty: t.Optional[bool] = None,
         refresh: t.Optional[
@@ -1186,7 +1192,7 @@ class Elasticsearch(BaseClient):
           The <code>_shards</code> section of the API response reveals the number of shard copies on which replication succeeded and failed.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create>`_
 
         :param index: The name of the data stream or index to target. If the target doesn't
             exist and matches the name or wildcard (`*`) pattern of an index template
@@ -1196,6 +1202,8 @@ class Elasticsearch(BaseClient):
         :param id: A unique identifier for the document. To automatically generate a
             document ID, use the `POST /<target>/_doc/` request format.
         :param document:
+        :param include_source_on_error: True or false if to include the document source
+            in the error message in case of parsing errors.
         :param pipeline: The ID of the pipeline to use to preprocess incoming documents.
             If the index has a default ingest pipeline specified, setting the value to
             `_none` turns off the default ingest pipeline for this request. If a final
@@ -1244,6 +1252,8 @@ class Elasticsearch(BaseClient):
             __query["filter_path"] = filter_path
         if human is not None:
             __query["human"] = human
+        if include_source_on_error is not None:
+            __query["include_source_on_error"] = include_source_on_error
         if pipeline is not None:
             __query["pipeline"] = pipeline
         if pretty is not None:
@@ -1326,7 +1336,7 @@ class Elasticsearch(BaseClient):
           It then gets redirected into the primary shard within that ID group and replicated (if needed) to shard replicas within that ID group.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete>`_
 
         :param index: The name of the target index.
         :param id: A unique identifier for the document.
@@ -1515,7 +1525,7 @@ class Elasticsearch(BaseClient):
           The get task status API will continue to list the delete by query task until this task checks that it has been cancelled and terminates itself.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query>`_
 
         :param index: A comma-separated list of data streams, indices, and aliases to
             search. It supports wildcards (`*`). To search all data streams or indices,
@@ -1712,7 +1722,7 @@ class Elasticsearch(BaseClient):
           Rethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete-by-query.html#docs-delete-by-query-rethrottle>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-by-query-rethrottle>`_
 
         :param task_id: The ID for the task.
         :param requests_per_second: The throttle for this request in sub-requests per
@@ -1762,14 +1772,16 @@ class Elasticsearch(BaseClient):
           Deletes a stored script or search template.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-delete-script>`_
 
-        :param id: Identifier for the stored script or search template.
-        :param master_timeout: Period to wait for a connection to the master node. If
-            no response is received before the timeout expires, the request fails and
-            returns an error.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param id: The identifier for the stored script or search template.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If no response is received before the timeout expires, the request fails
+            and returns an error. It can also be set to `-1` to indicate that the request
+            should never timeout.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error. It can
+            also be set to `-1` to indicate that the request should never timeout.
         """
         if id in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'id'")
@@ -1844,7 +1856,7 @@ class Elasticsearch(BaseClient):
           Elasticsearch cleans up deleted documents in the background as you continue to index more data.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get>`_
 
         :param index: A comma-separated list of data streams, indices, and aliases. It
             supports wildcards (`*`).
@@ -1967,7 +1979,7 @@ class Elasticsearch(BaseClient):
           <p>A document's source is not available if it is disabled in the mapping.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get>`_
 
         :param index: A comma-separated list of data streams, indices, and aliases. It
             supports wildcards (`*`).
@@ -2069,34 +2081,44 @@ class Elasticsearch(BaseClient):
         .. raw:: html
 
           <p>Explain a document match result.
-          Returns information about why a specific document matches, or doesn’t match, a query.</p>
+          Get information about why a specific document matches, or doesn't match, a query.
+          It computes a score explanation for a query and a specific document.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-explain>`_
 
-        :param index: Index names used to limit the request. Only a single index name
-            can be provided to this parameter.
-        :param id: Defines the document ID.
+        :param index: Index names that are used to limit the request. Only a single index
+            name can be provided to this parameter.
+        :param id: The document identifier.
         :param analyze_wildcard: If `true`, wildcard and prefix queries are analyzed.
-        :param analyzer: Analyzer to use for the query string. This parameter can only
-            be used when the `q` query string parameter is specified.
+            This parameter can be used only when the `q` query string parameter is specified.
+        :param analyzer: The analyzer to use for the query string. This parameter can
+            be used only when the `q` query string parameter is specified.
         :param default_operator: The default operator for query string query: `AND` or
-            `OR`.
-        :param df: Field to use as default where no field prefix is given in the query
-            string.
+            `OR`. This parameter can be used only when the `q` query string parameter
+            is specified.
+        :param df: The field to use as default where no field prefix is given in the
+            query string. This parameter can be used only when the `q` query string parameter
+            is specified.
         :param lenient: If `true`, format-based query failures (such as providing text
-            to a numeric field) in the query string will be ignored.
-        :param preference: Specifies the node or shard the operation should be performed
-            on. Random by default.
-        :param q: Query in the Lucene query string syntax.
+            to a numeric field) in the query string will be ignored. This parameter can
+            be used only when the `q` query string parameter is specified.
+        :param preference: The node or shard the operation should be performed on. It
+            is random by default.
+        :param q: The query in the Lucene query string syntax.
         :param query: Defines the search definition using the Query DSL.
-        :param routing: Custom value used to route operations to a specific shard.
-        :param source: True or false to return the `_source` field or not, or a list
+        :param routing: A custom value used to route operations to a specific shard.
+        :param source: `True` or `false` to return the `_source` field or not or a list
             of fields to return.
         :param source_excludes: A comma-separated list of source fields to exclude from
-            the response.
+            the response. You can also use this parameter to exclude fields from the
+            subset specified in `_source_includes` query parameter. If the `_source`
+            parameter is `false`, this parameter is ignored.
         :param source_includes: A comma-separated list of source fields to include in
-            the response.
+            the response. If this parameter is specified, only these source fields are
+            returned. You can exclude fields from this subset using the `_source_excludes`
+            query parameter. If the `_source` parameter is `false`, this parameter is
+            ignored.
         :param stored_fields: A comma-separated list of stored fields to return in the
             response.
         """
@@ -2198,9 +2220,9 @@ class Elasticsearch(BaseClient):
           For example, a runtime field with a type of keyword is returned the same as any other field that belongs to the <code>keyword</code> family.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-field-caps>`_
 
-        :param index: Comma-separated list of data streams, indices, and aliases used
+        :param index: A comma-separated list of data streams, indices, and aliases used
             to limit the request. Supports wildcards (*). To target all data streams
             and indices, omit this parameter or use * or _all.
         :param allow_no_indices: If false, the request returns an error if any wildcard
@@ -2208,25 +2230,32 @@ class Elasticsearch(BaseClient):
             This behavior applies even if the request targets other open indices. For
             example, a request targeting `foo*,bar*` returns an error if an index starts
             with foo but no index starts with bar.
-        :param expand_wildcards: Type of index that wildcard patterns can match. If the
-            request can target data streams, this argument determines whether wildcard
-            expressions match hidden data streams. Supports comma-separated values, such
-            as `open,hidden`.
-        :param fields: List of fields to retrieve capabilities for. Wildcard (`*`) expressions
-            are supported.
-        :param filters: An optional set of filters: can include +metadata,-metadata,-nested,-multifield,-parent
+        :param expand_wildcards: The type of index that wildcard patterns can match.
+            If the request can target data streams, this argument determines whether
+            wildcard expressions match hidden data streams. Supports comma-separated
+            values, such as `open,hidden`.
+        :param fields: A list of fields to retrieve capabilities for. Wildcard (`*`)
+            expressions are supported.
+        :param filters: A comma-separated list of filters to apply to the response.
         :param ignore_unavailable: If `true`, missing or closed indices are not included
             in the response.
         :param include_empty_fields: If false, empty fields are not included in the response.
         :param include_unmapped: If true, unmapped fields are included in the response.
-        :param index_filter: Allows to filter indices if the provided query rewrites
-            to match_none on every shard.
-        :param runtime_mappings: Defines ad-hoc runtime fields in the request similar
+        :param index_filter: Filter indices if the provided query rewrites to `match_none`
+            on every shard. IMPORTANT: The filtering is done on a best-effort basis,
+            it uses index statistics and mappings to rewrite queries to `match_none`
+            instead of fully running the request. For instance a range query over a date
+            field can rewrite to `match_none` if all documents within a shard (including
+            deleted documents) are outside of the provided range. However, not all queries
+            can rewrite to `match_none` so this API may return an index even if the provided
+            filter matches no document.
+        :param runtime_mappings: Define ad-hoc runtime fields in the request similar
             to the way it is done in search requests. These fields exist only as part
             of the query and take precedence over fields defined with the same name in
             the index mappings.
-        :param types: Only return results for fields that have one of the types in the
-            list
+        :param types: A comma-separated list of field types to include. Any fields that
+            do not match one of these types will be excluded from the results. It defaults
+            to empty, meaning that all field types are returned.
         """
         __path_parts: t.Dict[str, str]
         if index not in SKIP_IN_PATH:
@@ -2352,7 +2381,7 @@ class Elasticsearch(BaseClient):
           Elasticsearch cleans up deleted documents in the background as you continue to index more data.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get>`_
 
         :param index: The name of the index that contains the document.
         :param id: A unique document identifier.
@@ -2459,10 +2488,13 @@ class Elasticsearch(BaseClient):
           Retrieves a stored script or search template.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script>`_
 
-        :param id: Identifier for the stored script or search template.
-        :param master_timeout: Specify timeout for connection to master
+        :param id: The identifier for the stored script or search template.
+        :param master_timeout: The period to wait for the master node. If the master
+            node is not available before the timeout expires, the request fails and returns
+            an error. It can also be set to `-1` to indicate that the request should
+            never timeout.
         """
         if id in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'id'")
@@ -2505,7 +2537,7 @@ class Elasticsearch(BaseClient):
           <p>Get a list of supported script contexts and their methods.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/painless/master/painless-contexts.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script-context>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_script_context"
@@ -2544,7 +2576,7 @@ class Elasticsearch(BaseClient):
           <p>Get a list of available script types, languages, and contexts.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get-script-languages>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_script_language"
@@ -2609,7 +2641,7 @@ class Elasticsearch(BaseClient):
           </code></pre>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-get>`_
 
         :param index: The name of the index that contains the document.
         :param id: A unique document identifier.
@@ -2709,7 +2741,7 @@ class Elasticsearch(BaseClient):
           When setting up automated polling of the API for health status, set verbose to false to disable the more expensive analysis logic.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/health-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-health-report>`_
 
         :param feature: A feature of the cluster, as returned by the top-level health
             report API.
@@ -2764,6 +2796,7 @@ class Elasticsearch(BaseClient):
         human: t.Optional[bool] = None,
         if_primary_term: t.Optional[int] = None,
         if_seq_no: t.Optional[int] = None,
+        include_source_on_error: t.Optional[bool] = None,
         op_type: t.Optional[t.Union[str, t.Literal["create", "index"]]] = None,
         pipeline: t.Optional[str] = None,
         pretty: t.Optional[bool] = None,
@@ -2873,7 +2906,7 @@ class Elasticsearch(BaseClient):
           </code></pre>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-index_.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-create>`_
 
         :param index: The name of the data stream or index to target. If the target doesn't
             exist and matches the name or wildcard (`*`) pattern of an index template
@@ -2889,6 +2922,8 @@ class Elasticsearch(BaseClient):
             term.
         :param if_seq_no: Only perform the operation if the document has this sequence
             number.
+        :param include_source_on_error: True or false if to include the document source
+            in the error message in case of parsing errors.
         :param op_type: Set to `create` to only index the document if it does not already
             exist (put if absent). If a document with the specified `_id` already exists,
             the indexing operation will fail. The behavior is the same as using the `<index>/_create`
@@ -2953,6 +2988,8 @@ class Elasticsearch(BaseClient):
             __query["if_primary_term"] = if_primary_term
         if if_seq_no is not None:
             __query["if_seq_no"] = if_seq_no
+        if include_source_on_error is not None:
+            __query["include_source_on_error"] = include_source_on_error
         if op_type is not None:
             __query["op_type"] = op_type
         if pipeline is not None:
@@ -3001,7 +3038,7 @@ class Elasticsearch(BaseClient):
           Get basic build, version, and cluster information.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rest-api-root.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-info>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/"
@@ -3067,30 +3104,37 @@ class Elasticsearch(BaseClient):
           This means the results returned are not always the true k closest neighbors.</p>
           <p>The kNN search API supports restricting the search using a filter.
           The search will return the top k documents that also match the filter query.</p>
+          <p>A kNN search response has the exact same structure as a search API response.
+          However, certain sections have a meaning specific to kNN search:</p>
+          <ul>
+          <li>The document <code>_score</code> is determined by the similarity between the query and document vector.</li>
+          <li>The <code>hits.total</code> object contains the total number of nearest neighbor candidates considered, which is <code>num_candidates * num_shards</code>. The <code>hits.total.relation</code> will always be <code>eq</code>, indicating an exact value.</li>
+          </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html>`_
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/knn-search-api.html>`_
 
         :param index: A comma-separated list of index names to search; use `_all` or
-            to perform the operation on all indices
-        :param knn: kNN query to execute
+            to perform the operation on all indices.
+        :param knn: The kNN query to run.
         :param docvalue_fields: The request returns doc values for field names matching
-            these patterns in the hits.fields property of the response. Accepts wildcard
-            (*) patterns.
+            these patterns in the `hits.fields` property of the response. It accepts
+            wildcard (`*`) patterns.
         :param fields: The request returns values for field names matching these patterns
-            in the hits.fields property of the response. Accepts wildcard (*) patterns.
-        :param filter: Query to filter the documents that can match. The kNN search will
-            return the top `k` documents that also match this filter. The value can be
-            a single query or a list of queries. If `filter` isn't provided, all documents
-            are allowed to match.
-        :param routing: A comma-separated list of specific routing values
+            in the `hits.fields` property of the response. It accepts wildcard (`*`)
+            patterns.
+        :param filter: A query to filter the documents that can match. The kNN search
+            will return the top `k` documents that also match this filter. The value
+            can be a single query or a list of queries. If `filter` isn't provided, all
+            documents are allowed to match.
+        :param routing: A comma-separated list of specific routing values.
         :param source: Indicates which source fields are returned for matching documents.
-            These fields are returned in the hits._source property of the search response.
-        :param stored_fields: List of stored fields to return as part of a hit. If no
-            fields are specified, no stored fields are included in the response. If this
-            field is specified, the _source parameter defaults to false. You can pass
-            _source: true to return both source fields and stored fields in the search
-            response.
+            These fields are returned in the `hits._source` property of the search response.
+        :param stored_fields: A list of stored fields to return as part of a hit. If
+            no fields are specified, no stored fields are included in the response. If
+            this field is specified, the `_source` parameter defaults to `false`. You
+            can pass `_source: true` to return both source fields and stored fields in
+            the search response.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -3174,9 +3218,17 @@ class Elasticsearch(BaseClient):
           <p>Get multiple JSON documents by ID from one or more indices.
           If you specify an index in the request URI, you only need to specify the document IDs in the request body.
           To ensure fast responses, this multi get (mget) API responds with partial results if one or more shards fail.</p>
+          <p><strong>Filter source fields</strong></p>
+          <p>By default, the <code>_source</code> field is returned for every document (if stored).
+          Use the <code>_source</code> and <code>_source_include</code> or <code>source_exclude</code> attributes to filter what fields are returned for a particular document.
+          You can include the <code>_source</code>, <code>_source_includes</code>, and <code>_source_excludes</code> query parameters in the request URI to specify the defaults to use when there are no per-document instructions.</p>
+          <p><strong>Get stored fields</strong></p>
+          <p>Use the <code>stored_fields</code> attribute to specify the set of stored fields you want to retrieve.
+          Any requested fields that are not stored are ignored.
+          You can include the <code>stored_fields</code> query parameter in the request URI to specify the defaults to use when there are no per-document instructions.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-get.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mget>`_
 
         :param index: Name of the index to retrieve documents from when `ids` are specified,
             or when a document in the `docs` array does not specify an index.
@@ -3311,7 +3363,7 @@ class Elasticsearch(BaseClient):
           When sending requests to this endpoint the <code>Content-Type</code> header should be set to <code>application/x-ndjson</code>.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch>`_
 
         :param searches:
         :param index: Comma-separated list of data streams, indices, and index aliases
@@ -3444,22 +3496,32 @@ class Elasticsearch(BaseClient):
         .. raw:: html
 
           <p>Run multiple templated searches.</p>
+          <p>Run multiple templated searches with a single request.
+          If you are providing a text file or text input to <code>curl</code>, use the <code>--data-binary</code> flag instead of <code>-d</code> to preserve newlines.
+          For example:</p>
+          <pre><code>$ cat requests
+          { &quot;index&quot;: &quot;my-index&quot; }
+          { &quot;id&quot;: &quot;my-search-template&quot;, &quot;params&quot;: { &quot;query_string&quot;: &quot;hello world&quot;, &quot;from&quot;: 0, &quot;size&quot;: 10 }}
+          { &quot;index&quot;: &quot;my-other-index&quot; }
+          { &quot;id&quot;: &quot;my-other-search-template&quot;, &quot;params&quot;: { &quot;query_type&quot;: &quot;match_all&quot; }}
+
+          $ curl -H &quot;Content-Type: application/x-ndjson&quot; -XGET localhost:9200/_msearch/template --data-binary &quot;@requests&quot;; echo
+          </code></pre>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-msearch-template>`_
 
         :param search_templates:
-        :param index: Comma-separated list of data streams, indices, and aliases to search.
-            Supports wildcards (`*`). To search all data streams and indices, omit this
-            parameter or use `*`.
+        :param index: A comma-separated list of data streams, indices, and aliases to
+            search. It supports wildcards (`*`). To search all data streams and indices,
+            omit this parameter or use `*`.
         :param ccs_minimize_roundtrips: If `true`, network round-trips are minimized
             for cross-cluster search requests.
-        :param max_concurrent_searches: Maximum number of concurrent searches the API
-            can run.
+        :param max_concurrent_searches: The maximum number of concurrent searches the
+            API can run.
         :param rest_total_hits_as_int: If `true`, the response returns `hits.total` as
             an integer. If `false`, it returns `hits.total` as an object.
-        :param search_type: The type of the search operation. Available options: `query_then_fetch`,
-            `dfs_query_then_fetch`.
+        :param search_type: The type of the search operation.
         :param typed_keys: If `true`, the response prefixes aggregation and suggester
             names with their respective types.
         """
@@ -3542,34 +3604,38 @@ class Elasticsearch(BaseClient):
         .. raw:: html
 
           <p>Get multiple term vectors.</p>
-          <p>You can specify existing documents by index and ID or provide artificial documents in the body of the request.
+          <p>Get multiple term vectors with a single request.
+          You can specify existing documents by index and ID or provide artificial documents in the body of the request.
           You can specify the index in the request body or request URI.
           The response contains a <code>docs</code> array with all the fetched termvectors.
           Each element has the structure provided by the termvectors API.</p>
+          <p><strong>Artificial documents</strong></p>
+          <p>You can also use <code>mtermvectors</code> to generate term vectors for artificial documents provided in the body of the request.
+          The mapping used is determined by the specified <code>_index</code>.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-multi-termvectors.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-mtermvectors>`_
 
-        :param index: Name of the index that contains the documents.
-        :param docs: Array of existing or artificial documents.
+        :param index: The name of the index that contains the documents.
+        :param docs: An array of existing or artificial documents.
         :param field_statistics: If `true`, the response includes the document count,
             sum of document frequencies, and sum of total term frequencies.
-        :param fields: Comma-separated list or wildcard expressions of fields to include
-            in the statistics. Used as the default list unless a specific field list
-            is provided in the `completion_fields` or `fielddata_fields` parameters.
-        :param ids: Simplified syntax to specify documents by their ID if they're in
+        :param fields: A comma-separated list or wildcard expressions of fields to include
+            in the statistics. It is used as the default list unless a specific field
+            list is provided in the `completion_fields` or `fielddata_fields` parameters.
+        :param ids: A simplified syntax to specify documents by their ID if they're in
             the same index.
         :param offsets: If `true`, the response includes term offsets.
         :param payloads: If `true`, the response includes term payloads.
         :param positions: If `true`, the response includes term positions.
-        :param preference: Specifies the node or shard the operation should be performed
-            on. Random by default.
+        :param preference: The node or shard the operation should be performed on. It
+            is random by default.
         :param realtime: If true, the request is real-time as opposed to near-real-time.
-        :param routing: Custom value used to route operations to a specific shard.
+        :param routing: A custom value used to route operations to a specific shard.
         :param term_statistics: If true, the response includes term frequency and document
             frequency.
         :param version: If `true`, returns the document version as part of a hit.
-        :param version_type: Specific version type.
+        :param version_type: The version type.
         """
         __path_parts: t.Dict[str, str]
         if index not in SKIP_IN_PATH:
@@ -3688,7 +3754,7 @@ class Elasticsearch(BaseClient):
           You can check how many point-in-times (that is, search contexts) are open with the nodes stats API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/point-in-time-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-open-point-in-time>`_
 
         :param index: A comma-separated list of index names to open point in time; use
             `_all` or empty string to perform the operation on all indices
@@ -3782,20 +3848,21 @@ class Elasticsearch(BaseClient):
           Creates or updates a stored script or search template.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-put-script>`_
 
-        :param id: Identifier for the stored script or search template. Must be unique
-            within the cluster.
-        :param script: Contains the script or search template, its parameters, and its
-            language.
-        :param context: Context in which the script or search template should run. To
-            prevent errors, the API immediately compiles the script or template in this
-            context.
-        :param master_timeout: Period to wait for a connection to the master node. If
-            no response is received before the timeout expires, the request fails and
-            returns an error.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param id: The identifier for the stored script or search template. It must be
+            unique within the cluster.
+        :param script: The script or search template, its parameters, and its language.
+        :param context: The context in which the script or search template should run.
+            To prevent errors, the API immediately compiles the script or template in
+            this context.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If no response is received before the timeout expires, the request fails
+            and returns an error. It can also be set to `-1` to indicate that the request
+            should never timeout.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error. It can
+            also be set to `-1` to indicate that the request should never timeout.
         """
         if id in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'id'")
@@ -3871,11 +3938,11 @@ class Elasticsearch(BaseClient):
           <p>Evaluate the quality of ranked search results over a set of typical search queries.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-rank-eval.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rank-eval>`_
 
         :param requests: A set of typical search requests, together with their provided
             ratings.
-        :param index: Comma-separated list of data streams, indices, and index aliases
+        :param index: A comma-separated list of data streams, indices, and index aliases
             used to limit the request. Wildcard (`*`) expressions are supported. To target
             all data streams and indices in a cluster, omit this parameter or use `_all`
             or `*`.
@@ -4103,7 +4170,7 @@ class Elasticsearch(BaseClient):
           It is not possible to configure SSL in the body of the reindex request.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex>`_
 
         :param dest: The destination you are copying to.
         :param source: The source you are copying from.
@@ -4227,7 +4294,7 @@ class Elasticsearch(BaseClient):
           This behavior prevents scroll timeouts.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-reindex.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-reindex>`_
 
         :param task_id: The task identifier, which can be found by using the tasks API.
         :param requests_per_second: The throttle for this request in sub-requests per
@@ -4283,15 +4350,15 @@ class Elasticsearch(BaseClient):
           <p>Render a search template as a search request body.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/render-search-template-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-render-search-template>`_
 
-        :param id: ID of the search template to render. If no `source` is specified,
+        :param id: The ID of the search template to render. If no `source` is specified,
             this or the `id` request body parameter is required.
         :param file:
         :param params: Key-value pairs used to replace Mustache variables in the template.
             The key is the variable name. The value is the variable value.
-        :param source: An inline search template. Supports the same parameters as the
-            search API's request body. These parameters also support Mustache variables.
+        :param source: An inline search template. It supports the same parameters as
+            the search API's request body. These parameters also support Mustache variables.
             If no `id` or `<templated-id>` is specified, this parameter is required.
         """
         __path_parts: t.Dict[str, str]
@@ -4450,13 +4517,13 @@ class Elasticsearch(BaseClient):
           <p>IMPORTANT: Results from a scrolling search reflect the state of the index at the time of the initial search request. Subsequent indexing or document changes only affect later search and scroll requests.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-body.html#request-body-search-scroll>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-scroll>`_
 
-        :param scroll_id: Scroll ID of the search.
+        :param scroll_id: The scroll ID of the search.
         :param rest_total_hits_as_int: If true, the API response’s hit.total property
             is returned as an integer. If false, the API response’s hit.total property
             is returned as an object.
-        :param scroll: Period to retain the search context for scrolling.
+        :param scroll: The period to retain the search context for scrolling.
         """
         if scroll_id is None and body is None:
             raise ValueError("Empty value passed for parameter 'scroll_id'")
@@ -4602,7 +4669,7 @@ class Elasticsearch(BaseClient):
         script_fields: t.Optional[t.Mapping[str, t.Mapping[str, t.Any]]] = None,
         scroll: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         search_type: t.Optional[
             t.Union[str, t.Literal["dfs_query_then_fetch", "query_then_fetch"]]
@@ -4655,7 +4722,7 @@ class Elasticsearch(BaseClient):
           This situation can occur because the splitting criterion is based on Lucene document IDs, which are not stable across changes to the index.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search>`_
 
         :param index: A comma-separated list of data streams, indices, and aliases to
             search. It supports wildcards (`*`). To search all data streams and indices,
@@ -5091,53 +5158,373 @@ class Elasticsearch(BaseClient):
         .. raw:: html
 
           <p>Search a vector tile.</p>
-          <p>Search a vector tile for geospatial values.</p>
+          <p>Search a vector tile for geospatial values.
+          Before using this API, you should be familiar with the Mapbox vector tile specification.
+          The API returns results as a binary mapbox vector tile.</p>
+          <p>Internally, Elasticsearch translates a vector tile search API request into a search containing:</p>
+          <ul>
+          <li>A <code>geo_bounding_box</code> query on the <code>&lt;field&gt;</code>. The query uses the <code>&lt;zoom&gt;/&lt;x&gt;/&lt;y&gt;</code> tile as a bounding box.</li>
+          <li>A <code>geotile_grid</code> or <code>geohex_grid</code> aggregation on the <code>&lt;field&gt;</code>. The <code>grid_agg</code> parameter determines the aggregation type. The aggregation uses the <code>&lt;zoom&gt;/&lt;x&gt;/&lt;y&gt;</code> tile as a bounding box.</li>
+          <li>Optionally, a <code>geo_bounds</code> aggregation on the <code>&lt;field&gt;</code>. The search only includes this aggregation if the <code>exact_bounds</code> parameter is <code>true</code>.</li>
+          <li>If the optional parameter <code>with_labels</code> is <code>true</code>, the internal search will include a dynamic runtime field that calls the <code>getLabelPosition</code> function of the geometry doc value. This enables the generation of new point features containing suggested geometry labels, so that, for example, multi-polygons will have only one label.</li>
+          </ul>
+          <p>For example, Elasticsearch may translate a vector tile search API request with a <code>grid_agg</code> argument of <code>geotile</code> and an <code>exact_bounds</code> argument of <code>true</code> into the following search</p>
+          <pre><code>GET my-index/_search
+          {
+            &quot;size&quot;: 10000,
+            &quot;query&quot;: {
+              &quot;geo_bounding_box&quot;: {
+                &quot;my-geo-field&quot;: {
+                  &quot;top_left&quot;: {
+                    &quot;lat&quot;: -40.979898069620134,
+                    &quot;lon&quot;: -45
+                  },
+                  &quot;bottom_right&quot;: {
+                    &quot;lat&quot;: -66.51326044311186,
+                    &quot;lon&quot;: 0
+                  }
+                }
+              }
+            },
+            &quot;aggregations&quot;: {
+              &quot;grid&quot;: {
+                &quot;geotile_grid&quot;: {
+                  &quot;field&quot;: &quot;my-geo-field&quot;,
+                  &quot;precision&quot;: 11,
+                  &quot;size&quot;: 65536,
+                  &quot;bounds&quot;: {
+                    &quot;top_left&quot;: {
+                      &quot;lat&quot;: -40.979898069620134,
+                      &quot;lon&quot;: -45
+                    },
+                    &quot;bottom_right&quot;: {
+                      &quot;lat&quot;: -66.51326044311186,
+                      &quot;lon&quot;: 0
+                    }
+                  }
+                }
+              },
+              &quot;bounds&quot;: {
+                &quot;geo_bounds&quot;: {
+                  &quot;field&quot;: &quot;my-geo-field&quot;,
+                  &quot;wrap_longitude&quot;: false
+                }
+              }
+            }
+          }
+          </code></pre>
+          <p>The API returns results as a binary Mapbox vector tile.
+          Mapbox vector tiles are encoded as Google Protobufs (PBF). By default, the tile contains three layers:</p>
+          <ul>
+          <li>A <code>hits</code> layer containing a feature for each <code>&lt;field&gt;</code> value matching the <code>geo_bounding_box</code> query.</li>
+          <li>An <code>aggs</code> layer containing a feature for each cell of the <code>geotile_grid</code> or <code>geohex_grid</code>. The layer only contains features for cells with matching data.</li>
+          <li>A meta layer containing:
+          <ul>
+          <li>A feature containing a bounding box. By default, this is the bounding box of the tile.</li>
+          <li>Value ranges for any sub-aggregations on the <code>geotile_grid</code> or <code>geohex_grid</code>.</li>
+          <li>Metadata for the search.</li>
+          </ul>
+          </li>
+          </ul>
+          <p>The API only returns features that can display at its zoom level.
+          For example, if a polygon feature has no area at its zoom level, the API omits it.
+          The API returns errors as UTF-8 encoded JSON.</p>
+          <p>IMPORTANT: You can specify several options for this API as either a query parameter or request body parameter.
+          If you specify both parameters, the query parameter takes precedence.</p>
+          <p><strong>Grid precision for geotile</strong></p>
+          <p>For a <code>grid_agg</code> of <code>geotile</code>, you can use cells in the <code>aggs</code> layer as tiles for lower zoom levels.
+          <code>grid_precision</code> represents the additional zoom levels available through these cells. The final precision is computed by as follows: <code>&lt;zoom&gt; + grid_precision</code>.
+          For example, if <code>&lt;zoom&gt;</code> is 7 and <code>grid_precision</code> is 8, then the <code>geotile_grid</code> aggregation will use a precision of 15.
+          The maximum final precision is 29.
+          The <code>grid_precision</code> also determines the number of cells for the grid as follows: <code>(2^grid_precision) x (2^grid_precision)</code>.
+          For example, a value of 8 divides the tile into a grid of 256 x 256 cells.
+          The <code>aggs</code> layer only contains features for cells with matching data.</p>
+          <p><strong>Grid precision for geohex</strong></p>
+          <p>For a <code>grid_agg</code> of <code>geohex</code>, Elasticsearch uses <code>&lt;zoom&gt;</code> and <code>grid_precision</code> to calculate a final precision as follows: <code>&lt;zoom&gt; + grid_precision</code>.</p>
+          <p>This precision determines the H3 resolution of the hexagonal cells produced by the <code>geohex</code> aggregation.
+          The following table maps the H3 resolution for each precision.
+          For example, if <code>&lt;zoom&gt;</code> is 3 and <code>grid_precision</code> is 3, the precision is 6.
+          At a precision of 6, hexagonal cells have an H3 resolution of 2.
+          If <code>&lt;zoom&gt;</code> is 3 and <code>grid_precision</code> is 4, the precision is 7.
+          At a precision of 7, hexagonal cells have an H3 resolution of 3.</p>
+          <table>
+          <thead>
+          <tr>
+          <th>Precision</th>
+          <th>Unique tile bins</th>
+          <th>H3 resolution</th>
+          <th>Unique hex bins</th>
+          <th>Ratio</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          <td>1</td>
+          <td>4</td>
+          <td>0</td>
+          <td>122</td>
+          <td>30.5</td>
+          </tr>
+          <tr>
+          <td>2</td>
+          <td>16</td>
+          <td>0</td>
+          <td>122</td>
+          <td>7.625</td>
+          </tr>
+          <tr>
+          <td>3</td>
+          <td>64</td>
+          <td>1</td>
+          <td>842</td>
+          <td>13.15625</td>
+          </tr>
+          <tr>
+          <td>4</td>
+          <td>256</td>
+          <td>1</td>
+          <td>842</td>
+          <td>3.2890625</td>
+          </tr>
+          <tr>
+          <td>5</td>
+          <td>1024</td>
+          <td>2</td>
+          <td>5882</td>
+          <td>5.744140625</td>
+          </tr>
+          <tr>
+          <td>6</td>
+          <td>4096</td>
+          <td>2</td>
+          <td>5882</td>
+          <td>1.436035156</td>
+          </tr>
+          <tr>
+          <td>7</td>
+          <td>16384</td>
+          <td>3</td>
+          <td>41162</td>
+          <td>2.512329102</td>
+          </tr>
+          <tr>
+          <td>8</td>
+          <td>65536</td>
+          <td>3</td>
+          <td>41162</td>
+          <td>0.6280822754</td>
+          </tr>
+          <tr>
+          <td>9</td>
+          <td>262144</td>
+          <td>4</td>
+          <td>288122</td>
+          <td>1.099098206</td>
+          </tr>
+          <tr>
+          <td>10</td>
+          <td>1048576</td>
+          <td>4</td>
+          <td>288122</td>
+          <td>0.2747745514</td>
+          </tr>
+          <tr>
+          <td>11</td>
+          <td>4194304</td>
+          <td>5</td>
+          <td>2016842</td>
+          <td>0.4808526039</td>
+          </tr>
+          <tr>
+          <td>12</td>
+          <td>16777216</td>
+          <td>6</td>
+          <td>14117882</td>
+          <td>0.8414913416</td>
+          </tr>
+          <tr>
+          <td>13</td>
+          <td>67108864</td>
+          <td>6</td>
+          <td>14117882</td>
+          <td>0.2103728354</td>
+          </tr>
+          <tr>
+          <td>14</td>
+          <td>268435456</td>
+          <td>7</td>
+          <td>98825162</td>
+          <td>0.3681524172</td>
+          </tr>
+          <tr>
+          <td>15</td>
+          <td>1073741824</td>
+          <td>8</td>
+          <td>691776122</td>
+          <td>0.644266719</td>
+          </tr>
+          <tr>
+          <td>16</td>
+          <td>4294967296</td>
+          <td>8</td>
+          <td>691776122</td>
+          <td>0.1610666797</td>
+          </tr>
+          <tr>
+          <td>17</td>
+          <td>17179869184</td>
+          <td>9</td>
+          <td>4842432842</td>
+          <td>0.2818666889</td>
+          </tr>
+          <tr>
+          <td>18</td>
+          <td>68719476736</td>
+          <td>10</td>
+          <td>33897029882</td>
+          <td>0.4932667053</td>
+          </tr>
+          <tr>
+          <td>19</td>
+          <td>274877906944</td>
+          <td>11</td>
+          <td>237279209162</td>
+          <td>0.8632167343</td>
+          </tr>
+          <tr>
+          <td>20</td>
+          <td>1099511627776</td>
+          <td>11</td>
+          <td>237279209162</td>
+          <td>0.2158041836</td>
+          </tr>
+          <tr>
+          <td>21</td>
+          <td>4398046511104</td>
+          <td>12</td>
+          <td>1660954464122</td>
+          <td>0.3776573213</td>
+          </tr>
+          <tr>
+          <td>22</td>
+          <td>17592186044416</td>
+          <td>13</td>
+          <td>11626681248842</td>
+          <td>0.6609003122</td>
+          </tr>
+          <tr>
+          <td>23</td>
+          <td>70368744177664</td>
+          <td>13</td>
+          <td>11626681248842</td>
+          <td>0.165225078</td>
+          </tr>
+          <tr>
+          <td>24</td>
+          <td>281474976710656</td>
+          <td>14</td>
+          <td>81386768741882</td>
+          <td>0.2891438866</td>
+          </tr>
+          <tr>
+          <td>25</td>
+          <td>1125899906842620</td>
+          <td>15</td>
+          <td>569707381193162</td>
+          <td>0.5060018015</td>
+          </tr>
+          <tr>
+          <td>26</td>
+          <td>4503599627370500</td>
+          <td>15</td>
+          <td>569707381193162</td>
+          <td>0.1265004504</td>
+          </tr>
+          <tr>
+          <td>27</td>
+          <td>18014398509482000</td>
+          <td>15</td>
+          <td>569707381193162</td>
+          <td>0.03162511259</td>
+          </tr>
+          <tr>
+          <td>28</td>
+          <td>72057594037927900</td>
+          <td>15</td>
+          <td>569707381193162</td>
+          <td>0.007906278149</td>
+          </tr>
+          <tr>
+          <td>29</td>
+          <td>288230376151712000</td>
+          <td>15</td>
+          <td>569707381193162</td>
+          <td>0.001976569537</td>
+          </tr>
+          </tbody>
+          </table>
+          <p>Hexagonal cells don't align perfectly on a vector tile.
+          Some cells may intersect more than one vector tile.
+          To compute the H3 resolution for each precision, Elasticsearch compares the average density of hexagonal bins at each resolution with the average density of tile bins at each zoom level.
+          Elasticsearch uses the H3 resolution that is closest to the corresponding geotile density.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-vector-tile-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-mvt>`_
 
         :param index: Comma-separated list of data streams, indices, or aliases to search
         :param field: Field containing geospatial data to return
         :param zoom: Zoom level for the vector tile to search
         :param x: X coordinate for the vector tile to search
         :param y: Y coordinate for the vector tile to search
-        :param aggs: Sub-aggregations for the geotile_grid. Supports the following aggregation
-            types: - avg - cardinality - max - min - sum
-        :param buffer: Size, in pixels, of a clipping buffer outside the tile. This allows
-            renderers to avoid outline artifacts from geometries that extend past the
-            extent of the tile.
-        :param exact_bounds: If false, the meta layer’s feature is the bounding box of
-            the tile. If true, the meta layer’s feature is a bounding box resulting from
-            a geo_bounds aggregation. The aggregation runs on <field> values that intersect
-            the <zoom>/<x>/<y> tile with wrap_longitude set to false. The resulting bounding
-            box may be larger than the vector tile.
-        :param extent: Size, in pixels, of a side of the tile. Vector tiles are square
+        :param aggs: Sub-aggregations for the geotile_grid. It supports the following
+            aggregation types: - `avg` - `boxplot` - `cardinality` - `extended stats`
+            - `max` - `median absolute deviation` - `min` - `percentile` - `percentile-rank`
+            - `stats` - `sum` - `value count` The aggregation names can't start with
+            `_mvt_`. The `_mvt_` prefix is reserved for internal aggregations.
+        :param buffer: The size, in pixels, of a clipping buffer outside the tile. This
+            allows renderers to avoid outline artifacts from geometries that extend past
+            the extent of the tile.
+        :param exact_bounds: If `false`, the meta layer's feature is the bounding box
+            of the tile. If `true`, the meta layer's feature is a bounding box resulting
+            from a `geo_bounds` aggregation. The aggregation runs on <field> values that
+            intersect the `<zoom>/<x>/<y>` tile with `wrap_longitude` set to `false`.
+            The resulting bounding box may be larger than the vector tile.
+        :param extent: The size, in pixels, of a side of the tile. Vector tiles are square
             with equal sides.
-        :param fields: Fields to return in the `hits` layer. Supports wildcards (`*`).
-            This parameter does not support fields with array values. Fields with array
-            values may return inconsistent results.
-        :param grid_agg: Aggregation used to create a grid for the `field`.
+        :param fields: The fields to return in the `hits` layer. It supports wildcards
+            (`*`). This parameter does not support fields with array values. Fields with
+            array values may return inconsistent results.
+        :param grid_agg: The aggregation used to create a grid for the `field`.
         :param grid_precision: Additional zoom levels available through the aggs layer.
-            For example, if <zoom> is 7 and grid_precision is 8, you can zoom in up to
-            level 15. Accepts 0-8. If 0, results don’t include the aggs layer.
+            For example, if `<zoom>` is `7` and `grid_precision` is `8`, you can zoom
+            in up to level 15. Accepts 0-8. If 0, results don't include the aggs layer.
         :param grid_type: Determines the geometry type for features in the aggs layer.
-            In the aggs layer, each feature represents a geotile_grid cell. If 'grid'
-            each feature is a Polygon of the cells bounding box. If 'point' each feature
+            In the aggs layer, each feature represents a `geotile_grid` cell. If `grid,
+            each feature is a polygon of the cells bounding box. If `point`, each feature
             is a Point that is the centroid of the cell.
-        :param query: Query DSL used to filter documents for the search.
+        :param query: The query DSL used to filter documents for the search.
         :param runtime_mappings: Defines one or more runtime fields in the search request.
             These fields take precedence over mapped fields with the same name.
-        :param size: Maximum number of features to return in the hits layer. Accepts
-            0-10000. If 0, results don’t include the hits layer.
-        :param sort: Sorts features in the hits layer. By default, the API calculates
-            a bounding box for each feature. It sorts features based on this box’s diagonal
+        :param size: The maximum number of features to return in the hits layer. Accepts
+            0-10000. If 0, results don't include the hits layer.
+        :param sort: Sort the features in the hits layer. By default, the API calculates
+            a bounding box for each feature. It sorts features based on this box's diagonal
             length, from longest to shortest.
-        :param track_total_hits: Number of hits matching the query to count accurately.
+        :param track_total_hits: The number of hits matching the query to count accurately.
             If `true`, the exact number of hits is returned at the cost of some performance.
             If `false`, the response does not include the total number of hits matching
             the query.
         :param with_labels: If `true`, the hits and aggs layers will contain additional
             point features representing suggested label positions for the original features.
+            * `Point` and `MultiPoint` features will have one of the points selected.
+            * `Polygon` and `MultiPolygon` features will have a single point generated,
+            either the centroid, if it is within the polygon, or another point within
+            the polygon selected from the sorted triangle-tree. * `LineString` features
+            will likewise provide a roughly central point selected from the triangle-tree.
+            * The aggregation results will provide one central point for each aggregation
+            bucket. All attributes from the original features will also be copied to
+            the new label features. In addition, the new features will be distinguishable
+            using the tag `_mvt_label_position`.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -5252,13 +5639,15 @@ class Elasticsearch(BaseClient):
           <p>Get the search shards.</p>
           <p>Get the indices and shards that a search request would be run against.
           This information can be useful for working out issues or planning optimizations with routing and shard preferences.
-          When filtered aliases are used, the filter is returned as part of the indices section.</p>
+          When filtered aliases are used, the filter is returned as part of the <code>indices</code> section.</p>
+          <p>If the Elasticsearch security features are enabled, you must have the <code>view_index_metadata</code> or <code>manage</code> index privilege for the target data stream, index, or alias.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-shards.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-shards>`_
 
-        :param index: Returns the indices and shards that a search request would be executed
-            against.
+        :param index: A comma-separated list of data streams, indices, and aliases to
+            search. It supports wildcards (`*`). To search all data streams and indices,
+            omit this parameter or use `*` or `_all`.
         :param allow_no_indices: If `false`, the request returns an error if any wildcard
             expression, index alias, or `_all` value targets only missing or closed indices.
             This behavior applies even if the request targets other open indices. For
@@ -5272,10 +5661,13 @@ class Elasticsearch(BaseClient):
             a missing or closed index.
         :param local: If `true`, the request retrieves information from the local node
             only.
-        :param master_timeout: Period to wait for a connection to the master node.
-        :param preference: Specifies the node or shard the operation should be performed
-            on. Random by default.
-        :param routing: Custom value used to route operations to a specific shard.
+        :param master_timeout: The period to wait for a connection to the master node.
+            If the master node is not available before the timeout expires, the request
+            fails and returns an error. IT can also be set to `-1` to indicate that the
+            request should never timeout.
+        :param preference: The node or shard the operation should be performed on. It
+            is random by default.
+        :param routing: A custom value used to route operations to a specific shard.
         """
         __path_parts: t.Dict[str, str]
         if index not in SKIP_IN_PATH:
@@ -5362,10 +5754,10 @@ class Elasticsearch(BaseClient):
           <p>Run a search with a search template.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-template.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-search-template>`_
 
-        :param index: Comma-separated list of data streams, indices, and aliases to search.
-            Supports wildcards (*).
+        :param index: A comma-separated list of data streams, indices, and aliases to
+            search. It supports wildcards (`*`).
         :param allow_no_indices: If `false`, the request returns an error if any wildcard
             expression, index alias, or `_all` value targets only missing or closed indices.
             This behavior applies even if the request targets other open indices. For
@@ -5373,32 +5765,34 @@ class Elasticsearch(BaseClient):
             with `foo` but no index starts with `bar`.
         :param ccs_minimize_roundtrips: If `true`, network round-trips are minimized
             for cross-cluster search requests.
-        :param expand_wildcards: Type of index that wildcard patterns can match. If the
-            request can target data streams, this argument determines whether wildcard
-            expressions match hidden data streams. Supports comma-separated values, such
-            as `open,hidden`. Valid values are: `all`, `open`, `closed`, `hidden`, `none`.
+        :param expand_wildcards: The type of index that wildcard patterns can match.
+            If the request can target data streams, this argument determines whether
+            wildcard expressions match hidden data streams. Supports comma-separated
+            values, such as `open,hidden`. Valid values are: `all`, `open`, `closed`,
+            `hidden`, `none`.
         :param explain: If `true`, returns detailed information about score calculation
-            as part of each hit.
-        :param id: ID of the search template to use. If no source is specified, this
-            parameter is required.
+            as part of each hit. If you specify both this and the `explain` query parameter,
+            the API uses only the query parameter.
+        :param id: The ID of the search template to use. If no `source` is specified,
+            this parameter is required.
         :param ignore_throttled: If `true`, specified concrete, expanded, or aliased
             indices are not included in the response when throttled.
         :param ignore_unavailable: If `false`, the request returns an error if it targets
             a missing or closed index.
         :param params: Key-value pairs used to replace Mustache variables in the template.
             The key is the variable name. The value is the variable value.
-        :param preference: Specifies the node or shard the operation should be performed
-            on. Random by default.
+        :param preference: The node or shard the operation should be performed on. It
+            is random by default.
         :param profile: If `true`, the query execution is profiled.
-        :param rest_total_hits_as_int: If true, hits.total are rendered as an integer
-            in the response.
-        :param routing: Custom value used to route operations to a specific shard.
+        :param rest_total_hits_as_int: If `true`, `hits.total` is rendered as an integer
+            in the response. If `false`, it is rendered as an object.
+        :param routing: A custom value used to route operations to a specific shard.
         :param scroll: Specifies how long a consistent view of the index should be maintained
             for scrolled search.
         :param search_type: The type of the search operation.
         :param source: An inline search template. Supports the same parameters as the
-            search API's request body. Also supports Mustache variables. If no id is
-            specified, this parameter is required.
+            search API's request body. It also supports Mustache variables. If no `id`
+            is specified, this parameter is required.
         :param typed_keys: If `true`, the response prefixes aggregation and suggester
             names with their respective types.
         """
@@ -5496,30 +5890,35 @@ class Elasticsearch(BaseClient):
 
           <p>Get terms in an index.</p>
           <p>Discover terms that match a partial string in an index.
-          This &quot;terms enum&quot; API is designed for low-latency look-ups used in auto-complete scenarios.</p>
-          <p>If the <code>complete</code> property in the response is false, the returned terms set may be incomplete and should be treated as approximate.
-          This can occur due to a few reasons, such as a request timeout or a node error.</p>
-          <p>NOTE: The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.</p>
+          This API is designed for low-latency look-ups used in auto-complete scenarios.</p>
+          <blockquote>
+          <p>info
+          The terms enum API may return terms from deleted documents. Deleted documents are initially only marked as deleted. It is not until their segments are merged that documents are actually deleted. Until that happens, the terms enum API will return terms from these documents.</p>
+          </blockquote>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/search-terms-enum.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-terms-enum>`_
 
-        :param index: Comma-separated list of data streams, indices, and index aliases
-            to search. Wildcard (*) expressions are supported.
+        :param index: A comma-separated list of data streams, indices, and index aliases
+            to search. Wildcard (`*`) expressions are supported. To search all data streams
+            or indices, omit this parameter or use `*` or `_all`.
         :param field: The string to match at the start of indexed terms. If not provided,
             all terms in the field are considered.
-        :param case_insensitive: When true the provided search string is matched against
+        :param case_insensitive: When `true`, the provided search string is matched against
             index terms without case sensitivity.
-        :param index_filter: Allows to filter an index shard if the provided query rewrites
-            to match_none.
-        :param search_after:
-        :param size: How many matching terms to return.
-        :param string: The string after which terms in the index should be returned.
-            Allows for a form of pagination if the last result from one request is passed
-            as the search_after parameter for a subsequent request.
-        :param timeout: The maximum length of time to spend collecting results. Defaults
-            to "1s" (one second). If the timeout is exceeded the complete flag set to
-            false in the response and the results may be partial or empty.
+        :param index_filter: Filter an index shard if the provided query rewrites to
+            `match_none`.
+        :param search_after: The string after which terms in the index should be returned.
+            It allows for a form of pagination if the last result from one request is
+            passed as the `search_after` parameter for a subsequent request.
+        :param size: The number of matching terms to return.
+        :param string: The string to match at the start of indexed terms. If it is not
+            provided, all terms in the field are considered. > info > The prefix string
+            cannot be larger than the largest possible keyword value, which is Lucene's
+            term byte-length limit of 32766.
+        :param timeout: The maximum length of time to spend collecting results. If the
+            timeout is exceeded the `complete` flag set to `false` in the response and
+            the results may be partial or empty.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -5602,32 +6001,73 @@ class Elasticsearch(BaseClient):
 
           <p>Get term vector information.</p>
           <p>Get information and statistics about terms in the fields of a particular document.</p>
+          <p>You can retrieve term vectors for documents stored in the index or for artificial documents passed in the body of the request.
+          You can specify the fields you are interested in through the <code>fields</code> parameter or by adding the fields to the request body.
+          For example:</p>
+          <pre><code>GET /my-index-000001/_termvectors/1?fields=message
+          </code></pre>
+          <p>Fields can be specified using wildcards, similar to the multi match query.</p>
+          <p>Term vectors are real-time by default, not near real-time.
+          This can be changed by setting <code>realtime</code> parameter to <code>false</code>.</p>
+          <p>You can request three types of values: <em>term information</em>, <em>term statistics</em>, and <em>field statistics</em>.
+          By default, all term information and field statistics are returned for all fields but term statistics are excluded.</p>
+          <p><strong>Term information</strong></p>
+          <ul>
+          <li>term frequency in the field (always returned)</li>
+          <li>term positions (<code>positions: true</code>)</li>
+          <li>start and end offsets (<code>offsets: true</code>)</li>
+          <li>term payloads (<code>payloads: true</code>), as base64 encoded bytes</li>
+          </ul>
+          <p>If the requested information wasn't stored in the index, it will be computed on the fly if possible.
+          Additionally, term vectors could be computed for documents not even existing in the index, but instead provided by the user.</p>
+          <blockquote>
+          <p>warn
+          Start and end offsets assume UTF-16 encoding is being used. If you want to use these offsets in order to get the original text that produced this token, you should make sure that the string you are taking a sub-string of is also encoded using UTF-16.</p>
+          </blockquote>
+          <p><strong>Behaviour</strong></p>
+          <p>The term and field statistics are not accurate.
+          Deleted documents are not taken into account.
+          The information is only retrieved for the shard the requested document resides in.
+          The term and field statistics are therefore only useful as relative measures whereas the absolute numbers have no meaning in this context.
+          By default, when requesting term vectors of artificial documents, a shard to get the statistics from is randomly selected.
+          Use <code>routing</code> only to hit a particular shard.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-termvectors>`_
 
-        :param index: Name of the index that contains the document.
-        :param id: Unique identifier of the document.
+        :param index: The name of the index that contains the document.
+        :param id: A unique identifier for the document.
         :param doc: An artificial document (a document not present in the index) for
             which you want to retrieve term vectors.
-        :param field_statistics: If `true`, the response includes the document count,
-            sum of document frequencies, and sum of total term frequencies.
-        :param fields: Comma-separated list or wildcard expressions of fields to include
-            in the statistics. Used as the default list unless a specific field list
-            is provided in the `completion_fields` or `fielddata_fields` parameters.
-        :param filter: Filter terms based on their tf-idf scores.
+        :param field_statistics: If `true`, the response includes: * The document count
+            (how many documents contain this field). * The sum of document frequencies
+            (the sum of document frequencies for all terms in this field). * The sum
+            of total term frequencies (the sum of total term frequencies of each term
+            in this field).
+        :param fields: A comma-separated list or wildcard expressions of fields to include
+            in the statistics. It is used as the default list unless a specific field
+            list is provided in the `completion_fields` or `fielddata_fields` parameters.
+        :param filter: Filter terms based on their tf-idf scores. This could be useful
+            in order find out a good characteristic vector of a document. This feature
+            works in a similar manner to the second phase of the More Like This Query.
         :param offsets: If `true`, the response includes term offsets.
         :param payloads: If `true`, the response includes term payloads.
-        :param per_field_analyzer: Overrides the default per-field analyzer.
+        :param per_field_analyzer: Override the default per-field analyzer. This is useful
+            in order to generate term vectors in any fashion, especially when using artificial
+            documents. When providing an analyzer for a field that already stores term
+            vectors, the term vectors will be regenerated.
         :param positions: If `true`, the response includes term positions.
-        :param preference: Specifies the node or shard the operation should be performed
-            on. Random by default.
+        :param preference: The node or shard the operation should be performed on. It
+            is random by default.
         :param realtime: If true, the request is real-time as opposed to near-real-time.
-        :param routing: Custom value used to route operations to a specific shard.
-        :param term_statistics: If `true`, the response includes term frequency and document
-            frequency.
+        :param routing: A custom value that is used to route operations to a specific
+            shard.
+        :param term_statistics: If `true`, the response includes: * The total term frequency
+            (how often a term occurs in all documents). * The document frequency (the
+            number of documents containing the current term). By default these values
+            are not returned since term statistics can have a serious performance impact.
         :param version: If `true`, returns the document version as part of a hit.
-        :param version_type: Specific version type.
+        :param version_type: The version type.
         """
         if index in SKIP_IN_PATH:
             raise ValueError("Empty value passed for parameter 'index'")
@@ -5723,6 +6163,7 @@ class Elasticsearch(BaseClient):
         human: t.Optional[bool] = None,
         if_primary_term: t.Optional[int] = None,
         if_seq_no: t.Optional[int] = None,
+        include_source_on_error: t.Optional[bool] = None,
         lang: t.Optional[str] = None,
         pretty: t.Optional[bool] = None,
         refresh: t.Optional[
@@ -5763,7 +6204,7 @@ class Elasticsearch(BaseClient):
           In addition to <code>_source</code>, you can access the following variables through the <code>ctx</code> map: <code>_index</code>, <code>_type</code>, <code>_id</code>, <code>_version</code>, <code>_routing</code>, and <code>_now</code> (the current timestamp).</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update>`_
 
         :param index: The name of the target index. By default, the index is created
             automatically if it doesn't exist.
@@ -5778,6 +6219,8 @@ class Elasticsearch(BaseClient):
             term.
         :param if_seq_no: Only perform the operation if the document has this sequence
             number.
+        :param include_source_on_error: True or false if to include the document source
+            in the error message in case of parsing errors.
         :param lang: The script language.
         :param refresh: If 'true', Elasticsearch refreshes the affected shards to make
             this operation visible to search. If 'wait_for', it waits for a refresh to
@@ -5822,6 +6265,8 @@ class Elasticsearch(BaseClient):
             __query["if_primary_term"] = if_primary_term
         if if_seq_no is not None:
             __query["if_seq_no"] = if_seq_no
+        if include_source_on_error is not None:
+            __query["include_source_on_error"] = include_source_on_error
         if lang is not None:
             __query["lang"] = lang
         if pretty is not None:
@@ -5997,7 +6442,7 @@ class Elasticsearch(BaseClient):
           This API enables you to only modify the source of matching documents; you cannot move them.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query>`_
 
         :param index: A comma-separated list of data streams, indices, and aliases to
             search. It supports wildcards (`*`). To search all data streams or indices,
@@ -6217,7 +6662,7 @@ class Elasticsearch(BaseClient):
           Rethrottling that speeds up the query takes effect immediately but rethrotting that slows down the query takes effect after completing the current batch to prevent scroll timeouts.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/docs-update-by-query.html#docs-update-by-query-rethrottle>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-update-by-query-rethrottle>`_
 
         :param task_id: The ID for the task.
         :param requests_per_second: The throttle for this request in sub-requests per

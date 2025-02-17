@@ -44,7 +44,7 @@ class AsyncSearchClient(NamespacedClient):
           If the Elasticsearch security features are enabled, the deletion of a specific async search is restricted to: the authenticated user that submitted the original search request; users that have the <code>cancel_task</code> cluster privilege.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/async-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit>`_
 
         :param id: A unique identifier for the async search.
         """
@@ -94,11 +94,11 @@ class AsyncSearchClient(NamespacedClient):
           If the Elasticsearch security features are enabled, access to the results of a specific async search is restricted to the user or API key that submitted it.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/async-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit>`_
 
         :param id: A unique identifier for the async search.
-        :param keep_alive: Specifies how long the async search should be available in
-            the cluster. When not specified, the `keep_alive` set with the corresponding
+        :param keep_alive: The length of time that the async search should be available
+            in the cluster. When not specified, the `keep_alive` set with the corresponding
             submit async request will be used. Otherwise, it is possible to override
             the value and extend the validity of the request. When this period expires,
             the search, if still running, is cancelled. If the search is completed, its
@@ -157,13 +157,17 @@ class AsyncSearchClient(NamespacedClient):
 
           <p>Get the async search status.</p>
           <p>Get the status of a previously submitted async search request given its identifier, without retrieving search results.
-          If the Elasticsearch security features are enabled, use of this API is restricted to the <code>monitoring_user</code> role.</p>
+          If the Elasticsearch security features are enabled, the access to the status of a specific async search is restricted to:</p>
+          <ul>
+          <li>The user or API key that submitted the original async search request.</li>
+          <li>Users that have the <code>monitor</code> cluster privilege or greater privileges.</li>
+          </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/async-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit>`_
 
         :param id: A unique identifier for the async search.
-        :param keep_alive: Specifies how long the async search needs to be available.
+        :param keep_alive: The length of time that the async search needs to be available.
             Ongoing async searches and any saved search results are deleted after this
             period.
         """
@@ -294,7 +298,7 @@ class AsyncSearchClient(NamespacedClient):
         runtime_mappings: t.Optional[t.Mapping[str, t.Mapping[str, t.Any]]] = None,
         script_fields: t.Optional[t.Mapping[str, t.Mapping[str, t.Any]]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         search_type: t.Optional[
             t.Union[str, t.Literal["dfs_query_then_fetch", "query_then_fetch"]]
@@ -341,7 +345,7 @@ class AsyncSearchClient(NamespacedClient):
           The maximum allowed size for a stored async search response can be set by changing the <code>search.max_async_search_response_size</code> cluster level setting.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/async-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-async-search-submit>`_
 
         :param index: A comma-separated list of index names to search; use `_all` or
             empty string to perform the operation on all indices

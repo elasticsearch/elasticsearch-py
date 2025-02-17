@@ -58,7 +58,7 @@ class SecurityClient(NamespacedClient):
           Any updates do not change existing content for either the <code>labels</code> or <code>data</code> fields.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-activate-user-profile.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-activate-user-profile>`_
 
         :param grant_type: The type of grant.
         :param access_token: The user's Elasticsearch access token or JWT. Both `access`
@@ -124,7 +124,7 @@ class SecurityClient(NamespacedClient):
           If the user cannot be authenticated, this API returns a 401 status code.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-authenticate.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-authenticate>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_security/_authenticate"
@@ -171,7 +171,7 @@ class SecurityClient(NamespacedClient):
           The bulk delete roles API cannot delete roles that are defined in roles files.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-bulk-delete-role.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-bulk-delete-role>`_
 
         :param names: An array of role names to delete
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -232,7 +232,7 @@ class SecurityClient(NamespacedClient):
           The bulk create or update roles API cannot update roles that are defined in roles files.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-bulk-put-role.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-bulk-put-role>`_
 
         :param roles: A dictionary of role name to RoleDescriptor objects to add or update
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -300,7 +300,7 @@ class SecurityClient(NamespacedClient):
           <p>A successful request returns a JSON structure that contains the IDs of all updated API keys, the IDs of API keys that already had the requested changes and did not require an update, and error details for any failed update.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-bulk-update-api-keys.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-bulk-update-api-keys>`_
 
         :param ids: The API key identifiers.
         :param expiration: Expiration time for the API keys. By default, API keys never
@@ -378,7 +378,7 @@ class SecurityClient(NamespacedClient):
           <p>Change the passwords of users in the native realm and built-in users.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-change-password.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-change-password>`_
 
         :param username: The user whose password you want to change. If you do not specify
             this parameter, the password is changed for the current user.
@@ -445,7 +445,7 @@ class SecurityClient(NamespacedClient):
           The cache is also automatically cleared on state changes of the security index.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-clear-api-key-cache.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-api-key-cache>`_
 
         :param ids: Comma-separated list of API key IDs to evict from the API key cache.
             To evict all API keys, use `*`. Does not support other wildcard patterns.
@@ -491,7 +491,7 @@ class SecurityClient(NamespacedClient):
           The cache is also automatically cleared for applications that have their privileges updated.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-clear-privilege-cache.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-cached-privileges>`_
 
         :param application: A comma-separated list of applications. To clear all applications,
             use an asterism (`*`). It does not support other wildcard patterns.
@@ -541,7 +541,7 @@ class SecurityClient(NamespacedClient):
           For more information, refer to the documentation about controlling the user cache.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-clear-cache.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-cached-realms>`_
 
         :param realms: A comma-separated list of realms. To clear all realms, use an
             asterisk (`*`). It does not support other wildcard patterns.
@@ -591,7 +591,7 @@ class SecurityClient(NamespacedClient):
           <p>Evict roles from the native role cache.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-clear-role-cache.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-cached-roles>`_
 
         :param name: A comma-separated list of roles to evict from the role cache. To
             evict all roles, use an asterisk (`*`). It does not support other wildcard
@@ -643,7 +643,7 @@ class SecurityClient(NamespacedClient):
           The cache for tokens backed by the <code>service_tokens</code> file is cleared automatically on file changes.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-clear-service-token-caches.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-clear-cached-service-tokens>`_
 
         :param namespace: The namespace, which is a top-level grouping of service accounts.
         :param service: The name of the service, which must be unique within its namespace.
@@ -715,7 +715,7 @@ class SecurityClient(NamespacedClient):
           To configure or turn off the API key service, refer to API key service setting documentation.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-create-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-api-key>`_
 
         :param expiration: The expiration time for the API key. By default, API keys
             never expire.
@@ -805,7 +805,7 @@ class SecurityClient(NamespacedClient):
           Attempting to update them with the update REST API key API or the bulk update REST API keys API will result in an error.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-create-cross-cluster-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-cross-cluster-api-key>`_
 
         :param access: The access to be granted to this API key. The access is composed
             of permissions for cross-cluster search and cross-cluster replication. At
@@ -880,7 +880,7 @@ class SecurityClient(NamespacedClient):
           You must actively delete them if they are no longer needed.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-create-service-token.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-create-service-token>`_
 
         :param namespace: The name of the namespace, which is a top-level grouping of
             service accounts.
@@ -966,7 +966,7 @@ class SecurityClient(NamespacedClient):
           The proxy is trusted to have performed the TLS authentication and this API translates that authentication into an Elasticsearch access token.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-delegate-pki-authentication.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delegate-pki>`_
 
         :param x509_certificate_chain: The X509Certificate chain, which is represented
             as an ordered string array. Each string in the array is a base64-encoded
@@ -1030,7 +1030,7 @@ class SecurityClient(NamespacedClient):
           </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-delete-privilege.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-privileges>`_
 
         :param application: The name of the application. Application privileges are always
             associated with exactly one application.
@@ -1093,7 +1093,7 @@ class SecurityClient(NamespacedClient):
           The delete roles API cannot remove roles that are defined in roles files.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-delete-role.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-role>`_
 
         :param name: The name of the role.
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -1147,7 +1147,7 @@ class SecurityClient(NamespacedClient):
           The delete role mappings API cannot remove role mappings that are defined in role mapping files.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-delete-role-mapping.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-role-mapping>`_
 
         :param name: The distinct name that identifies the role mapping. The name is
             used solely as an identifier to facilitate interaction via the API; it does
@@ -1203,7 +1203,7 @@ class SecurityClient(NamespacedClient):
           <p>Delete service account tokens for a service in a specified namespace.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-delete-service-token.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-service-token>`_
 
         :param namespace: The namespace, which is a top-level grouping of service accounts.
         :param service: The service name.
@@ -1265,7 +1265,7 @@ class SecurityClient(NamespacedClient):
           <p>Delete users from the native realm.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-delete-user.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-delete-user>`_
 
         :param username: An identifier for the user.
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -1319,7 +1319,7 @@ class SecurityClient(NamespacedClient):
           You can use this API to revoke a user's access to Elasticsearch.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-disable-user.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-disable-user>`_
 
         :param username: An identifier for the user.
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -1376,7 +1376,7 @@ class SecurityClient(NamespacedClient):
           To re-enable a disabled user profile, use the enable user profile API .</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-disable-user-profile.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-disable-user-profile>`_
 
         :param uid: Unique identifier for the user profile.
         :param refresh: If 'true', Elasticsearch refreshes the affected shards to make
@@ -1429,7 +1429,7 @@ class SecurityClient(NamespacedClient):
           By default, when you create users, they are enabled.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-enable-user.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-enable-user>`_
 
         :param username: An identifier for the user.
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -1486,7 +1486,7 @@ class SecurityClient(NamespacedClient):
           If you later disable the user profile, you can use the enable user profile API to make the profile visible in these searches again.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-enable-user-profile.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-enable-user-profile>`_
 
         :param uid: A unique identifier for the user profile.
         :param refresh: If 'true', Elasticsearch refreshes the affected shards to make
@@ -1536,7 +1536,7 @@ class SecurityClient(NamespacedClient):
           Kibana uses this API internally to configure itself for communications with an Elasticsearch cluster that already has security features enabled.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-kibana-enrollment.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-enroll-kibana>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_security/enroll/kibana"
@@ -1577,7 +1577,7 @@ class SecurityClient(NamespacedClient):
           The response contains key and certificate material that allows the caller to generate valid signed certificates for the HTTP layer of all nodes in the cluster.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-node-enrollment.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-enroll-node>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_security/enroll/node"
@@ -1626,7 +1626,7 @@ class SecurityClient(NamespacedClient):
           If you have <code>read_security</code>, <code>manage_api_key</code> or greater privileges (including <code>manage_security</code>), this API returns all API keys regardless of ownership.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-api-key>`_
 
         :param active_only: A boolean flag that can be used to query API keys that are
             currently active. An API key is considered active if it is neither invalidated,
@@ -1704,7 +1704,7 @@ class SecurityClient(NamespacedClient):
           <p>Get the list of cluster privileges and index privileges that are available in this version of Elasticsearch.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-builtin-privileges.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-builtin-privileges>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_security/privilege/_builtin"
@@ -1749,7 +1749,7 @@ class SecurityClient(NamespacedClient):
           </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-privileges.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-privileges>`_
 
         :param application: The name of the application. Application privileges are always
             associated with exactly one application. If you do not specify this parameter,
@@ -1805,7 +1805,7 @@ class SecurityClient(NamespacedClient):
           The get roles API cannot retrieve roles that are defined in roles files.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-role.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-role>`_
 
         :param name: The name of the role. You can specify multiple roles as a comma-separated
             list. If you do not specify this parameter, the API returns information about
@@ -1856,7 +1856,7 @@ class SecurityClient(NamespacedClient):
           The get role mappings API cannot retrieve role mappings that are defined in role mapping files.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-role-mapping.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-role-mapping>`_
 
         :param name: The distinct name that identifies the role mapping. The name is
             used solely as an identifier to facilitate interaction via the API; it does
@@ -1909,7 +1909,7 @@ class SecurityClient(NamespacedClient):
           <p>NOTE: Currently, only the <code>elastic/fleet-server</code> service account is available.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-service-accounts.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-accounts>`_
 
         :param namespace: The name of the namespace. Omit this parameter to retrieve
             information about all service accounts. If you omit this parameter, you must
@@ -1967,7 +1967,7 @@ class SecurityClient(NamespacedClient):
           Tokens with the same name from different nodes are assumed to be the same token and are only counted once towards the total number of service tokens.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-service-credentials.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-service-credentials>`_
 
         :param namespace: The name of the namespace.
         :param service: The service name.
@@ -2023,7 +2023,7 @@ class SecurityClient(NamespacedClient):
           </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-settings.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-settings>`_
 
         :param master_timeout: Period to wait for a connection to the master node. If
             no response is received before the timeout expires, the request fails and
@@ -2099,7 +2099,7 @@ class SecurityClient(NamespacedClient):
           If you want to invalidate a token immediately, you can do so by using the invalidate token API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-token.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-token>`_
 
         :param grant_type: The type of grant. Supported grant types are: `password`,
             `_kerberos`, `client_credentials`, and `refresh_token`.
@@ -2173,7 +2173,7 @@ class SecurityClient(NamespacedClient):
           <p>Get information about users in the native realm and built-in users.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-user.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user>`_
 
         :param username: An identifier for the user. You can specify multiple usernames
             as a comma-separated list. If you omit this parameter, the API retrieves
@@ -2231,7 +2231,7 @@ class SecurityClient(NamespacedClient):
           To check whether a user has a specific list of privileges, use the has privileges API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-user-privileges.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-privileges>`_
 
         :param application: The name of the application. Application privileges are always
             associated with exactly one application. If you do not specify this parameter,
@@ -2288,7 +2288,7 @@ class SecurityClient(NamespacedClient):
           Elastic reserves the right to change or remove this feature in future releases without prior notice.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-get-user-profile.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-get-user-profile>`_
 
         :param uid: A unique identifier for the user profile.
         :param data: A comma-separated list of filters for the `data` field of the profile
@@ -2372,7 +2372,7 @@ class SecurityClient(NamespacedClient):
           <p>By default, API keys never expire. You can specify expiration information when you create the API keys.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-grant-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-grant-api-key>`_
 
         :param api_key: The API key.
         :param grant_type: The type of grant. Supported grant types are: `access_token`,
@@ -2519,7 +2519,7 @@ class SecurityClient(NamespacedClient):
           To check the privileges of other users, you must use the run as feature.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-has-privileges.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges>`_
 
         :param user: Username
         :param application:
@@ -2584,7 +2584,7 @@ class SecurityClient(NamespacedClient):
           Elastic reserves the right to change or remove this feature in future releases without prior notice.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-has-privileges-user-profile.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-has-privileges-user-profile>`_
 
         :param privileges: An object containing all the privileges to be checked.
         :param uids: A list of profile IDs. The privileges are checked for associated
@@ -2658,7 +2658,7 @@ class SecurityClient(NamespacedClient):
           </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-invalidate-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-api-key>`_
 
         :param id:
         :param ids: A list of API key ids. This parameter cannot be used with any of
@@ -2742,7 +2742,7 @@ class SecurityClient(NamespacedClient):
           If none of these two are specified, then <code>realm_name</code> and/or <code>username</code> need to be specified.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-invalidate-token.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-invalidate-token>`_
 
         :param realm_name: The name of an authentication realm. This parameter cannot
             be used with either `refresh_token` or `token`.
@@ -2810,7 +2810,7 @@ class SecurityClient(NamespacedClient):
           These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-oidc-authenticate.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-authenticate>`_
 
         :param nonce: Associate a client session with an ID token and mitigate replay
             attacks. This value needs to be the same as the one that was provided to
@@ -2890,7 +2890,7 @@ class SecurityClient(NamespacedClient):
           These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-oidc-logout.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-logout>`_
 
         :param access_token: The access token to be invalidated.
         :param refresh_token: The refresh token to be invalidated.
@@ -2952,7 +2952,7 @@ class SecurityClient(NamespacedClient):
           These APIs are used internally by Kibana in order to provide OpenID Connect based authentication, but can also be used by other, custom web applications or other clients.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-oidc-prepare-authentication.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-oidc-prepare-authentication>`_
 
         :param iss: In the case of a third party initiated single sign on, this is the
             issuer identifier for the OP that the RP is to send the authentication request
@@ -3048,7 +3048,7 @@ class SecurityClient(NamespacedClient):
           <p>Action names can contain any number of printable ASCII characters and must contain at least one of the following characters: <code>/</code>, <code>*</code>, <code>:</code>.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-put-privileges.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-privileges>`_
 
         :param privileges:
         :param refresh: If `true` (the default) then refresh the affected shards to make
@@ -3200,7 +3200,7 @@ class SecurityClient(NamespacedClient):
           File-based role management is not available in Elastic Serverless.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-put-role.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role>`_
 
         :param name: The name of the role that is being created or updated. On Elasticsearch
             Serverless, the role name must begin with a letter or digit and can only
@@ -3335,7 +3335,7 @@ class SecurityClient(NamespacedClient):
           If the format of the template is set to &quot;json&quot; then the template is expected to produce a JSON string or an array of JSON strings for the role names.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-put-role-mapping.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-role-mapping>`_
 
         :param name: The distinct name that identifies the role mapping. The name is
             used solely as an identifier to facilitate interaction via the API; it does
@@ -3437,7 +3437,7 @@ class SecurityClient(NamespacedClient):
           To change a user's password without updating any other fields, use the change password API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-put-user.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-put-user>`_
 
         :param username: An identifier for the user. NOTE: Usernames must be at least
             1 and no more than 507 characters. They can contain alphanumeric characters
@@ -3531,7 +3531,7 @@ class SecurityClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
         query: t.Optional[t.Mapping[str, t.Any]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         size: t.Optional[int] = None,
         sort: t.Optional[
@@ -3556,7 +3556,7 @@ class SecurityClient(NamespacedClient):
           If you have the <code>read_security</code>, <code>manage_api_key</code>, or greater privileges (including <code>manage_security</code>), this API returns all API keys regardless of ownership.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-query-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-query-api-keys>`_
 
         :param aggregations: Any aggregations to run over the corpus of returned API
             keys. Aggregations and queries work together. Aggregations are computed only
@@ -3677,7 +3677,7 @@ class SecurityClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
         query: t.Optional[t.Mapping[str, t.Any]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         size: t.Optional[int] = None,
         sort: t.Optional[
@@ -3699,7 +3699,7 @@ class SecurityClient(NamespacedClient):
           Also, the results can be paginated and sorted.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-query-role.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-query-role>`_
 
         :param from_: The starting document offset. It must not be negative. By default,
             you cannot page through more than 10,000 hits using the `from` and `size`
@@ -3770,7 +3770,7 @@ class SecurityClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
         query: t.Optional[t.Mapping[str, t.Any]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         size: t.Optional[int] = None,
         sort: t.Optional[
@@ -3792,7 +3792,7 @@ class SecurityClient(NamespacedClient):
           This API is only for native users.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-query-user.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-query-user>`_
 
         :param from_: The starting document offset. It must not be negative. By default,
             you cannot page through more than 10,000 hits using the `from` and `size`
@@ -3885,7 +3885,7 @@ class SecurityClient(NamespacedClient):
           This API endpoint essentially exchanges SAML responses that indicate successful authentication in the IdP for Elasticsearch access and refresh tokens, which can be used for authentication against Elasticsearch.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-saml-authenticate.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-authenticate>`_
 
         :param content: The SAML response as it was sent by the user's browser, usually
             a Base64 encoded XML document.
@@ -3958,7 +3958,7 @@ class SecurityClient(NamespacedClient):
           The caller of this API must prepare the request accordingly so that this API can handle either of them.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-saml-complete-logout.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-complete-logout>`_
 
         :param ids: A JSON array with all the valid SAML Request Ids that the caller
             of the API has for the current user.
@@ -4034,7 +4034,7 @@ class SecurityClient(NamespacedClient):
           Thus the user can be redirected back to their IdP.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-saml-invalidate.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-invalidate>`_
 
         :param query_string: The query part of the URL that the user was redirected to
             by the SAML IdP to initiate the Single Logout. This query should include
@@ -4109,7 +4109,7 @@ class SecurityClient(NamespacedClient):
           If the SAML realm in Elasticsearch is configured accordingly and the SAML IdP supports this, the Elasticsearch response contains a URL to redirect the user to the IdP that contains a SAML logout request (starting an SP-initiated SAML Single Logout).</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-saml-logout.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-logout>`_
 
         :param token: The access token that was returned as a response to calling the
             SAML authenticate API. Alternatively, the most recent token that was received
@@ -4179,7 +4179,7 @@ class SecurityClient(NamespacedClient):
           The caller of this API needs to store this identifier as it needs to be used in a following step of the authentication process.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-saml-prepare-authentication.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-prepare-authentication>`_
 
         :param acs: The Assertion Consumer Service URL that matches the one of the SAML
             realms in Elasticsearch. The realm is used to generate the authentication
@@ -4240,7 +4240,7 @@ class SecurityClient(NamespacedClient):
           This API generates Service Provider metadata based on the configuration of a SAML realm in Elasticsearch.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-saml-sp-metadata.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-saml-service-provider-metadata>`_
 
         :param realm_name: The name of the SAML realm in Elasticsearch.
         """
@@ -4293,7 +4293,7 @@ class SecurityClient(NamespacedClient):
           Elastic reserves the right to change or remove this feature in future releases without prior notice.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-suggest-user-profile.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-suggest-user-profiles>`_
 
         :param data: A comma-separated list of filters for the `data` field of the profile
             document. To return all content use `data=*`. To return a subset of content,
@@ -4380,7 +4380,7 @@ class SecurityClient(NamespacedClient):
           This change can occur if the owner user's permissions have changed since the API key was created or last modified.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-update-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-api-key>`_
 
         :param id: The ID of the API key to update.
         :param expiration: The expiration time for the API key. By default, API keys
@@ -4468,7 +4468,7 @@ class SecurityClient(NamespacedClient):
           <p>NOTE: This API cannot update REST API keys, which should be updated by either the update API key or bulk update API keys API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-update-cross-cluster-api-key.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-cross-cluster-api-key>`_
 
         :param id: The ID of the cross-cluster API key to update.
         :param access: The access to be granted to this API key. The access is composed
@@ -4547,7 +4547,7 @@ class SecurityClient(NamespacedClient):
           This API does not yet support configuring the settings for indices before they are in use.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-update-settings.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-settings>`_
 
         :param master_timeout: The period to wait for a connection to the master node.
             If no response is received before the timeout expires, the request fails
@@ -4632,7 +4632,7 @@ class SecurityClient(NamespacedClient):
           The <code>update_profile_data</code> global privilege grants privileges for updating only the allowed namespaces.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/security-api-update-user-profile-data.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-security-update-user-profile-data>`_
 
         :param uid: A unique identifier for the user profile.
         :param data: Non-searchable data that you want to associate with the user profile.

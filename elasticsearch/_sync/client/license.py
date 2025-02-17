@@ -39,16 +39,16 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete the license.
-          When the license expires, your subscription level reverts to Basic.</p>
+          <p>Delete the license.</p>
+          <p>When the license expires, your subscription level reverts to Basic.</p>
           <p>If the operator privileges feature is enabled, only operator users can use this API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-license.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-delete>`_
 
-        :param master_timeout: Period to wait for a connection to the master node.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param master_timeout: The period to wait for a connection to the master node.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_license"
@@ -89,13 +89,16 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get license information.
-          Get information about your Elastic license including its type, its status, when it was issued, and when it expires.</p>
-          <p>NOTE: If the master node is generating a new cluster state, the get license API may return a <code>404 Not Found</code> response.
+          <p>Get license information.</p>
+          <p>Get information about your Elastic license including its type, its status, when it was issued, and when it expires.</p>
+          <blockquote>
+          <p>info
+          If the master node is generating a new cluster state, the get license API may return a <code>404 Not Found</code> response.
           If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.</p>
+          </blockquote>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-license.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get>`_
 
         :param accept_enterprise: If `true`, this parameter returns enterprise for Enterprise
             license types. If `false`, this parameter returns platinum for both platinum
@@ -144,7 +147,7 @@ class LicenseClient(NamespacedClient):
           <p>Get the basic license status.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-basic-status.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get-basic-status>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_license/basic_status"
@@ -182,7 +185,7 @@ class LicenseClient(NamespacedClient):
           <p>Get the trial status.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-trial-status.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-get-trial-status>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_license/trial_status"
@@ -225,8 +228,8 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Update the license.
-          You can update your license at runtime without shutting down your nodes.
+          <p>Update the license.</p>
+          <p>You can update your license at runtime without shutting down your nodes.
           License updates take effect immediately.
           If the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.
           You must then re-submit the API request with the acknowledge parameter set to true.</p>
@@ -234,15 +237,15 @@ class LicenseClient(NamespacedClient):
           If the operator privileges feature is enabled, only operator users can use this API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/update-license.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post>`_
 
         :param acknowledge: Specifies whether you acknowledge the license changes.
         :param license:
         :param licenses: A sequence of one or more JSON documents containing the license
             information.
-        :param master_timeout: Period to wait for a connection to the master node.
-        :param timeout: Period to wait for a response. If no response is received before
-            the timeout expires, the request fails and returns an error.
+        :param master_timeout: The period to wait for a connection to the master node.
+        :param timeout: The period to wait for a response. If no response is received
+            before the timeout expires, the request fails and returns an error.
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_license"
@@ -297,15 +300,15 @@ class LicenseClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Start a basic license.
-          Start an indefinite basic license, which gives access to all the basic features.</p>
+          <p>Start a basic license.</p>
+          <p>Start an indefinite basic license, which gives access to all the basic features.</p>
           <p>NOTE: In order to start a basic license, you must not currently have a basic license.</p>
           <p>If the basic license does not support all of the features that are available with your current license, however, you are notified in the response.
           You must then re-submit the API request with the <code>acknowledge</code> parameter set to <code>true</code>.</p>
           <p>To check the status of your basic license, use the get basic license API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/start-basic.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post-start-basic>`_
 
         :param acknowledge: whether the user has acknowledged acknowledge messages (default:
             false)
@@ -362,7 +365,7 @@ class LicenseClient(NamespacedClient):
           <p>To check the status of your trial, use the get trial status API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/start-trial.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-license-post-start-trial>`_
 
         :param acknowledge: whether the user has acknowledged acknowledge messages (default:
             false)

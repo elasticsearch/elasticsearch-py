@@ -44,7 +44,7 @@ class MigrationClient(NamespacedClient):
           You are strongly recommended to use the Upgrade Assistant.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/migration-api-deprecation.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-deprecations>`_
 
         :param index: Comma-separate list of data streams or indices to check. Wildcard
             (*) expressions are supported.
@@ -94,7 +94,7 @@ class MigrationClient(NamespacedClient):
           You are strongly recommended to use the Upgrade Assistant.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/feature-migration-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-get-feature-upgrade-status>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_migration/system_features"
@@ -136,7 +136,7 @@ class MigrationClient(NamespacedClient):
           <p>TIP: The API is designed for indirect use by the Upgrade Assistant. We strongly recommend you use the Upgrade Assistant.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/feature-migration-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-migration-get-feature-upgrade-status>`_
         """
         __path_parts: t.Dict[str, str] = {}
         __path = "/_migration/system_features"

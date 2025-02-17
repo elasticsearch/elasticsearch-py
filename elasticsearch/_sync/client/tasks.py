@@ -60,7 +60,7 @@ class TasksClient(NamespacedClient):
           You can also use the node hot threads API to obtain detailed information about the work the system is doing instead of completing the cancelled task.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks>`_
 
         :param task_id: The task identifier.
         :param actions: A comma-separated list or wildcard expression of actions that
@@ -128,7 +128,7 @@ class TasksClient(NamespacedClient):
           <p>If the task identifier is not found, a 404 response code indicates that there are no resources that match the request.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks>`_
 
         :param task_id: The task identifier.
         :param timeout: The period to wait for a response. If no response is received
@@ -238,7 +238,7 @@ class TasksClient(NamespacedClient):
           The <code>X-Opaque-Id</code> in the children <code>headers</code> is the child task of the task that was initiated by the REST request.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-tasks>`_
 
         :param actions: A comma-separated list or wildcard expression of actions used
             to limit the request. For example, you can use `cluser:*` to retrieve all
