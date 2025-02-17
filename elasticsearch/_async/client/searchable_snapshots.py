@@ -44,8 +44,11 @@ class SearchableSnapshotsClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get cache statistics. Get statistics about the shared cache for partially mounted
-        indices.
+        .. raw:: html
+
+          <p>Get cache statistics.
+          Get statistics about the shared cache for partially mounted indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/searchable-snapshots-api-cache-stats.html>`_
 
@@ -102,8 +105,11 @@ class SearchableSnapshotsClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clear the cache. Clear indices and data streams from the shared cache for partially
-        mounted indices.
+        .. raw:: html
+
+          <p>Clear the cache.
+          Clear indices and data streams from the shared cache for partially mounted indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/searchable-snapshots-api-clear-cache.html>`_
 
@@ -176,9 +182,13 @@ class SearchableSnapshotsClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Mount a snapshot. Mount a snapshot as a searchable snapshot index. Do not use
-        this API for snapshots managed by index lifecycle management (ILM). Manually
-        mounting ILM-managed snapshots can interfere with ILM processes.
+        .. raw:: html
+
+          <p>Mount a snapshot.
+          Mount a snapshot as a searchable snapshot index.
+          Do not use this API for snapshots managed by index lifecycle management (ILM).
+          Manually mounting ILM-managed snapshots can interfere with ILM processes.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/searchable-snapshots-api-mount-snapshot.html>`_
 
@@ -263,7 +273,10 @@ class SearchableSnapshotsClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get searchable snapshot statistics.
+        .. raw:: html
+
+          <p>Get searchable snapshot statistics.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/searchable-snapshots-api-stats.html>`_
 

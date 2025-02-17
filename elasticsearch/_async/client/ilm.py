@@ -38,9 +38,11 @@ class IlmClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a lifecycle policy. You cannot delete policies that are currently in use.
-        If the policy is being used to manage any indices, the request fails and returns
-        an error.
+        .. raw:: html
+
+          <p>Delete a lifecycle policy.
+          You cannot delete policies that are currently in use. If the policy is being used to manage any indices, the request fails and returns an error.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-delete-lifecycle.html>`_
 
@@ -93,11 +95,13 @@ class IlmClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Explain the lifecycle state. Get the current lifecycle status for one or more
-        indices. For data streams, the API retrieves the current lifecycle status for
-        the stream's backing indices. The response indicates when the index entered each
-        lifecycle state, provides the definition of the running phase, and information
-        about any failures.
+        .. raw:: html
+
+          <p>Explain the lifecycle state.
+          Get the current lifecycle status for one or more indices.
+          For data streams, the API retrieves the current lifecycle status for the stream's backing indices.</p>
+          <p>The response indicates when the index entered each lifecycle state, provides the definition of the running phase, and information about any failures.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-explain-lifecycle.html>`_
 
@@ -159,7 +163,10 @@ class IlmClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get lifecycle policies.
+        .. raw:: html
+
+          <p>Get lifecycle policies.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-get-lifecycle.html>`_
 
@@ -210,7 +217,11 @@ class IlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the ILM status. Get the current index lifecycle management status.
+        .. raw:: html
+
+          <p>Get the ILM status.
+          Get the current index lifecycle management status.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-get-status.html>`_
         """
@@ -251,18 +262,22 @@ class IlmClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Migrate to data tiers routing. Switch the indices, ILM policies, and legacy,
-        composable, and component templates from using custom node attributes and attribute-based
-        allocation filters to using data tiers. Optionally, delete one legacy index template.
-        Using node roles enables ILM to automatically move the indices between data tiers.
-        Migrating away from custom node attributes routing can be manually performed.
-        This API provides an automated way of performing three out of the four manual
-        steps listed in the migration guide: 1. Stop setting the custom hot attribute
-        on new indices. 1. Remove custom allocation settings from existing ILM policies.
-        1. Replace custom allocation settings from existing indices with the corresponding
-        tier preference. ILM must be stopped before performing the migration. Use the
-        stop ILM and get ILM status APIs to wait until the reported operation mode is
-        `STOPPED`.
+        .. raw:: html
+
+          <p>Migrate to data tiers routing.
+          Switch the indices, ILM policies, and legacy, composable, and component templates from using custom node attributes and attribute-based allocation filters to using data tiers.
+          Optionally, delete one legacy index template.
+          Using node roles enables ILM to automatically move the indices between data tiers.</p>
+          <p>Migrating away from custom node attributes routing can be manually performed.
+          This API provides an automated way of performing three out of the four manual steps listed in the migration guide:</p>
+          <ol>
+          <li>Stop setting the custom hot attribute on new indices.</li>
+          <li>Remove custom allocation settings from existing ILM policies.</li>
+          <li>Replace custom allocation settings from existing indices with the corresponding tier preference.</li>
+          </ol>
+          <p>ILM must be stopped before performing the migration.
+          Use the stop ILM and get ILM status APIs to wait until the reported operation mode is <code>STOPPED</code>.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-migrate-to-data-tiers.html>`_
 
@@ -322,21 +337,20 @@ class IlmClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Move to a lifecycle step. Manually move an index into a specific step in the
-        lifecycle policy and run that step. WARNING: This operation can result in the
-        loss of data. Manually moving an index into a specific step runs that step even
-        if it has already been performed. This is a potentially destructive action and
-        this should be considered an expert level API. You must specify both the current
-        step and the step to be executed in the body of the request. The request will
-        fail if the current step does not match the step currently running for the index
-        This is to prevent the index from being moved from an unexpected step into the
-        next step. When specifying the target (`next_step`) to which the index will be
-        moved, either the name or both the action and name fields are optional. If only
-        the phase is specified, the index will move to the first step of the first action
-        in the target phase. If the phase and action are specified, the index will move
-        to the first step of the specified action in the specified phase. Only actions
-        specified in the ILM policy are considered valid. An index cannot move to a step
-        that is not part of its policy.
+        .. raw:: html
+
+          <p>Move to a lifecycle step.
+          Manually move an index into a specific step in the lifecycle policy and run that step.</p>
+          <p>WARNING: This operation can result in the loss of data. Manually moving an index into a specific step runs that step even if it has already been performed. This is a potentially destructive action and this should be considered an expert level API.</p>
+          <p>You must specify both the current step and the step to be executed in the body of the request.
+          The request will fail if the current step does not match the step currently running for the index
+          This is to prevent the index from being moved from an unexpected step into the next step.</p>
+          <p>When specifying the target (<code>next_step</code>) to which the index will be moved, either the name or both the action and name fields are optional.
+          If only the phase is specified, the index will move to the first step of the first action in the target phase.
+          If the phase and action are specified, the index will move to the first step of the specified action in the specified phase.
+          Only actions specified in the ILM policy are considered valid.
+          An index cannot move to a step that is not part of its policy.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-move-to-step.html>`_
 
@@ -399,9 +413,12 @@ class IlmClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update a lifecycle policy. If the specified policy exists, it is replaced
-        and the policy version is incremented. NOTE: Only the latest version of the policy
-        is stored, you cannot revert to previous versions.
+        .. raw:: html
+
+          <p>Create or update a lifecycle policy.
+          If the specified policy exists, it is replaced and the policy version is incremented.</p>
+          <p>NOTE: Only the latest version of the policy is stored, you cannot revert to previous versions.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-put-lifecycle.html>`_
 
@@ -460,8 +477,12 @@ class IlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Remove policies from an index. Remove the assigned lifecycle policies from an
-        index or a data stream's backing indices. It also stops managing the indices.
+        .. raw:: html
+
+          <p>Remove policies from an index.
+          Remove the assigned lifecycle policies from an index or a data stream's backing indices.
+          It also stops managing the indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-remove-policy.html>`_
 
@@ -501,10 +522,13 @@ class IlmClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Retry a policy. Retry running the lifecycle policy for an index that is in the
-        ERROR step. The API sets the policy back to the step where the error occurred
-        and runs the step. Use the explain lifecycle state API to determine whether an
-        index is in the ERROR step.
+        .. raw:: html
+
+          <p>Retry a policy.
+          Retry running the lifecycle policy for an index that is in the ERROR step.
+          The API sets the policy back to the step where the error occurred and runs the step.
+          Use the explain lifecycle state API to determine whether an index is in the ERROR step.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-retry-policy.html>`_
 
@@ -546,9 +570,13 @@ class IlmClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Start the ILM plugin. Start the index lifecycle management plugin if it is currently
-        stopped. ILM is started automatically when the cluster is formed. Restarting
-        ILM is necessary only when it has been stopped using the stop ILM API.
+        .. raw:: html
+
+          <p>Start the ILM plugin.
+          Start the index lifecycle management plugin if it is currently stopped.
+          ILM is started automatically when the cluster is formed.
+          Restarting ILM is necessary only when it has been stopped using the stop ILM API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-start.html>`_
 
@@ -592,12 +620,14 @@ class IlmClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Stop the ILM plugin. Halt all lifecycle management operations and stop the index
-        lifecycle management plugin. This is useful when you are performing maintenance
-        on the cluster and need to prevent ILM from performing any actions on your indices.
-        The API returns as soon as the stop request has been acknowledged, but the plugin
-        might continue to run until in-progress operations complete and the plugin can
-        be safely stopped. Use the get ILM status API to check whether ILM is running.
+        .. raw:: html
+
+          <p>Stop the ILM plugin.
+          Halt all lifecycle management operations and stop the index lifecycle management plugin.
+          This is useful when you are performing maintenance on the cluster and need to prevent ILM from performing any actions on your indices.</p>
+          <p>The API returns as soon as the stop request has been acknowledged, but the plugin might continue to run until in-progress operations complete and the plugin can be safely stopped.
+          Use the get ILM status API to check whether ILM is running.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ilm-stop.html>`_
 

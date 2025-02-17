@@ -42,13 +42,16 @@ class ShutdownClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Cancel node shutdown preparations. Remove a node from the shutdown list so it
-        can resume normal operations. You must explicitly clear the shutdown request
-        when a node rejoins the cluster or when a node has permanently left the cluster.
-        Shutdown requests are never removed automatically by Elasticsearch. NOTE: This
-        feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise,
-        and Elastic Cloud on Kubernetes. Direct use is not supported. If the operator
-        privileges feature is enabled, you must be an operator to use this API.
+        .. raw:: html
+
+          <p>Cancel node shutdown preparations.
+          Remove a node from the shutdown list so it can resume normal operations.
+          You must explicitly clear the shutdown request when a node rejoins the cluster or when a node has permanently left the cluster.
+          Shutdown requests are never removed automatically by Elasticsearch.</p>
+          <p>NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.
+          Direct use is not supported.</p>
+          <p>If the operator privileges feature is enabled, you must be an operator to use this API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-shutdown.html>`_
 
@@ -103,13 +106,14 @@ class ShutdownClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the shutdown status. Get information about nodes that are ready to be shut
-        down, have shut down preparations still in progress, or have stalled. The API
-        returns status information for each part of the shut down process. NOTE: This
-        feature is designed for indirect use by Elasticsearch Service, Elastic Cloud
-        Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported. If
-        the operator privileges feature is enabled, you must be an operator to use this
-        API.
+        .. raw:: html
+
+          <p>Get the shutdown status.</p>
+          <p>Get information about nodes that are ready to be shut down, have shut down preparations still in progress, or have stalled.
+          The API returns status information for each part of the shut down process.</p>
+          <p>NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.</p>
+          <p>If the operator privileges feature is enabled, you must be an operator to use this API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-shutdown.html>`_
 
@@ -176,18 +180,19 @@ class ShutdownClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Prepare a node to be shut down. NOTE: This feature is designed for indirect use
-        by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes.
-        Direct use is not supported. If you specify a node that is offline, it will be
-        prepared for shut down when it rejoins the cluster. If the operator privileges
-        feature is enabled, you must be an operator to use this API. The API migrates
-        ongoing tasks and index shards to other nodes as needed to prepare a node to
-        be restarted or shut down and removed from the cluster. This ensures that Elasticsearch
-        can be stopped safely with minimal disruption to the cluster. You must specify
-        the type of shutdown: `restart`, `remove`, or `replace`. If a node is already
-        being prepared for shutdown, you can use this API to change the shutdown type.
-        IMPORTANT: This API does NOT terminate the Elasticsearch process. Monitor the
-        node shutdown status to determine when it is safe to stop Elasticsearch.
+        .. raw:: html
+
+          <p>Prepare a node to be shut down.</p>
+          <p>NOTE: This feature is designed for indirect use by Elastic Cloud, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.</p>
+          <p>If you specify a node that is offline, it will be prepared for shut down when it rejoins the cluster.</p>
+          <p>If the operator privileges feature is enabled, you must be an operator to use this API.</p>
+          <p>The API migrates ongoing tasks and index shards to other nodes as needed to prepare a node to be restarted or shut down and removed from the cluster.
+          This ensures that Elasticsearch can be stopped safely with minimal disruption to the cluster.</p>
+          <p>You must specify the type of shutdown: <code>restart</code>, <code>remove</code>, or <code>replace</code>.
+          If a node is already being prepared for shutdown, you can use this API to change the shutdown type.</p>
+          <p>IMPORTANT: This API does NOT terminate the Elasticsearch process.
+          Monitor the node shutdown status to determine when it is safe to stop Elasticsearch.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/put-shutdown.html>`_
 

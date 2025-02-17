@@ -36,8 +36,11 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete auto-follow patterns. Delete a collection of cross-cluster replication
-        auto-follow patterns.
+        .. raw:: html
+
+          <p>Delete auto-follow patterns.
+          Delete a collection of cross-cluster replication auto-follow patterns.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-delete-auto-follow-pattern.html>`_
 
@@ -108,10 +111,12 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create a follower. Create a cross-cluster replication follower index that follows
-        a specific leader index. When the API returns, the follower index exists and
-        cross-cluster replication starts replicating operations from the leader index
-        to the follower index.
+        .. raw:: html
+
+          <p>Create a follower.
+          Create a cross-cluster replication follower index that follows a specific leader index.
+          When the API returns, the follower index exists and cross-cluster replication starts replicating operations from the leader index to the follower index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-put-follow.html>`_
 
@@ -202,10 +207,12 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get follower information. Get information about all cross-cluster replication
-        follower indices. For example, the results include follower index names, leader
-        index names, replication options, and whether the follower indices are active
-        or paused.
+        .. raw:: html
+
+          <p>Get follower information.
+          Get information about all cross-cluster replication follower indices.
+          For example, the results include follower index names, leader index names, replication options, and whether the follower indices are active or paused.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-follow-info.html>`_
 
@@ -246,9 +253,12 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get follower stats. Get cross-cluster replication follower stats. The API returns
-        shard-level stats about the "following tasks" associated with each shard for
-        the specified indices.
+        .. raw:: html
+
+          <p>Get follower stats.
+          Get cross-cluster replication follower stats.
+          The API returns shard-level stats about the &quot;following tasks&quot; associated with each shard for the specified indices.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-follow-stats.html>`_
 
@@ -301,23 +311,19 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Forget a follower. Remove the cross-cluster replication follower retention leases
-        from the leader. A following index takes out retention leases on its leader index.
-        These leases are used to increase the likelihood that the shards of the leader
-        index retain the history of operations that the shards of the following index
-        need to run replication. When a follower index is converted to a regular index
-        by the unfollow API (either by directly calling the API or by index lifecycle
-        management tasks), these leases are removed. However, removal of the leases can
-        fail, for example when the remote cluster containing the leader index is unavailable.
-        While the leases will eventually expire on their own, their extended existence
-        can cause the leader index to hold more history than necessary and prevent index
-        lifecycle management from performing some operations on the leader index. This
-        API exists to enable manually removing the leases when the unfollow API is unable
-        to do so. NOTE: This API does not stop replication by a following index. If you
-        use this API with a follower index that is still actively following, the following
-        index will add back retention leases on the leader. The only purpose of this
-        API is to handle the case of failure to remove the following retention leases
-        after the unfollow API is invoked.
+        .. raw:: html
+
+          <p>Forget a follower.
+          Remove the cross-cluster replication follower retention leases from the leader.</p>
+          <p>A following index takes out retention leases on its leader index.
+          These leases are used to increase the likelihood that the shards of the leader index retain the history of operations that the shards of the following index need to run replication.
+          When a follower index is converted to a regular index by the unfollow API (either by directly calling the API or by index lifecycle management tasks), these leases are removed.
+          However, removal of the leases can fail, for example when the remote cluster containing the leader index is unavailable.
+          While the leases will eventually expire on their own, their extended existence can cause the leader index to hold more history than necessary and prevent index lifecycle management from performing some operations on the leader index.
+          This API exists to enable manually removing the leases when the unfollow API is unable to do so.</p>
+          <p>NOTE: This API does not stop replication by a following index. If you use this API with a follower index that is still actively following, the following index will add back retention leases on the leader.
+          The only purpose of this API is to handle the case of failure to remove the following retention leases after the unfollow API is invoked.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-post-forget-follower.html>`_
 
@@ -373,7 +379,11 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get auto-follow patterns. Get cross-cluster replication auto-follow patterns.
+        .. raw:: html
+
+          <p>Get auto-follow patterns.
+          Get cross-cluster replication auto-follow patterns.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-auto-follow-pattern.html>`_
 
@@ -417,14 +427,16 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Pause an auto-follow pattern. Pause a cross-cluster replication auto-follow pattern.
-        When the API returns, the auto-follow pattern is inactive. New indices that are
-        created on the remote cluster and match the auto-follow patterns are ignored.
-        You can resume auto-following with the resume auto-follow pattern API. When it
-        resumes, the auto-follow pattern is active again and automatically configures
-        follower indices for newly created indices on the remote cluster that match its
-        patterns. Remote indices that were created while the pattern was paused will
-        also be followed, unless they have been deleted or closed in the interim.
+        .. raw:: html
+
+          <p>Pause an auto-follow pattern.
+          Pause a cross-cluster replication auto-follow pattern.
+          When the API returns, the auto-follow pattern is inactive.
+          New indices that are created on the remote cluster and match the auto-follow patterns are ignored.</p>
+          <p>You can resume auto-following with the resume auto-follow pattern API.
+          When it resumes, the auto-follow pattern is active again and automatically configures follower indices for newly created indices on the remote cluster that match its patterns.
+          Remote indices that were created while the pattern was paused will also be followed, unless they have been deleted or closed in the interim.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-pause-auto-follow-pattern.html>`_
 
@@ -465,10 +477,14 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Pause a follower. Pause a cross-cluster replication follower index. The follower
-        index will not fetch any additional operations from the leader index. You can
-        resume following with the resume follower API. You can pause and resume a follower
-        index to change the configuration of the following task.
+        .. raw:: html
+
+          <p>Pause a follower.
+          Pause a cross-cluster replication follower index.
+          The follower index will not fetch any additional operations from the leader index.
+          You can resume following with the resume follower API.
+          You can pause and resume a follower index to change the configuration of the following task.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-post-pause-follow.html>`_
 
@@ -543,14 +559,15 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update auto-follow patterns. Create a collection of cross-cluster replication
-        auto-follow patterns for a remote cluster. Newly created indices on the remote
-        cluster that match any of the patterns are automatically configured as follower
-        indices. Indices on the remote cluster that were created before the auto-follow
-        pattern was created will not be auto-followed even if they match the pattern.
-        This API can also be used to update auto-follow patterns. NOTE: Follower indices
-        that were configured automatically before updating an auto-follow pattern will
-        remain unchanged even if they do not match against the new patterns.
+        .. raw:: html
+
+          <p>Create or update auto-follow patterns.
+          Create a collection of cross-cluster replication auto-follow patterns for a remote cluster.
+          Newly created indices on the remote cluster that match any of the patterns are automatically configured as follower indices.
+          Indices on the remote cluster that were created before the auto-follow pattern was created will not be auto-followed even if they match the pattern.</p>
+          <p>This API can also be used to update auto-follow patterns.
+          NOTE: Follower indices that were configured automatically before updating an auto-follow pattern will remain unchanged even if they do not match against the new patterns.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-put-auto-follow-pattern.html>`_
 
@@ -674,11 +691,13 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Resume an auto-follow pattern. Resume a cross-cluster replication auto-follow
-        pattern that was paused. The auto-follow pattern will resume configuring following
-        indices for newly created indices that match its patterns on the remote cluster.
-        Remote indices created while the pattern was paused will also be followed unless
-        they have been deleted or closed in the interim.
+        .. raw:: html
+
+          <p>Resume an auto-follow pattern.
+          Resume a cross-cluster replication auto-follow pattern that was paused.
+          The auto-follow pattern will resume configuring following indices for newly created indices that match its patterns on the remote cluster.
+          Remote indices created while the pattern was paused will also be followed unless they have been deleted or closed in the interim.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-resume-auto-follow-pattern.html>`_
 
@@ -743,11 +762,14 @@ class CcrClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Resume a follower. Resume a cross-cluster replication follower index that was
-        paused. The follower index could have been paused with the pause follower API.
-        Alternatively it could be paused due to replication that cannot be retried due
-        to failures during following tasks. When this API returns, the follower index
-        will resume fetching operations from the leader index.
+        .. raw:: html
+
+          <p>Resume a follower.
+          Resume a cross-cluster replication follower index that was paused.
+          The follower index could have been paused with the pause follower API.
+          Alternatively it could be paused due to replication that cannot be retried due to failures during following tasks.
+          When this API returns, the follower index will resume fetching operations from the leader index.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-post-resume-follow.html>`_
 
@@ -829,8 +851,11 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get cross-cluster replication stats. This API returns stats about auto-following
-        and the same shard-level stats as the get follower stats API.
+        .. raw:: html
+
+          <p>Get cross-cluster replication stats.
+          This API returns stats about auto-following and the same shard-level stats as the get follower stats API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-get-stats.html>`_
         """
@@ -866,13 +891,14 @@ class CcrClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Unfollow an index. Convert a cross-cluster replication follower index to a regular
-        index. The API stops the following task associated with a follower index and
-        removes index metadata and settings associated with cross-cluster replication.
-        The follower index must be paused and closed before you call the unfollow API.
-        NOTE: Currently cross-cluster replication does not support converting an existing
-        regular index to a follower index. Converting a follower index to a regular index
-        is an irreversible operation.
+        .. raw:: html
+
+          <p>Unfollow an index.
+          Convert a cross-cluster replication follower index to a regular index.
+          The API stops the following task associated with a follower index and removes index metadata and settings associated with cross-cluster replication.
+          The follower index must be paused and closed before you call the unfollow API.</p>
+          <p>NOTE: Currently cross-cluster replication does not support converting an existing regular index to a follower index. Converting a follower index to a regular index is an irreversible operation.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/ccr-post-unfollow.html>`_
 
