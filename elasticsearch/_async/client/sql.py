@@ -39,7 +39,10 @@ class SqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clear an SQL search cursor.
+        .. raw:: html
+
+          <p>Clear an SQL search cursor.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/clear-sql-cursor-api.html>`_
 
@@ -84,11 +87,17 @@ class SqlClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete an async SQL search. Delete an async SQL search or a stored synchronous
-        SQL search. If the search is still running, the API cancels it. If the Elasticsearch
-        security features are enabled, only the following users can use this API to delete
-        a search: * Users with the `cancel_task` cluster privilege. * The user who first
-        submitted the search.
+        .. raw:: html
+
+          <p>Delete an async SQL search.
+          Delete an async SQL search or a stored synchronous SQL search.
+          If the search is still running, the API cancels it.</p>
+          <p>If the Elasticsearch security features are enabled, only the following users can use this API to delete a search:</p>
+          <ul>
+          <li>Users with the <code>cancel_task</code> cluster privilege.</li>
+          <li>The user who first submitted the search.</li>
+          </ul>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-async-sql-search-api.html>`_
 
@@ -134,10 +143,12 @@ class SqlClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get async SQL search results. Get the current status and available results for
-        an async SQL search or stored synchronous SQL search. If the Elasticsearch security
-        features are enabled, only the user who first submitted the SQL search can retrieve
-        the search using this API.
+        .. raw:: html
+
+          <p>Get async SQL search results.
+          Get the current status and available results for an async SQL search or stored synchronous SQL search.</p>
+          <p>If the Elasticsearch security features are enabled, only the user who first submitted the SQL search can retrieve the search using this API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-async-sql-search-api.html>`_
 
@@ -195,8 +206,11 @@ class SqlClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the async SQL search status. Get the current status of an async SQL search
-        or a stored synchronous SQL search.
+        .. raw:: html
+
+          <p>Get the async SQL search status.
+          Get the current status of an async SQL search or a stored synchronous SQL search.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-async-sql-search-status-api.html>`_
 
@@ -281,7 +295,11 @@ class SqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get SQL search results. Run an SQL request.
+        .. raw:: html
+
+          <p>Get SQL search results.
+          Run an SQL request.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/sql-search-api.html>`_
 
@@ -402,9 +420,12 @@ class SqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Translate SQL into Elasticsearch queries. Translate an SQL search into a search
-        API request containing Query DSL. It accepts the same request body parameters
-        as the SQL search API, excluding `cursor`.
+        .. raw:: html
+
+          <p>Translate SQL into Elasticsearch queries.
+          Translate an SQL search into a search API request containing Query DSL.
+          It accepts the same request body parameters as the SQL search API, excluding <code>cursor</code>.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/sql-translate-api.html>`_
 

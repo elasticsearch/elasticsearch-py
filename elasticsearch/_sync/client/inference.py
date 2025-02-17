@@ -44,7 +44,10 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete an inference endpoint
+        .. raw:: html
+
+          <p>Delete an inference endpoint</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-inference-api.html>`_
 
@@ -109,7 +112,10 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get an inference endpoint
+        .. raw:: html
+
+          <p>Get an inference endpoint</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-inference-api.html>`_
 
@@ -172,7 +178,10 @@ class InferenceClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Perform inference on the service
+        .. raw:: html
+
+          <p>Perform inference on the service</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/post-inference-api.html>`_
 
@@ -255,21 +264,18 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create an inference endpoint. When you create an inference endpoint, the associated
-        machine learning model is automatically deployed if it is not already running.
-        After creating the endpoint, wait for the model deployment to complete before
-        using it. To verify the deployment status, use the get trained model statistics
-        API. Look for `"state": "fully_allocated"` in the response and ensure that the
-        `"allocation_count"` matches the `"target_allocation_count"`. Avoid creating
-        multiple endpoints for the same model unless required, as each endpoint consumes
-        significant resources. IMPORTANT: The inference APIs enable you to use certain
-        services, such as built-in machine learning models (ELSER, E5), models uploaded
-        through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google
-        Vertex AI, Anthropic, Watsonx.ai, or Hugging Face. For built-in models and models
-        uploaded through Eland, the inference APIs offer an alternative way to use and
-        manage trained models. However, if you do not plan to use the inference APIs
-        to use these models or if you want to use non-NLP models, use the machine learning
-        trained model APIs.
+        .. raw:: html
+
+          <p>Create an inference endpoint.
+          When you create an inference endpoint, the associated machine learning model is automatically deployed if it is not already running.
+          After creating the endpoint, wait for the model deployment to complete before using it.
+          To verify the deployment status, use the get trained model statistics API.
+          Look for <code>&quot;state&quot;: &quot;fully_allocated&quot;</code> in the response and ensure that the <code>&quot;allocation_count&quot;</code> matches the <code>&quot;target_allocation_count&quot;</code>.
+          Avoid creating multiple endpoints for the same model unless required, as each endpoint consumes significant resources.</p>
+          <p>IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Mistral, Azure OpenAI, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.
+          For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
+          However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/put-inference-api.html>`_
 
@@ -339,16 +345,14 @@ class InferenceClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Update an inference endpoint. Modify `task_settings`, secrets (within `service_settings`),
-        or `num_allocations` for an inference endpoint, depending on the specific endpoint
-        service and `task_type`. IMPORTANT: The inference APIs enable you to use certain
-        services, such as built-in machine learning models (ELSER, E5), models uploaded
-        through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic,
-        Watsonx.ai, or Hugging Face. For built-in models and models uploaded through
-        Eland, the inference APIs offer an alternative way to use and manage trained
-        models. However, if you do not plan to use the inference APIs to use these models
-        or if you want to use non-NLP models, use the machine learning trained model
-        APIs.
+        .. raw:: html
+
+          <p>Update an inference endpoint.</p>
+          <p>Modify <code>task_settings</code>, secrets (within <code>service_settings</code>), or <code>num_allocations</code> for an inference endpoint, depending on the specific endpoint service and <code>task_type</code>.</p>
+          <p>IMPORTANT: The inference APIs enable you to use certain services, such as built-in machine learning models (ELSER, E5), models uploaded through Eland, Cohere, OpenAI, Azure, Google AI Studio, Google Vertex AI, Anthropic, Watsonx.ai, or Hugging Face.
+          For built-in models and models uploaded through Eland, the inference APIs offer an alternative way to use and manage trained models.
+          However, if you do not plan to use the inference APIs to use these models or if you want to use non-NLP models, use the machine learning trained model APIs.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/update-inference-api.html>`_
 

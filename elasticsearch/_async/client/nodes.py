@@ -44,8 +44,11 @@ class NodesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Clear the archived repositories metering. Clear the archived repositories metering
-        information in the cluster.
+        .. raw:: html
+
+          <p>Clear the archived repositories metering.
+          Clear the archived repositories metering information in the cluster.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/clear-repositories-metering-archive-api.html>`_
 
@@ -94,11 +97,13 @@ class NodesClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get cluster repositories metering. Get repositories metering information for
-        a cluster. This API exposes monotonically non-decreasing counters and it is expected
-        that clients would durably store the information needed to compute aggregations
-        over a period of time. Additionally, the information exposed by this API is volatile,
-        meaning that it will not be present after node restarts.
+        .. raw:: html
+
+          <p>Get cluster repositories metering.
+          Get repositories metering information for a cluster.
+          This API exposes monotonically non-decreasing counters and it is expected that clients would durably store the information needed to compute aggregations over a period of time.
+          Additionally, the information exposed by this API is volatile, meaning that it will not be present after node restarts.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-repositories-metering-api.html>`_
 
@@ -151,9 +156,12 @@ class NodesClient(NamespacedClient):
         ] = None,
     ) -> TextApiResponse:
         """
-        Get the hot threads for nodes. Get a breakdown of the hot threads on each selected
-        node in the cluster. The output is plain text with a breakdown of the top hot
-        threads for each node.
+        .. raw:: html
+
+          <p>Get the hot threads for nodes.
+          Get a breakdown of the hot threads on each selected node in the cluster.
+          The output is plain text with a breakdown of the top hot threads for each node.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cluster-nodes-hot-threads.html>`_
 
@@ -228,8 +236,11 @@ class NodesClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get node information. By default, the API returns all attributes and core settings
-        for cluster nodes.
+        .. raw:: html
+
+          <p>Get node information.
+          By default, the API returns all attributes and core settings for cluster nodes.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cluster-nodes-info.html>`_
 
@@ -298,18 +309,16 @@ class NodesClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Reload the keystore on nodes in the cluster. Secure settings are stored in an
-        on-disk keystore. Certain of these settings are reloadable. That is, you can
-        change them on disk and reload them without restarting any nodes in the cluster.
-        When you have updated reloadable secure settings in your keystore, you can use
-        this API to reload those settings on each node. When the Elasticsearch keystore
-        is password protected and not simply obfuscated, you must provide the password
-        for the keystore when you reload the secure settings. Reloading the settings
-        for the whole cluster assumes that the keystores for all nodes are protected
-        with the same password; this method is allowed only when inter-node communications
-        are encrypted. Alternatively, you can reload the secure settings on each node
-        by locally accessing the API and passing the node-specific Elasticsearch keystore
-        password.
+        .. raw:: html
+
+          <p>Reload the keystore on nodes in the cluster.</p>
+          <p>Secure settings are stored in an on-disk keystore. Certain of these settings are reloadable.
+          That is, you can change them on disk and reload them without restarting any nodes in the cluster.
+          When you have updated reloadable secure settings in your keystore, you can use this API to reload those settings on each node.</p>
+          <p>When the Elasticsearch keystore is password protected and not simply obfuscated, you must provide the password for the keystore when you reload the secure settings.
+          Reloading the settings for the whole cluster assumes that the keystores for all nodes are protected with the same password; this method is allowed only when inter-node communications are encrypted.
+          Alternatively, you can reload the secure settings on each node by locally accessing the API and passing the node-specific Elasticsearch keystore password.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/secure-settings.html#reloadable-secure-settings>`_
 
@@ -380,8 +389,12 @@ class NodesClient(NamespacedClient):
         types: t.Optional[t.Sequence[str]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get node statistics. Get statistics for nodes in a cluster. By default, all stats
-        are returned. You can limit the returned information by using metrics.
+        .. raw:: html
+
+          <p>Get node statistics.
+          Get statistics for nodes in a cluster.
+          By default, all stats are returned. You can limit the returned information by using metrics.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cluster-nodes-stats.html>`_
 
@@ -498,7 +511,10 @@ class NodesClient(NamespacedClient):
         timeout: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get feature usage information.
+        .. raw:: html
+
+          <p>Get feature usage information.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/cluster-nodes-usage.html>`_
 

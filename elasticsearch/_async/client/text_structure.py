@@ -53,22 +53,24 @@ class TextStructureClient(NamespacedClient):
         timestamp_format: t.Optional[str] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Find the structure of a text field. Find the structure of a text field in an
-        Elasticsearch index. This API provides a starting point for extracting further
-        information from log messages already ingested into Elasticsearch. For example,
-        if you have ingested data into a very simple index that has just `@timestamp`
-        and message fields, you can use this API to see what common structure exists
-        in the message field. The response from the API contains: * Sample messages.
-        * Statistics that reveal the most common values for all fields detected within
-        the text and basic numeric statistics for numeric fields. * Information about
-        the structure of the text, which is useful when you write ingest configurations
-        to index it or similarly formatted text. * Appropriate mappings for an Elasticsearch
-        index, which you could use to ingest the text. All this information can be calculated
-        by the structure finder with no guidance. However, you can optionally override
-        some of the decisions about the text structure by specifying one or more query
-        parameters. If the structure finder produces unexpected results, specify the
-        `explain` query parameter and an explanation will appear in the response. It
-        helps determine why the returned structure was chosen.
+        .. raw:: html
+
+          <p>Find the structure of a text field.
+          Find the structure of a text field in an Elasticsearch index.</p>
+          <p>This API provides a starting point for extracting further information from log messages already ingested into Elasticsearch.
+          For example, if you have ingested data into a very simple index that has just <code>@timestamp</code> and message fields, you can use this API to see what common structure exists in the message field.</p>
+          <p>The response from the API contains:</p>
+          <ul>
+          <li>Sample messages.</li>
+          <li>Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.</li>
+          <li>Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.</li>
+          <li>Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.</li>
+          </ul>
+          <p>All this information can be calculated by the structure finder with no guidance.
+          However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.</p>
+          <p>If the structure finder produces unexpected results, specify the <code>explain</code> query parameter and an explanation will appear in the response.
+          It helps determine why the returned structure was chosen.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/find-field-structure.html>`_
 
@@ -237,23 +239,25 @@ class TextStructureClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Find the structure of text messages. Find the structure of a list of text messages.
-        The messages must contain data that is suitable to be ingested into Elasticsearch.
-        This API provides a starting point for ingesting data into Elasticsearch in a
-        format that is suitable for subsequent use with other Elastic Stack functionality.
-        Use this API rather than the find text structure API if your input text has already
-        been split up into separate messages by some other process. The response from
-        the API contains: * Sample messages. * Statistics that reveal the most common
-        values for all fields detected within the text and basic numeric statistics for
-        numeric fields. * Information about the structure of the text, which is useful
-        when you write ingest configurations to index it or similarly formatted text.
-        Appropriate mappings for an Elasticsearch index, which you could use to ingest
-        the text. All this information can be calculated by the structure finder with
-        no guidance. However, you can optionally override some of the decisions about
-        the text structure by specifying one or more query parameters. If the structure
-        finder produces unexpected results, specify the `explain` query parameter and
-        an explanation will appear in the response. It helps determine why the returned
-        structure was chosen.
+        .. raw:: html
+
+          <p>Find the structure of text messages.
+          Find the structure of a list of text messages.
+          The messages must contain data that is suitable to be ingested into Elasticsearch.</p>
+          <p>This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.
+          Use this API rather than the find text structure API if your input text has already been split up into separate messages by some other process.</p>
+          <p>The response from the API contains:</p>
+          <ul>
+          <li>Sample messages.</li>
+          <li>Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.</li>
+          <li>Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.
+          Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.</li>
+          </ul>
+          <p>All this information can be calculated by the structure finder with no guidance.
+          However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.</p>
+          <p>If the structure finder produces unexpected results, specify the <code>explain</code> query parameter and an explanation will appear in the response.
+          It helps determine why the returned structure was chosen.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/find-message-structure.html>`_
 
@@ -410,22 +414,24 @@ class TextStructureClient(NamespacedClient):
         timestamp_format: t.Optional[str] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Find the structure of a text file. The text file must contain data that is suitable
-        to be ingested into Elasticsearch. This API provides a starting point for ingesting
-        data into Elasticsearch in a format that is suitable for subsequent use with
-        other Elastic Stack functionality. Unlike other Elasticsearch endpoints, the
-        data that is posted to this endpoint does not need to be UTF-8 encoded and in
-        JSON format. It must, however, be text; binary text formats are not currently
-        supported. The size is limited to the Elasticsearch HTTP receive buffer size,
-        which defaults to 100 Mb. The response from the API contains: * A couple of messages
-        from the beginning of the text. * Statistics that reveal the most common values
-        for all fields detected within the text and basic numeric statistics for numeric
-        fields. * Information about the structure of the text, which is useful when you
-        write ingest configurations to index it or similarly formatted text. * Appropriate
-        mappings for an Elasticsearch index, which you could use to ingest the text.
-        All this information can be calculated by the structure finder with no guidance.
-        However, you can optionally override some of the decisions about the text structure
-        by specifying one or more query parameters.
+        .. raw:: html
+
+          <p>Find the structure of a text file.
+          The text file must contain data that is suitable to be ingested into Elasticsearch.</p>
+          <p>This API provides a starting point for ingesting data into Elasticsearch in a format that is suitable for subsequent use with other Elastic Stack functionality.
+          Unlike other Elasticsearch endpoints, the data that is posted to this endpoint does not need to be UTF-8 encoded and in JSON format.
+          It must, however, be text; binary text formats are not currently supported.
+          The size is limited to the Elasticsearch HTTP receive buffer size, which defaults to 100 Mb.</p>
+          <p>The response from the API contains:</p>
+          <ul>
+          <li>A couple of messages from the beginning of the text.</li>
+          <li>Statistics that reveal the most common values for all fields detected within the text and basic numeric statistics for numeric fields.</li>
+          <li>Information about the structure of the text, which is useful when you write ingest configurations to index it or similarly formatted text.</li>
+          <li>Appropriate mappings for an Elasticsearch index, which you could use to ingest the text.</li>
+          </ul>
+          <p>All this information can be calculated by the structure finder with no guidance.
+          However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/find-structure.html>`_
 
@@ -607,9 +613,12 @@ class TextStructureClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Test a Grok pattern. Test a Grok pattern on one or more lines of text. The API
-        indicates whether the lines match the pattern together with the offsets and lengths
-        of the matched substrings.
+        .. raw:: html
+
+          <p>Test a Grok pattern.
+          Test a Grok pattern on one or more lines of text.
+          The API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/test-grok-pattern.html>`_
 

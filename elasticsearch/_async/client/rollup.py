@@ -43,20 +43,29 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a rollup job. A job must be stopped before it can be deleted. If you attempt
-        to delete a started job, an error occurs. Similarly, if you attempt to delete
-        a nonexistent job, an exception occurs. IMPORTANT: When you delete a job, you
-        remove only the process that is actively monitoring and rolling up data. The
-        API does not delete any previously rolled up data. This is by design; a user
-        may wish to roll up a static data set. Because the data set is static, after
-        it has been fully rolled up there is no need to keep the indexing rollup job
-        around (as there will be no new data). Thus the job can be deleted, leaving behind
-        the rolled up data for analysis. If you wish to also remove the rollup data and
-        the rollup index contains the data for only a single job, you can delete the
-        whole rollup index. If the rollup index stores data from several jobs, you must
-        issue a delete-by-query that targets the rollup job's identifier in the rollup
-        index. For example: ``` POST my_rollup_index/_delete_by_query { "query": { "term":
-        { "_rollup.id": "the_rollup_job_id" } } } ```
+        .. raw:: html
+
+          <p>Delete a rollup job.</p>
+          <p>A job must be stopped before it can be deleted.
+          If you attempt to delete a started job, an error occurs.
+          Similarly, if you attempt to delete a nonexistent job, an exception occurs.</p>
+          <p>IMPORTANT: When you delete a job, you remove only the process that is actively monitoring and rolling up data.
+          The API does not delete any previously rolled up data.
+          This is by design; a user may wish to roll up a static data set.
+          Because the data set is static, after it has been fully rolled up there is no need to keep the indexing rollup job around (as there will be no new data).
+          Thus the job can be deleted, leaving behind the rolled up data for analysis.
+          If you wish to also remove the rollup data and the rollup index contains the data for only a single job, you can delete the whole rollup index.
+          If the rollup index stores data from several jobs, you must issue a delete-by-query that targets the rollup job's identifier in the rollup index. For example:</p>
+          <pre><code>POST my_rollup_index/_delete_by_query
+          {
+            &quot;query&quot;: {
+              &quot;term&quot;: {
+                &quot;_rollup.id&quot;: &quot;the_rollup_job_id&quot;
+              }
+            }
+          }
+          </code></pre>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-delete-job.html>`_
 
@@ -97,11 +106,14 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get rollup job information. Get the configuration, stats, and status of rollup
-        jobs. NOTE: This API returns only active (both `STARTED` and `STOPPED`) jobs.
-        If a job was created, ran for a while, then was deleted, the API does not return
-        any details about it. For details about a historical rollup job, the rollup capabilities
-        API may be more useful.
+        .. raw:: html
+
+          <p>Get rollup job information.
+          Get the configuration, stats, and status of rollup jobs.</p>
+          <p>NOTE: This API returns only active (both <code>STARTED</code> and <code>STOPPED</code>) jobs.
+          If a job was created, ran for a while, then was deleted, the API does not return any details about it.
+          For details about a historical rollup job, the rollup capabilities API may be more useful.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-get-job.html>`_
 
@@ -146,15 +158,18 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the rollup job capabilities. Get the capabilities of any rollup jobs that
-        have been configured for a specific index or index pattern. This API is useful
-        because a rollup job is often configured to rollup only a subset of fields from
-        the source index. Furthermore, only certain aggregations can be configured for
-        various fields, leading to a limited subset of functionality depending on that
-        configuration. This API enables you to inspect an index and determine: 1. Does
-        this index have associated rollup data somewhere in the cluster? 2. If yes to
-        the first question, what fields were rolled up, what aggregations can be performed,
-        and where does the data live?
+        .. raw:: html
+
+          <p>Get the rollup job capabilities.
+          Get the capabilities of any rollup jobs that have been configured for a specific index or index pattern.</p>
+          <p>This API is useful because a rollup job is often configured to rollup only a subset of fields from the source index.
+          Furthermore, only certain aggregations can be configured for various fields, leading to a limited subset of functionality depending on that configuration.
+          This API enables you to inspect an index and determine:</p>
+          <ol>
+          <li>Does this index have associated rollup data somewhere in the cluster?</li>
+          <li>If yes to the first question, what fields were rolled up, what aggregations can be performed, and where does the data live?</li>
+          </ol>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-get-rollup-caps.html>`_
 
@@ -199,12 +214,16 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the rollup index capabilities. Get the rollup capabilities of all jobs inside
-        of a rollup index. A single rollup index may store the data for multiple rollup
-        jobs and may have a variety of capabilities depending on those jobs. This API
-        enables you to determine: * What jobs are stored in an index (or indices specified
-        via a pattern)? * What target indices were rolled up, what fields were used in
-        those rollups, and what aggregations can be performed on each job?
+        .. raw:: html
+
+          <p>Get the rollup index capabilities.
+          Get the rollup capabilities of all jobs inside of a rollup index.
+          A single rollup index may store the data for multiple rollup jobs and may have a variety of capabilities depending on those jobs. This API enables you to determine:</p>
+          <ul>
+          <li>What jobs are stored in an index (or indices specified via a pattern)?</li>
+          <li>What target indices were rolled up, what fields were used in those rollups, and what aggregations can be performed on each job?</li>
+          </ul>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-get-rollup-index-caps.html>`_
 
@@ -267,16 +286,14 @@ class RollupClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create a rollup job. WARNING: From 8.15.0, calling this API in a cluster with
-        no rollup usage will fail with a message about the deprecation and planned removal
-        of rollup features. A cluster needs to contain either a rollup job or a rollup
-        index in order for this API to be allowed to run. The rollup job configuration
-        contains all the details about how the job should run, when it indexes documents,
-        and what future queries will be able to run against the rollup index. There are
-        three main sections to the job configuration: the logistical details about the
-        job (for example, the cron schedule), the fields that are used for grouping,
-        and what metrics to collect for each group. Jobs are created in a `STOPPED` state.
-        You can start them with the start rollup jobs API.
+        .. raw:: html
+
+          <p>Create a rollup job.</p>
+          <p>WARNING: From 8.15.0, calling this API in a cluster with no rollup usage will fail with a message about the deprecation and planned removal of rollup features. A cluster needs to contain either a rollup job or a rollup index in order for this API to be allowed to run.</p>
+          <p>The rollup job configuration contains all the details about how the job should run, when it indexes documents, and what future queries will be able to run against the rollup index.</p>
+          <p>There are three main sections to the job configuration: the logistical details about the job (for example, the cron schedule), the fields that are used for grouping, and what metrics to collect for each group.</p>
+          <p>Jobs are created in a <code>STOPPED</code> state. You can start them with the start rollup jobs API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-put-job.html>`_
 
@@ -393,25 +410,38 @@ class RollupClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Search rolled-up data. The rollup search endpoint is needed because, internally,
-        rolled-up documents utilize a different document structure than the original
-        data. It rewrites standard Query DSL into a format that matches the rollup documents
-        then takes the response and rewrites it back to what a client would expect given
-        the original query. The request body supports a subset of features from the regular
-        search API. The following functionality is not available: `size`: Because rollups
-        work on pre-aggregated data, no search hits can be returned and so size must
-        be set to zero or omitted entirely. `highlighter`, `suggestors`, `post_filter`,
-        `profile`, `explain`: These are similarly disallowed. **Searching both historical
-        rollup and non-rollup data** The rollup search API has the capability to search
-        across both "live" non-rollup data and the aggregated rollup data. This is done
-        by simply adding the live indices to the URI. For example: ``` GET sensor-1,sensor_rollup/_rollup_search
-        { "size": 0, "aggregations": { "max_temperature": { "max": { "field": "temperature"
-        } } } } ``` The rollup search endpoint does two things when the search runs:
-        * The original request is sent to the non-rollup index unaltered. * A rewritten
-        version of the original request is sent to the rollup index. When the two responses
-        are received, the endpoint rewrites the rollup response and merges the two together.
-        During the merging process, if there is any overlap in buckets between the two
-        responses, the buckets from the non-rollup index are used.
+        .. raw:: html
+
+          <p>Search rolled-up data.
+          The rollup search endpoint is needed because, internally, rolled-up documents utilize a different document structure than the original data.
+          It rewrites standard Query DSL into a format that matches the rollup documents then takes the response and rewrites it back to what a client would expect given the original query.</p>
+          <p>The request body supports a subset of features from the regular search API.
+          The following functionality is not available:</p>
+          <p><code>size</code>: Because rollups work on pre-aggregated data, no search hits can be returned and so size must be set to zero or omitted entirely.
+          <code>highlighter</code>, <code>suggestors</code>, <code>post_filter</code>, <code>profile</code>, <code>explain</code>: These are similarly disallowed.</p>
+          <p><strong>Searching both historical rollup and non-rollup data</strong></p>
+          <p>The rollup search API has the capability to search across both &quot;live&quot; non-rollup data and the aggregated rollup data.
+          This is done by simply adding the live indices to the URI. For example:</p>
+          <pre><code>GET sensor-1,sensor_rollup/_rollup_search
+          {
+            &quot;size&quot;: 0,
+            &quot;aggregations&quot;: {
+               &quot;max_temperature&quot;: {
+                &quot;max&quot;: {
+                  &quot;field&quot;: &quot;temperature&quot;
+                }
+              }
+            }
+          }
+          </code></pre>
+          <p>The rollup search endpoint does two things when the search runs:</p>
+          <ul>
+          <li>The original request is sent to the non-rollup index unaltered.</li>
+          <li>A rewritten version of the original request is sent to the rollup index.</li>
+          </ul>
+          <p>When the two responses are received, the endpoint rewrites the rollup response and merges the two together.
+          During the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-search.html>`_
 
@@ -484,8 +514,12 @@ class RollupClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Start rollup jobs. If you try to start a job that does not exist, an exception
-        occurs. If you try to start a job that is already started, nothing happens.
+        .. raw:: html
+
+          <p>Start rollup jobs.
+          If you try to start a job that does not exist, an exception occurs.
+          If you try to start a job that is already started, nothing happens.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-start-job.html>`_
 
@@ -528,14 +562,18 @@ class RollupClient(NamespacedClient):
         wait_for_completion: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Stop rollup jobs. If you try to stop a job that does not exist, an exception
-        occurs. If you try to stop a job that is already stopped, nothing happens. Since
-        only a stopped job can be deleted, it can be useful to block the API until the
-        indexer has fully stopped. This is accomplished with the `wait_for_completion`
-        query parameter, and optionally a timeout. For example: ``` POST _rollup/job/sensor/_stop?wait_for_completion=true&timeout=10s
-        ``` The parameter blocks the API call from returning until either the job has
-        moved to STOPPED or the specified time has elapsed. If the specified time elapses
-        without the job moving to STOPPED, a timeout exception occurs.
+        .. raw:: html
+
+          <p>Stop rollup jobs.
+          If you try to stop a job that does not exist, an exception occurs.
+          If you try to stop a job that is already stopped, nothing happens.</p>
+          <p>Since only a stopped job can be deleted, it can be useful to block the API until the indexer has fully stopped.
+          This is accomplished with the <code>wait_for_completion</code> query parameter, and optionally a timeout. For example:</p>
+          <pre><code>POST _rollup/job/sensor/_stop?wait_for_completion=true&amp;timeout=10s
+          </code></pre>
+          <p>The parameter blocks the API call from returning until either the job has moved to STOPPED or the specified time has elapsed.
+          If the specified time elapses without the job moving to STOPPED, a timeout exception occurs.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/rollup-stop-job.html>`_
 

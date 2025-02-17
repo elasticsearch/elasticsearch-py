@@ -36,9 +36,12 @@ class LogstashClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete a Logstash pipeline. Delete a pipeline that is used for Logstash Central
-        Management. If the request succeeds, you receive an empty response with an appropriate
-        status code.
+        .. raw:: html
+
+          <p>Delete a Logstash pipeline.
+          Delete a pipeline that is used for Logstash Central Management.
+          If the request succeeds, you receive an empty response with an appropriate status code.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/logstash-api-delete-pipeline.html>`_
 
@@ -78,7 +81,11 @@ class LogstashClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get Logstash pipelines. Get pipelines that are used for Logstash Central Management.
+        .. raw:: html
+
+          <p>Get Logstash pipelines.
+          Get pipelines that are used for Logstash Central Management.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/logstash-api-get-pipeline.html>`_
 
@@ -125,8 +132,12 @@ class LogstashClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Create or update a Logstash pipeline. Create a pipeline that is used for Logstash
-        Central Management. If the specified pipeline exists, it is replaced.
+        .. raw:: html
+
+          <p>Create or update a Logstash pipeline.</p>
+          <p>Create a pipeline that is used for Logstash Central Management.
+          If the specified pipeline exists, it is replaced.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/logstash-api-put-pipeline.html>`_
 

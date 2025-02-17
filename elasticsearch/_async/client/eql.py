@@ -36,8 +36,12 @@ class EqlClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete an async EQL search. Delete an async EQL search or a stored synchronous
-        EQL search. The API also deletes results for the search.
+        .. raw:: html
+
+          <p>Delete an async EQL search.
+          Delete an async EQL search or a stored synchronous EQL search.
+          The API also deletes results for the search.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/eql-search-api.html>`_
 
@@ -83,8 +87,11 @@ class EqlClient(NamespacedClient):
         ] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get async EQL search results. Get the current status and available results for
-        an async EQL search or a stored synchronous EQL search.
+        .. raw:: html
+
+          <p>Get async EQL search results.
+          Get the current status and available results for an async EQL search or a stored synchronous EQL search.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-async-eql-search-api.html>`_
 
@@ -134,8 +141,11 @@ class EqlClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the async EQL status. Get the current status for an async EQL search or a
-        stored synchronous EQL search without returning results.
+        .. raw:: html
+
+          <p>Get the async EQL status.
+          Get the current status for an async EQL search or a stored synchronous EQL search without returning results.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-async-eql-status-api.html>`_
 
@@ -223,9 +233,12 @@ class EqlClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get EQL search results. Returns search results for an Event Query Language (EQL)
-        query. EQL assumes each document in a data stream or index corresponds to an
-        event.
+        .. raw:: html
+
+          <p>Get EQL search results.
+          Returns search results for an Event Query Language (EQL) query.
+          EQL assumes each document in a data stream or index corresponds to an event.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/eql-search-api.html>`_
 

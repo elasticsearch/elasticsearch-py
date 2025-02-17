@@ -35,9 +35,12 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Delete the license. When the license expires, your subscription level reverts
-        to Basic. If the operator privileges feature is enabled, only operator users
-        can use this API.
+        .. raw:: html
+
+          <p>Delete the license.
+          When the license expires, your subscription level reverts to Basic.</p>
+          <p>If the operator privileges feature is enabled, only operator users can use this API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/delete-license.html>`_
         """
@@ -74,11 +77,13 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get license information. Get information about your Elastic license including
-        its type, its status, when it was issued, and when it expires. NOTE: If the master
-        node is generating a new cluster state, the get license API may return a `404
-        Not Found` response. If you receive an unexpected 404 response after cluster
-        startup, wait a short period and retry the request.
+        .. raw:: html
+
+          <p>Get license information.
+          Get information about your Elastic license including its type, its status, when it was issued, and when it expires.</p>
+          <p>NOTE: If the master node is generating a new cluster state, the get license API may return a <code>404 Not Found</code> response.
+          If you receive an unexpected 404 response after cluster startup, wait a short period and retry the request.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-license.html>`_
 
@@ -124,7 +129,10 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the basic license status.
+        .. raw:: html
+
+          <p>Get the basic license status.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-basic-status.html>`_
         """
@@ -159,7 +167,10 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Get the trial status.
+        .. raw:: html
+
+          <p>Get the trial status.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/get-trial-status.html>`_
         """
@@ -200,14 +211,16 @@ class LicenseClient(NamespacedClient):
         body: t.Optional[t.Dict[str, t.Any]] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Update the license. You can update your license at runtime without shutting down
-        your nodes. License updates take effect immediately. If the license you are installing
-        does not support all of the features that were available with your previous license,
-        however, you are notified in the response. You must then re-submit the API request
-        with the acknowledge parameter set to true. NOTE: If Elasticsearch security features
-        are enabled and you are installing a gold or higher license, you must enable
-        TLS on the transport networking layer before you install the license. If the
-        operator privileges feature is enabled, only operator users can use this API.
+        .. raw:: html
+
+          <p>Update the license.
+          You can update your license at runtime without shutting down your nodes.
+          License updates take effect immediately.
+          If the license you are installing does not support all of the features that were available with your previous license, however, you are notified in the response.
+          You must then re-submit the API request with the acknowledge parameter set to true.</p>
+          <p>NOTE: If Elasticsearch security features are enabled and you are installing a gold or higher license, you must enable TLS on the transport networking layer before you install the license.
+          If the operator privileges feature is enabled, only operator users can use this API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/update-license.html>`_
 
@@ -261,13 +274,15 @@ class LicenseClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Start a basic license. Start an indefinite basic license, which gives access
-        to all the basic features. NOTE: In order to start a basic license, you must
-        not currently have a basic license. If the basic license does not support all
-        of the features that are available with your current license, however, you are
-        notified in the response. You must then re-submit the API request with the `acknowledge`
-        parameter set to `true`. To check the status of your basic license, use the get
-        basic license API.
+        .. raw:: html
+
+          <p>Start a basic license.
+          Start an indefinite basic license, which gives access to all the basic features.</p>
+          <p>NOTE: In order to start a basic license, you must not currently have a basic license.</p>
+          <p>If the basic license does not support all of the features that are available with your current license, however, you are notified in the response.
+          You must then re-submit the API request with the <code>acknowledge</code> parameter set to <code>true</code>.</p>
+          <p>To check the status of your basic license, use the get basic license API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/start-basic.html>`_
 
@@ -309,12 +324,14 @@ class LicenseClient(NamespacedClient):
         type_query_string: t.Optional[str] = None,
     ) -> ObjectApiResponse[t.Any]:
         """
-        Start a trial. Start a 30-day trial, which gives access to all subscription features.
-        NOTE: You are allowed to start a trial only if your cluster has not already activated
-        a trial for the current major product version. For example, if you have already
-        activated a trial for v8.0, you cannot start a new trial until v9.0. You can,
-        however, request an extended trial at https://www.elastic.co/trialextension.
-        To check the status of your trial, use the get trial status API.
+        .. raw:: html
+
+          <p>Start a trial.
+          Start a 30-day trial, which gives access to all subscription features.</p>
+          <p>NOTE: You are allowed to start a trial only if your cluster has not already activated a trial for the current major product version.
+          For example, if you have already activated a trial for v8.0, you cannot start a new trial until v9.0. You can, however, request an extended trial at <a href="https://www.elastic.co/trialextension">https://www.elastic.co/trialextension</a>.</p>
+          <p>To check the status of your trial, use the get trial status API.</p>
+
 
         `<https://www.elastic.co/guide/en/elasticsearch/reference/8.17/start-trial.html>`_
 
