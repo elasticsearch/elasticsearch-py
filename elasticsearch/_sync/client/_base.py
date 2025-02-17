@@ -15,6 +15,7 @@
 #  specific language governing permissions and limitations
 #  under the License.
 
+import base64
 import re
 import warnings
 from typing import (
@@ -168,13 +169,23 @@ def create_sniff_callback(
     def sniff_callback(
         transport: Transport, sniff_options: SniffOptions
     ) -> List[NodeConfig]:
+        # Dynamically resolve authentication headers based on the client's configuration.
+        auth_headers = resolve_auth_headers(
+            headers=None,
+            http_auth=transport.http_auth,
+            api_key=transport.api_key,
+            basic_auth=transport.basic_auth,
+            bearer_auth=transport.bearer_auth,
+        )
+
         for _ in transport.node_pool.all():
             try:
                 meta, node_infos = transport.perform_request(
                     "GET",
                     "/_nodes/_all/http",
                     headers={
-                        "accept": "application/vnd.elasticsearch+json; compatible-with=8"
+                        **auth_headers, # Include the resolved authentication headers
+                        "accept": "application/vnd.elasticsearch+json; compatible-with=8",
                     },
                     request_timeout=(
                         sniff_options.sniff_timeout
