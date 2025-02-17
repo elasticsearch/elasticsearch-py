@@ -41,11 +41,10 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Delete a transform.
-          Deletes a transform.</p>
+          <p>Delete a transform.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/delete-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-delete-transform>`_
 
         :param transform_id: Identifier for the transform.
         :param delete_dest_index: If this value is true, the destination index is deleted
@@ -106,10 +105,10 @@ class TransformClient(NamespacedClient):
         .. raw:: html
 
           <p>Get transforms.
-          Retrieves configuration information for transforms.</p>
+          Get configuration information for transforms.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform>`_
 
         :param transform_id: Identifier for the transform. It can be a transform identifier
             or a wildcard expression. You can get information for all transforms by using
@@ -178,11 +177,11 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get transform stats.
-          Retrieves usage information for transforms.</p>
+          <p>Get transform stats.</p>
+          <p>Get usage information for transforms.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-transform-stats.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-get-transform-stats>`_
 
         :param transform_id: Identifier for the transform. It can be a transform identifier
             or a wildcard expression. You can get information for all transforms by using
@@ -270,7 +269,7 @@ class TransformClient(NamespacedClient):
           types of the source index and the transform aggregations.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/preview-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-preview-transform>`_
 
         :param transform_id: Identifier for the transform to preview. If you specify
             this path parameter, you cannot provide transform configuration details in
@@ -407,7 +406,7 @@ class TransformClient(NamespacedClient):
           give users any privileges on <code>.data-frame-internal*</code> indices.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/put-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-put-transform>`_
 
         :param transform_id: Identifier for the transform. This identifier can contain
             lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores.
@@ -508,13 +507,12 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Reset a transform.
-          Resets a transform.
-          Before you can reset it, you must stop it; alternatively, use the <code>force</code> query parameter.
+          <p>Reset a transform.</p>
+          <p>Before you can reset it, you must stop it; alternatively, use the <code>force</code> query parameter.
           If the destination index was created by the transform, it is deleted.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/reset-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-reset-transform>`_
 
         :param transform_id: Identifier for the transform. This identifier can contain
             lowercase alphanumeric characters (a-z and 0-9), hyphens, and underscores.
@@ -566,15 +564,15 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Schedule a transform to start now.
-          Instantly runs a transform to process data.</p>
-          <p>If you _schedule_now a transform, it will process the new data instantly,
-          without waiting for the configured frequency interval. After _schedule_now API is called,
-          the transform will be processed again at now + frequency unless _schedule_now API
+          <p>Schedule a transform to start now.</p>
+          <p>Instantly run a transform to process data.
+          If you run this API, the transform will process the new data instantly,
+          without waiting for the configured frequency interval. After the API is called,
+          the transform will be processed again at <code>now + frequency</code> unless the API
           is called again in the meantime.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/schedule-now-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-schedule-now-transform>`_
 
         :param transform_id: Identifier for the transform.
         :param timeout: Controls the time to wait for the scheduling to take place
@@ -621,8 +619,7 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Start a transform.
-          Starts a transform.</p>
+          <p>Start a transform.</p>
           <p>When you start a transform, it creates the destination index if it does not already exist. The <code>number_of_shards</code> is
           set to <code>1</code> and the <code>auto_expand_replicas</code> is set to <code>0-1</code>. If it is a pivot transform, it deduces the mapping
           definitions for the destination index from the source indices and the transform aggregations. If fields in the
@@ -638,7 +635,7 @@ class TransformClient(NamespacedClient):
           destination indices, the transform fails when it attempts unauthorized operations.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/start-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-start-transform>`_
 
         :param transform_id: Identifier for the transform.
         :param from_: Restricts the set of transformed entities to those changed after
@@ -696,7 +693,7 @@ class TransformClient(NamespacedClient):
           Stops one or more transforms.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/stop-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-stop-transform>`_
 
         :param transform_id: Identifier for the transform. To stop multiple transforms,
             use a comma-separated list or a wildcard expression. To stop all transforms,
@@ -798,7 +795,7 @@ class TransformClient(NamespacedClient):
           time of update and runs with those privileges.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/update-transform.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-update-transform>`_
 
         :param transform_id: Identifier for the transform.
         :param defer_validation: When true, deferrable validations are not run. This
@@ -879,8 +876,8 @@ class TransformClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Upgrade all transforms.
-          Transforms are compatible across minor versions and between supported major versions.
+          <p>Upgrade all transforms.</p>
+          <p>Transforms are compatible across minor versions and between supported major versions.
           However, over time, the format of transform configuration information may change.
           This API identifies transforms that have a legacy configuration format and upgrades them to the latest version.
           It also cleans up the internal data structures that store the transform state and checkpoints.
@@ -893,7 +890,7 @@ class TransformClient(NamespacedClient):
           You may want to perform a recent cluster backup prior to the upgrade.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/upgrade-transforms.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-transform-upgrade-transforms>`_
 
         :param dry_run: When true, the request checks for updates but does not run them.
         :param timeout: Period to wait for a response. If no response is received before

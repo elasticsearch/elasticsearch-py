@@ -30,6 +30,7 @@ class EsqlClient(NamespacedClient):
             "query",
             "columnar",
             "filter",
+            "include_ccs_metadata",
             "locale",
             "params",
             "profile",
@@ -56,12 +57,11 @@ class EsqlClient(NamespacedClient):
             ]
         ] = None,
         human: t.Optional[bool] = None,
+        include_ccs_metadata: t.Optional[bool] = None,
         keep_alive: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
         keep_on_completion: t.Optional[bool] = None,
         locale: t.Optional[str] = None,
-        params: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
-        ] = None,
+        params: t.Optional[t.Sequence[t.Union[None, bool, float, int, str]]] = None,
         pretty: t.Optional[bool] = None,
         profile: t.Optional[bool] = None,
         tables: t.Optional[
@@ -80,7 +80,7 @@ class EsqlClient(NamespacedClient):
           <p>The API accepts the same parameters and request body as the synchronous query API, along with additional async related properties.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/esql-async-query-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query>`_
 
         :param query: The ES|QL query API accepts an ES|QL query string in the query
             parameter, runs it, and returns the results.
@@ -97,6 +97,10 @@ class EsqlClient(NamespacedClient):
         :param filter: Specify a Query DSL query in the filter parameter to filter the
             set of documents that an ES|QL query runs on.
         :param format: A short version of the Accept header, for example `json` or `yaml`.
+        :param include_ccs_metadata: When set to `true` and performing a cross-cluster
+            query, the response will include an extra `_clusters` object with information
+            about the clusters that participated in the search along with info such as
+            shards count.
         :param keep_alive: The period for which the query and its results are stored
             in the cluster. The default period is five days. When this period expires,
             the query and its results are deleted, even if the query is still ongoing.
@@ -155,6 +159,8 @@ class EsqlClient(NamespacedClient):
                 __body["columnar"] = columnar
             if filter is not None:
                 __body["filter"] = filter
+            if include_ccs_metadata is not None:
+                __body["include_ccs_metadata"] = include_ccs_metadata
             if locale is not None:
                 __body["locale"] = locale
             if params is not None:
@@ -197,7 +203,7 @@ class EsqlClient(NamespacedClient):
           </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/esql-async-query-delete-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-delete>`_
 
         :param id: The unique identifier of the query. A query ID is provided in the
             ES|QL async query API response for a query that does not complete in the
@@ -250,7 +256,7 @@ class EsqlClient(NamespacedClient):
           If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can retrieve the results using this API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/esql-async-query-get-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-esql-async-query-get>`_
 
         :param id: The unique identifier of the query. A query ID is provided in the
             ES|QL async query API response for a query that does not complete in the
@@ -298,11 +304,67 @@ class EsqlClient(NamespacedClient):
             path_parts=__path_parts,
         )
 
+    @_rewrite_parameters()
+    async def async_query_stop(
+        self,
+        *,
+        id: str,
+        drop_null_columns: t.Optional[bool] = None,
+        error_trace: t.Optional[bool] = None,
+        filter_path: t.Optional[t.Union[str, t.Sequence[str]]] = None,
+        human: t.Optional[bool] = None,
+        pretty: t.Optional[bool] = None,
+    ) -> ObjectApiResponse[t.Any]:
+        """
+        .. raw:: html
+
+          <p>Stop async ES|QL query.</p>
+          <p>This API interrupts the query execution and returns the results so far.
+          If the Elasticsearch security features are enabled, only the user who first submitted the ES|QL query can stop it.</p>
+
+
+        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/esql-async-query-stop-api.html>`_
+
+        :param id: The unique identifier of the query. A query ID is provided in the
+            ES|QL async query API response for a query that does not complete in the
+            designated time. A query ID is also provided when the request was submitted
+            with the `keep_on_completion` parameter set to `true`.
+        :param drop_null_columns: Indicates whether columns that are entirely `null`
+            will be removed from the `columns` and `values` portion of the results. If
+            `true`, the response will include an extra section under the name `all_columns`
+            which has the name of all the columns.
+        """
+        if id in SKIP_IN_PATH:
+            raise ValueError("Empty value passed for parameter 'id'")
+        __path_parts: t.Dict[str, str] = {"id": _quote(id)}
+        __path = f'/_query/async/{__path_parts["id"]}/stop'
+        __query: t.Dict[str, t.Any] = {}
+        if drop_null_columns is not None:
+            __query["drop_null_columns"] = drop_null_columns
+        if error_trace is not None:
+            __query["error_trace"] = error_trace
+        if filter_path is not None:
+            __query["filter_path"] = filter_path
+        if human is not None:
+            __query["human"] = human
+        if pretty is not None:
+            __query["pretty"] = pretty
+        __headers = {"accept": "application/json"}
+        return await self.perform_request(  # type: ignore[return-value]
+            "POST",
+            __path,
+            params=__query,
+            headers=__headers,
+            endpoint_id="esql.async_query_stop",
+            path_parts=__path_parts,
+        )
+
     @_rewrite_parameters(
         body_fields=(
             "query",
             "columnar",
             "filter",
+            "include_ccs_metadata",
             "locale",
             "params",
             "profile",
@@ -329,10 +391,9 @@ class EsqlClient(NamespacedClient):
             ]
         ] = None,
         human: t.Optional[bool] = None,
+        include_ccs_metadata: t.Optional[bool] = None,
         locale: t.Optional[str] = None,
-        params: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
-        ] = None,
+        params: t.Optional[t.Sequence[t.Union[None, bool, float, int, str]]] = None,
         pretty: t.Optional[bool] = None,
         profile: t.Optional[bool] = None,
         tables: t.Optional[
@@ -364,6 +425,10 @@ class EsqlClient(NamespacedClient):
         :param filter: Specify a Query DSL query in the filter parameter to filter the
             set of documents that an ES|QL query runs on.
         :param format: A short version of the Accept header, e.g. json, yaml.
+        :param include_ccs_metadata: When set to `true` and performing a cross-cluster
+            query, the response will include an extra `_clusters` object with information
+            about the clusters that participated in the search along with info such as
+            shards count.
         :param locale:
         :param params: To avoid any attempts of hacking or code injection, extract the
             values in a separate list of parameters. Use question mark placeholders (?)
@@ -402,6 +467,8 @@ class EsqlClient(NamespacedClient):
                 __body["columnar"] = columnar
             if filter is not None:
                 __body["filter"] = filter
+            if include_ccs_metadata is not None:
+                __body["include_ccs_metadata"] = include_ccs_metadata
             if locale is not None:
                 __body["locale"] = locale
             if params is not None:

@@ -44,7 +44,7 @@ class AutoscalingClient(NamespacedClient):
           <p>NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/autoscaling-delete-autoscaling-policy.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-delete-autoscaling-policy>`_
 
         :param name: the name of the autoscaling policy
         :param master_timeout: Period to wait for a connection to the master node. If
@@ -104,7 +104,7 @@ class AutoscalingClient(NamespacedClient):
           Do not use this information to make autoscaling decisions.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/autoscaling-get-autoscaling-capacity.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-get-autoscaling-capacity>`_
 
         :param master_timeout: Period to wait for a connection to the master node. If
             no response is received before the timeout expires, the request fails and
@@ -151,7 +151,7 @@ class AutoscalingClient(NamespacedClient):
           <p>NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/autoscaling-get-autoscaling-capacity.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-get-autoscaling-capacity>`_
 
         :param name: the name of the autoscaling policy
         :param master_timeout: Period to wait for a connection to the master node. If
@@ -206,7 +206,7 @@ class AutoscalingClient(NamespacedClient):
           <p>NOTE: This feature is designed for indirect use by Elasticsearch Service, Elastic Cloud Enterprise, and Elastic Cloud on Kubernetes. Direct use is not supported.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/autoscaling-put-autoscaling-policy.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-autoscaling-put-autoscaling-policy>`_
 
         :param name: the name of the autoscaling policy
         :param policy:

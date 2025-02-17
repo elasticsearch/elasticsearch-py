@@ -48,12 +48,12 @@ class FleetClient(NamespacedClient):
         """
         .. raw:: html
 
-          <p>Get global checkpoints.
-          Get the current global checkpoints for an index.
+          <p>Get global checkpoints.</p>
+          <p>Get the current global checkpoints for an index.
           This API is designed for internal use by the Fleet server project.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-global-checkpoints.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-fleet>`_
 
         :param index: A single index or index alias that resolves to a single index.
         :param checkpoints: A comma separated list of previous global checkpoints. When
@@ -143,6 +143,8 @@ class FleetClient(NamespacedClient):
           The API follows the same structure as the multi search API.
           However, similar to the Fleet search API, it supports the <code>wait_for_checkpoints</code> parameter.</p>
 
+
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-fleet-msearch>`_
 
         :param searches:
         :param index: A single target to search. If the target is an index alias, it
@@ -348,7 +350,7 @@ class FleetClient(NamespacedClient):
         script_fields: t.Optional[t.Mapping[str, t.Mapping[str, t.Any]]] = None,
         scroll: t.Optional[t.Union[str, t.Literal[-1], t.Literal[0]]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         search_type: t.Optional[
             t.Union[str, t.Literal["dfs_query_then_fetch", "query_then_fetch"]]
@@ -390,6 +392,8 @@ class FleetClient(NamespacedClient):
           The purpose of the Fleet search API is to provide an API where the search will be run only
           after the provided checkpoint has been processed and is visible for searches inside of Elasticsearch.</p>
 
+
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-fleet-search>`_
 
         :param index: A single target to search. If the target is an index alias, it
             must resolve to a single index.

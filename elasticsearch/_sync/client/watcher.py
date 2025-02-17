@@ -48,7 +48,7 @@ class WatcherClient(NamespacedClient):
           This happens when the condition of the watch is not met (the condition evaluates to false).</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-ack-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-ack-watch>`_
 
         :param watch_id: The watch identifier.
         :param action_id: A comma-separated list of the action identifiers to acknowledge.
@@ -104,7 +104,7 @@ class WatcherClient(NamespacedClient):
           A watch can be either active or inactive.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-activate-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-activate-watch>`_
 
         :param watch_id: The watch identifier.
         """
@@ -148,7 +148,7 @@ class WatcherClient(NamespacedClient):
           A watch can be either active or inactive.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-deactivate-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-deactivate-watch>`_
 
         :param watch_id: The watch identifier.
         """
@@ -196,7 +196,7 @@ class WatcherClient(NamespacedClient):
           When Elasticsearch security features are enabled, make sure no write privileges are granted to anyone for the <code>.watches</code> index.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-delete-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-delete-watch>`_
 
         :param id: The watch identifier.
         """
@@ -277,7 +277,7 @@ class WatcherClient(NamespacedClient):
           <p>When using the run watch API, the authorization data of the user that called the API will be used as a base, instead of the information who stored the watch.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-execute-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-execute-watch>`_
 
         :param id: The watch identifier.
         :param action_modes: Determines how to handle the watch actions as part of the
@@ -365,7 +365,7 @@ class WatcherClient(NamespacedClient):
           Only a subset of settings are shown, for example <code>index.auto_expand_replicas</code> and <code>index.number_of_replicas</code>.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-get-settings.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-settings>`_
 
         :param master_timeout: The period to wait for a connection to the master node.
             If no response is received before the timeout expires, the request fails
@@ -410,7 +410,7 @@ class WatcherClient(NamespacedClient):
           <p>Get a watch.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-get-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-get-watch>`_
 
         :param id: The watch identifier.
         """
@@ -485,7 +485,7 @@ class WatcherClient(NamespacedClient):
           If the user is able to read index <code>a</code>, but not index <code>b</code>, the same will apply when the watch runs.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-put-watch.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-put-watch>`_
 
         :param id: The identifier for the watch.
         :param actions: The list of actions that will be run if the condition matches.
@@ -579,7 +579,7 @@ class WatcherClient(NamespacedClient):
         pretty: t.Optional[bool] = None,
         query: t.Optional[t.Mapping[str, t.Any]] = None,
         search_after: t.Optional[
-            t.Sequence[t.Union[None, bool, float, int, str, t.Any]]
+            t.Sequence[t.Union[None, bool, float, int, str]]
         ] = None,
         size: t.Optional[int] = None,
         sort: t.Optional[
@@ -598,7 +598,7 @@ class WatcherClient(NamespacedClient):
           <p>Note that only the <code>_id</code> and <code>metadata.*</code> fields are queryable or sortable.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-query-watches.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-query-watches>`_
 
         :param from_: The offset from the first result to fetch. It must be non-negative.
         :param query: A query that filters the watches to be returned.
@@ -673,7 +673,7 @@ class WatcherClient(NamespacedClient):
           Start the Watcher service if it is not already running.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-start.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-start>`_
 
         :param master_timeout: Period to wait for a connection to the master node.
         """
@@ -739,7 +739,7 @@ class WatcherClient(NamespacedClient):
           You retrieve more metrics by using the metric parameter.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-stats.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-stats>`_
 
         :param metric: Defines which additional metrics are included in the response.
         :param emit_stacktraces: Defines whether stack traces are generated for each
@@ -790,7 +790,7 @@ class WatcherClient(NamespacedClient):
           Stop the Watcher service if it is running.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-stop.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-stop>`_
 
         :param master_timeout: The period to wait for the master node. If the master
             node is not available before the timeout expires, the request fails and returns
@@ -848,7 +848,7 @@ class WatcherClient(NamespacedClient):
           This includes <code>index.auto_expand_replicas</code> and <code>index.number_of_replicas</code>.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/watcher-api-update-settings.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-watcher-update-settings>`_
 
         :param index_auto_expand_replicas:
         :param index_number_of_replicas:

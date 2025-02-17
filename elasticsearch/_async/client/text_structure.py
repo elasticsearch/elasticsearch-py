@@ -72,7 +72,7 @@ class TextStructureClient(NamespacedClient):
           It helps determine why the returned structure was chosen.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/find-field-structure.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/group/endpoint-text_structure>`_
 
         :param field: The field that should be analyzed.
         :param index: The name of the index that contains the analyzed field.
@@ -259,7 +259,7 @@ class TextStructureClient(NamespacedClient):
           It helps determine why the returned structure was chosen.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/find-message-structure.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-message-structure>`_
 
         :param messages: The list of messages you want to analyze.
         :param column_names: If the format is `delimited`, you can specify the column
@@ -433,7 +433,7 @@ class TextStructureClient(NamespacedClient):
           However, you can optionally override some of the decisions about the text structure by specifying one or more query parameters.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/find-structure.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-find-structure>`_
 
         :param text_files:
         :param charset: The text's character set. It must be a character set that is
@@ -620,7 +620,7 @@ class TextStructureClient(NamespacedClient):
           The API indicates whether the lines match the pattern together with the offsets and lengths of the matched substrings.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/test-grok-pattern.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-text-structure-test-grok-pattern>`_
 
         :param grok_pattern: The Grok pattern to run on the text.
         :param text: The lines of text to run the Grok pattern on.

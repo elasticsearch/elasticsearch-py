@@ -43,7 +43,7 @@ class EqlClient(NamespacedClient):
           The API also deletes results for the search.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/eql-search-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-delete>`_
 
         :param id: Identifier for the search to delete. A search ID is provided in the
             EQL search API's response for an async search. A search ID is also provided
@@ -93,7 +93,7 @@ class EqlClient(NamespacedClient):
           Get the current status and available results for an async EQL search or a stored synchronous EQL search.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-eql-search-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get>`_
 
         :param id: Identifier for the search.
         :param keep_alive: Period for which the search and its results are stored on
@@ -147,7 +147,7 @@ class EqlClient(NamespacedClient):
           Get the current status for an async EQL search or a stored synchronous EQL search without returning results.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/get-async-eql-status-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-get-status>`_
 
         :param id: Identifier for the search.
         """
@@ -246,13 +246,20 @@ class EqlClient(NamespacedClient):
           EQL assumes each document in a data stream or index corresponds to an event.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/eql-search-api.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-eql-search>`_
 
         :param index: The name of the index to scope the operation
         :param query: EQL query you wish to run.
         :param allow_no_indices:
-        :param allow_partial_search_results:
-        :param allow_partial_sequence_results:
+        :param allow_partial_search_results: Allow query execution also in case of shard
+            failures. If true, the query will keep running and will return results based
+            on the available shards. For sequences, the behavior can be further refined
+            using allow_partial_sequence_results
+        :param allow_partial_sequence_results: This flag applies only to sequences and
+            has effect only if allow_partial_search_results=true. If true, the sequence
+            query will return results based on the available shards, ignoring the others.
+            If false, the sequence query will return successfully, but will always have
+            empty results.
         :param case_sensitive:
         :param event_category_field: Field containing the event classification, such
             as process, file, or network.

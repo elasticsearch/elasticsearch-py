@@ -67,7 +67,7 @@ class RollupClient(NamespacedClient):
           </code></pre>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-delete-job.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-delete-job>`_
 
         :param id: Identifier for the job.
         """
@@ -115,7 +115,7 @@ class RollupClient(NamespacedClient):
           For details about a historical rollup job, the rollup capabilities API may be more useful.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-job.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-jobs>`_
 
         :param id: Identifier for the rollup job. If it is `_all` or omitted, the API
             returns all rollup jobs.
@@ -171,7 +171,7 @@ class RollupClient(NamespacedClient):
           </ol>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-rollup-caps.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-caps>`_
 
         :param id: Index, indices or index-pattern to return rollup capabilities for.
             `_all` may be used to fetch rollup capabilities from all jobs.
@@ -225,7 +225,7 @@ class RollupClient(NamespacedClient):
           </ul>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-get-rollup-index-caps.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-get-rollup-index-caps>`_
 
         :param index: Data stream or index to check for rollup capabilities. Wildcard
             (`*`) expressions are supported.
@@ -295,7 +295,7 @@ class RollupClient(NamespacedClient):
           <p>Jobs are created in a <code>STOPPED</code> state. You can start them with the start rollup jobs API.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-put-job.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-put-job>`_
 
         :param id: Identifier for the rollup job. This can be any alphanumeric string
             and uniquely identifies the data that is associated with the rollup job.
@@ -443,7 +443,7 @@ class RollupClient(NamespacedClient):
           During the merging process, if there is any overlap in buckets between the two responses, the buckets from the non-rollup index are used.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-search.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-rollup-search>`_
 
         :param index: A comma-separated list of data streams and indices used to limit
             the request. This parameter has the following rules: * At least one data
@@ -521,7 +521,7 @@ class RollupClient(NamespacedClient):
           If you try to start a job that is already started, nothing happens.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-start-job.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-start-job>`_
 
         :param id: Identifier for the rollup job.
         """
@@ -575,7 +575,7 @@ class RollupClient(NamespacedClient):
           If the specified time elapses without the job moving to STOPPED, a timeout exception occurs.</p>
 
 
-        `<https://www.elastic.co/guide/en/elasticsearch/reference/master/rollup-stop-job.html>`_
+        `<https://www.elastic.co/docs/api/doc/elasticsearch/operation/operation-rollup-stop-job>`_
 
         :param id: Identifier for the rollup job.
         :param timeout: If `wait_for_completion` is `true`, the API blocks for (at maximum)
